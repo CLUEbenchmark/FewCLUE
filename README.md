@@ -46,17 +46,17 @@
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
-|   EPRSTMT    | 32 | 32 | 610(太少) | 753(太少) | 2 | 19565 | SentimentAnalysis | Acc | E-CommrceReview |
+|   EPRSTMT    | 32 | 32 | 610(少) | 753(少) | 2 | 19565 | SentimentAnalysis | Acc | E-CommrceReview |
 |   CSLDCP    | 536 |536   | 1784| 2999 | 65? | 18111 | LongTextClassify | Acc |AcademicCNKI |
 |   TNEWS    | 240 | 240 |2010| 1500 | 15 |20000| ShortTextClassify | Acc |NewsTitle |
 |    IFLYTEK   | 928 | 690  | 1749  | 2279 | 100+  | 7558 | LongTextClassify| Acc |AppDesc |
 |     | Sentence | Pair | Tasks |
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 |NaturalLanguageInference  |  Acc | 5Genres |
 |    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSimilarity | Acc | AIVirtualAssistant | 
-|   |Machine Reading |Comprehension |Tasks |
+|   |M Reading |Comprehension |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  Multiple-Choice,idiom | Acc  | Novel,EssayNews |
 |     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecognition| Acc | AcademicCNKI| 
-|     CLUEWSC  | 32 | 32  |  976（太少） | 290(太少）  | 2 | 0（太少）| CoreferenceResolution  | Acc | ChineseFictionBooks   
+|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CoreferenceResolution  | Acc | ChineseFictionBooks   
 
 
 
