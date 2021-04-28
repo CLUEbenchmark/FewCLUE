@@ -53,7 +53,7 @@
 |     | Sentence | Pair | Tasks |
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 |NaturalLanguageInference  |  Acc | 5Genres |
 |    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSimilarity | Acc | AIVirtualAssistant | 
-|   |M Reading |Comprehension |Tasks |
+|   |Reading |Comprehension |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  Multiple-Choice,idiom | Acc  | Novel,EssayNews |
 |     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecognition| Acc | AcademicCNKI| 
 |     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CoreferenceResolution  | Acc | ChineseFictionBooks   
