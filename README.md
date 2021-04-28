@@ -51,7 +51,7 @@
 |   TNEWS    | 240 | 240 |2010| 1500 | 15 |20000| ShortTextClassify | Acc |NewsTitle |
 |    IFLYTEK   | 928 | 690  | 1749  | 2279 | 100+  | 7558 | LongTextClassify| Acc |AppDesc |
 |     | Sentence | Pair | Tasks |
-|    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 |NaturalLanguageInference  |  Acc | 5Genres |
+|    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 | NLI  |  Acc | 5Genres |
 |    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSimilarity | Acc | AIVirtualAssistant | 
 |   |Reading |Comprehension |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  Multiple-Choice,idiom | Acc  | Novel,EssayNews |
