@@ -42,7 +42,7 @@
 
 4、完善的基础设施。我们提供从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
 
-## 任务例子 Tasks
+## 任务描述和统计 Task Descriptions and Statistics
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
@@ -59,22 +59,38 @@
 |     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CorefResolution  | Acc | ChineseFictionBooks   
 
 
-## 基线模型：运行及介绍（附图） baseline
+## 基线模型：运行及介绍（附图） Baselines and Know to run
 基线模型：运行及介绍 baseline
 
-## 任务构建过程与调查问卷
+## 任务构建过程与调查问卷 Construction of Tasks
 任务构建过程与调查问卷
 
 ## 测评报名|提交 Submit
 测评报名|提交 Submit
 
-## 单个数据集文件结构
-单个数据集文件结构
+## 数据集文件结构 Data set Structure
+    5份训练集，对应5份验证集，1份公开测试集，1份用于提交测试集，1份无标签样本，1份合并后的训练和验证集
+    train_0.json：训练集0
+    train_1.json：训练集1
+    train_2.json：训练集2
+    train_3.json：训练集3
+    train_4.json：训练集4
+    train_few_all.json： 合并后的训练集，即训练集0-4合并去重后的结果
+    dev_0.json：验证集0
+    dev_0.json：验证集1
+    dev_0.json：验证集2
+    dev_0.json：验证集3
+    dev_0.json：验证集4
+    dev_few_all.json： 合并后的验证集，即验证集0-4合并去重后的结果
+    test_public.json：公开测试集，用于测试，带标签
+    test.json: 测试集，用于提交，不能带标签
+    unlabeled.json: 无标签的大量样本
 
-## 教程
-教程（jupyter notebook/Google Colab）
+## 教程 Tutorial
+教程（Jupyter Notebook/Google Colab）
 
-## 贡献与参与
+## 贡献与参与 Contribution & Participation
 贡献与参与
 
-##引用
+## 引用
+引用
