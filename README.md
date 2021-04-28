@@ -46,18 +46,17 @@
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
-|   EPRSTMT    | 32 | 32 | 610(少) | 753(少) | 2 | 19565 | SentimentAnalysis | Acc | E-CommrceReview |
+|   EPRSTMT    | 32 | 32 | 610(少) | 753(少) | 2 | 19565 | SntmntAnalysis | Acc | E-CommrceReview |
 |   CSLDCP    | 536 |536   | 1784| 2999 | 65? | 18111 | LongTextClassify | Acc |AcademicCNKI |
 |   TNEWS    | 240 | 240 |2010| 1500 | 15 |20000| ShortTextClassify | Acc |NewsTitle |
 |    IFLYTEK   | 928 | 690  | 1749  | 2279 | 100+  | 7558 | LongTextClassify| Acc |AppDesc |
 |     | Sentence | Pair | Tasks |
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 | NLI  |  Acc | 5Genres |
-|    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSimilarity | Acc | AIVirtualAssistant | 
-|   |Reading |Comprehension |Tasks |
-|     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  Multiple-Choice,idiom | Acc  | Novel,EssayNews |
-|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecognition| Acc | AcademicCNKI| 
-|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CoreferenceResolution  | Acc | ChineseFictionBooks   
-
+|    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSmlarty | Acc | AIVirtualAssistant | 
+|   |Reading |Comprhnsn |Tasks |
+|     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
+|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI| 
+|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CorefResolution  | Acc | ChineseFictionBooks   
 
 
 ## 基线模型：运行及介绍（附图） baseline
