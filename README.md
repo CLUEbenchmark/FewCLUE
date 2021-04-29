@@ -21,8 +21,10 @@
 |   |Reading |Comprhnsn |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
 |     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI| 
-|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CorefResolution  | Acc | ChineseFictionBooks   
+|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CorefResolution  | Acc | ChineseFictionBooks 
 
+    EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
+    OCNLI: 自然语言推理；BUSTM: 对话短文本匹配；CHID:成语阅读理解；CSL:摘要判断关键词判别；CLUEWSC:代词消歧
 
 ## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集政策规模。使用RoBERT12层chinese_roberta_wwm_ext作为基础模型。
@@ -53,10 +55,58 @@
 3、时代感强。测评的主要目标是考察小样本学习，我们也同时测评了模型的零样本学习、半监督学习的能力。不仅能考察BERT类擅长语言理解的模型，
 也可以同时查考了近年来发展迅速的GPT-3这类生成模型的中文版本在零样本学习、小样本学习上的能力；
 
-4、完善的基础设施。我们提供从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
+此外，我们提供小样本测评完善的基础设施。
+从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
+
 
 ## 基线模型：运行及介绍（附图） Baselines and Know to run
 基线模型：运行及介绍 baseline
+
+## 数据集介绍与下载 Introduction of datasets
+
+##### 1. EPRSTMT（EPR-sentiment）  电商产品评论情感分析数据集  E-commerce Product Review Dataset for Sentiment Analysis
+```
+     数据量：训练集（32），验证集（32），公开测试集（610），测试集（753），无标签语料（19565）
+     例子：
+     {"id": 23, "sentence": "外包装上有点磨损，试听后感觉不错", "label": "Positive"}
+     每一条数据有三个属性，从前往后分别是 id,sentence,label。其中label标签，Positive 表示正向，Negative 表示负向。
+```
+
+##### 2. CSLDCP  中文科学文献学科分类数据集  
+```
+     例子：
+     {"id": 23, "sentence": "外包装上有点磨损，试听后感觉不错", "label": "Positive"}
+     每一条数据有三个属性，从前往后分别是 id,sentence,label。其中label标签，Positive 表示正向，Negative 表示负向。
+```
+
+
+##### 3.TNEWS' 今日头条中文新闻（短文本）分类数据集 Toutiao Short Text Classificaiton for News
+    该数据集来自今日头条的新闻版块，共提取了15个类别的新闻，包括旅游，教育，金融，军事等。
+```
+     例子：
+     {"label": "102", "label_des": "news_entertainment", "sentence": "江疏影甜甜圈自拍，迷之角度竟这么好看，美吸引一切事物"}
+     每一条数据有三个属性，从前往后分别是 分类ID，分类名称，新闻字符串（仅含标题）。
+```
+
+##### 4.IFLYTEK' 长文本分类数据集 Long Text classification
+    该数据集关于app应用描述的长文本标注数据，包含和日常生活相关的各类应用主题，共119个类别："打车":0,"地图导航":1,"免费WIFI":2,"租车":3,….,"女性":115,"经营":116,"收款":117,"其他":118(分别用0-118表示)。
+```
+    例子：
+    {"label": "110", "label_des": "社区超市", "sentence": "朴朴快送超市创立于2016年，专注于打造移动端30分钟即时配送一站式购物平台，商品品类包含水果、蔬菜、肉禽蛋奶、海鲜水产、粮油调味、酒水饮料、休闲食品、日用品、外卖等。朴朴公司希望能以全新的商业模式，更高效快捷的仓储配送模式，致力于成为更快、更好、更多、更省的在线零售平台，带给消费者更好的消费体验，同时推动中国食品安全进程，成为一家让社会尊敬的互联网公司。,朴朴一下，又好又快,1.配送时间提示更加清晰友好2.保障用户隐私的一些优化3.其他提高使用体验的调整4.修复了一些已知bug"}
+    每一条数据有三个属性，从前往后分别是 类别ID，类别名称，文本内容。
+```
+
+##### 5.OCNLI 中文原版自然语言推理数据集 Original Chinese Natural Language Inference
+    OCNLI，即原生中文自然语言推理数据集，是第一个非翻译的、使用原生汉语的大型中文自然语言推理数据集。
+    
+    例子：
+    {
+    "level":"medium",
+    "sentence1":"身上裹一件工厂发的棉大衣,手插在袖筒里",
+    "sentence2":"身上至少一件衣服",
+    "label":"entailment","label0":"entailment","label1":"entailment","label2":"entailment","label3":"entailment","label4":"entailment",
+    "genre":"lit","prem_id":"lit_635","id":0
+    }
 
 ## 任务构建过程与调查问卷 Construction of Tasks
 任务构建过程与调查问卷
