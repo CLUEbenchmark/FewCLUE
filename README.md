@@ -274,7 +274,7 @@
     优点：将任务进行了转换后，不再需要向之前的fine-tuning阶段一样引入新的最后一层，即没有引入任何参数；将下游任务转换成与预训练的语言模型一致的形式。
     缺点：可能需要手工构造Pattern; 不同的Pattern效果差异很大
     
-####    4.LM-BFF:   
+####    4.LM-BFF: Making Pre-trained Language Models Better Few-shot Learners  
     模型和示例：
     LM-BFF是一套针对小样本进行微调的技术，主要包括两部分：基于提示（prompt）进行微调，关键是如何自动化生成提示模板；
     将样本示例以上下文的形式添加到每个输入中，关键是如何对示例进行采样；
@@ -284,10 +284,22 @@
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_1.jpeg)
    
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
-    然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化。
+    然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg)
+   
+    优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
+    缺点：依然假设模板是自然语言的版本；非全自动化的：先找模板，然在最优模板上做任务。
+    
+####    5.Ptuning: GPT Understands, Too
+    模型和示例：
+    人工选择模板，或者机器自动选择模板，都是比较繁琐的工作，但对效果影响很大。那有没有能自动构建模型的方式呢？
+    Ptuning放弃了模板必须是自然语言的假设，通过使用BERT系列中未使用的字的表示来自动设法学习到最佳的模板；
+    并且它可以只学习模板对应的参数，如10个embedding，而之前的方法一般都是需要学习所有的字的表示；
+    论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
+   
+    离散模板搜索-->连续端到端学习
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
 
-####    5.Ptuning
    
 ## 测评报名|提交 Submit
 
