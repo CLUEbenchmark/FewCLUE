@@ -33,14 +33,14 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 ## 实验结果 Experiments
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
 
-| 模型   | score     | cecmmnt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
+| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
 | <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuning</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
-| <a href="#">PET</a>      | 54.34 | 78.6N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 57.5N |
+| <a href="#">PET</a>      | 54.34 | 78.6N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 61.3N |
 | <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="#">Zero-shot</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
+| <a href="#">Zero-shot</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
     PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; 报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
     Zero-shot: 零样本学习。前4个任务采用GPT模型，后5个任务采用chinese_roberta_wwm_ext为基础模型。N”，代表已更新；
     五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
