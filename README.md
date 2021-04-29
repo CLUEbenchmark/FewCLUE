@@ -327,7 +327,8 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
    
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
-    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="80%" height="80%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="80%" height="80%" />   
+    
     LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
     缺点：依然假设模板是自然语言的版本；非全自动化的：先找模板，然在最优模板上做任务。
