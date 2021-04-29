@@ -238,10 +238,25 @@
 
 ## 模型简介（附图）
    1.BERT.Fine-tuning
+   BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；通过下游任务微调，仅新引入部分参数，
+   而不需对整个网络从头训练。
    
+   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
+   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
+   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
+
+ 
    2.GPT3
    
-   3.PET
+   3.PET，Pattern-Exploiting Training
+   将任务转化为完形填空。包括两部分，一部分将输入文本转化为完形填空，里面包含一个需要[MASK]的部分。
+   
+   如输入文本“这个手机壳很不错”，转化为：这个手机壳很不错。我觉得[MASK]好。这里的[MASK]计算需要填写的部分。
+   另一部分将需要预测的标签对应到一个字符上。如，有两个情感分类的标签POSITIVE和NEGATIVE。POSITIVE-->good; NEGATIVE-->bad。
+   
+   下面报导一则[MASK]新闻。八个月了，终于又能在赛场上看到女排姑娘们了。
+   [MASK]的地方可以填“体育”，也可以填“财经”、“娱乐”，但联合概率上看“体育”最大，那么“体育”可以做为预测的标签。
+
    
    4.Ptuning
    
