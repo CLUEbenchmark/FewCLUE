@@ -65,15 +65,17 @@
     直接fine-tuning: 
         一键运行.基线模型与代码
         1、克隆项目 
-           git clone https://github.com/CLUEbenchmark/FewCLUE.git
+           git clone https://github.com/CLUEbenchmark/FewCLUEDatasets.git
         2、进入到相应的目录
            分类任务  
                例如：
                cd FewCLUEDatasets/baseline/models_tf/fine_tuning/bert/
         3、运行对应任务的脚本(GPU方式): 会自动下载模型并开始运行。
-           bash run_classifier_xxx.sh
-           如运行 bash run_classifier_ecomments.sh 会开始cecmmnt任务的训练和评估
-    
+           bash run_classifier_multi_dataset.sh
+           计算8个任务cecmmnt tnews iflytek ocnli csl cluewsc bustm csldcp，每个任务6个训练集的训练模型结果
+           结果包括验证集和测试集的准确率，以及无标签测试集的生成提交文件
+          
+      
     PET/Ptuning/GPT:
         环境准备：
           预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
@@ -193,19 +195,23 @@
 ## 任务构建过程与调查问卷 Construction of Tasks
 任务构建过程与调查问卷
 
-    调查问卷
+  调查问卷
     
-    调查背景
+    1.调查背景
     调查问卷主要针对任务和数据集设定进⾏，调查对象为FewCLUE⼩小样本学习交流群，获得35份有效样本。
     
-    调查问卷主要反馈： 
+    2.调查问卷主要反馈： 
     1)希望任务丰富多样、适应真实场景; 
     2)数据集数量量: 提供9个左右数据集；
     3)当个任务数量量:按类别采样16为主; 
     4)半监督学习:⼩小样本测试还应提供⼤大量量⽆无标签数据；
     5)测试零样本学习；
     
-   详见：<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/questionnaire/FewCLUE%E8%B0%83%E6%9F%A5%E9%97%AE%E5%8D%B7-%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF.pdf'>FewCLUE调查问卷-反馈信息</a>
+  任务构建过程
+  
+    任务构建过程参考了本次调查问卷，以及近年来比较有代表性的结合预训练语言模型的小样本学习的论文。
+    
+   调查问卷反馈详见：<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/questionnaire/FewCLUE%E8%B0%83%E6%9F%A5%E9%97%AE%E5%8D%B7-%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF.pdf'>FewCLUE调查问卷-反馈信息</a>
 
 ## 数据集文件结构 Data set Structure
     5份训练集，对应5份验证集，1份公开测试集，1份用于提交测试集，1份无标签样本，1份合并后的训练和验证集
@@ -230,6 +236,15 @@
         
         unlabeled.json: 无标签的大量样本
 
+## 模型简介（附图）
+   1.BERT.Fine-tuning
+   
+   2.GPT3
+   
+   3.PET
+   
+   4.Ptuning
+   
 ## 测评报名|提交 Submit
 
 <a href='https://www.CLUEbenchmarks.com'>提交</a>到测评系统(5月份开放，五一之后)
@@ -250,6 +265,9 @@
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
 
+## License和相关引用
+
+很快会更新上来
 
 ## 引用
     @misc{FewCLUE,
