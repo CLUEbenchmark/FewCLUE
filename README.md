@@ -11,7 +11,7 @@
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
-|   EPRSTMT    | 32 | 32 | 610(少) | 753(少) | 2 | 19565 | SntmntAnalysis | Acc | E-CommrceReview |
+|   EPRSTMT    | 32 | 32 | 610 | 753 | 2 | 19565 | SntmntAnalysis | Acc | E-CommrceReview |
 |   CSLDCP    | 536 |536   | 1784| 2999 | 67 | 18111 | LongTextClassify | Acc |AcademicCNKI |
 |   TNEWS    | 240 | 240 |2010| 1500 | 15 |20000| ShortTextClassify | Acc |NewsTitle |
 |    IFLYTEK   | 928 | 690  | 1749  | 2279 | 119  | 7558 | LongTextClassify| Acc |AppDesc |
@@ -21,7 +21,7 @@
 |   |Reading |Comprhnsn |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
 |     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI| 
-|     CLUEWSC  | 32 | 32  |  976（少） | 290(少）  | 2 | 0（少）| CorefResolution  | Acc | ChineseFictionBooks 
+|     CLUEWSC  | 32 | 32  |  976 | 290  | 2 | 0| CorefResolution  | Acc | ChineseFictionBooks 
 
     EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
     OCNLI: 自然语言推理；BUSTM: 对话短文本匹配；CHID:成语阅读理解；CSL:摘要判断关键词判别；CLUEWSC:代词消歧
@@ -60,7 +60,31 @@
 
 
 ## 基线模型：运行及介绍（附图） Baselines and Know to run
-基线模型：运行及介绍 baseline
+    目前支持4类代码：直接fine-tuning、PET、Ptuning、GPT
+    
+    直接fine-tuning: 
+        一键运行.基线模型与代码
+        1、克隆项目 
+           git clone https://github.com/CLUEbenchmark/FewCLUE.git
+        2、进入到相应的目录
+           分类任务  
+               例如：
+               cd FewCLUEDatasets/baseline/models_tf/fine_tuning/bert/
+        3、运行对应任务的脚本(GPU方式): 会自动下载模型并开始运行。
+           bash run_classifier_xxx.sh
+           如运行 bash run_classifier_ecomments.sh 会开始cecmmnt任务的训练和评估
+    
+    PET/Ptuning/GPT:
+        环境准备：
+          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
+        
+        运行：
+        1、进入到相应的目录，运行相应的代码。以ptuning为例：
+           cd ./baselines/models_keras/ptuning
+        2、运行代码
+           python3 ptuning_iflytek.py
+              
 
 ## 数据集介绍 Introduction of datasets
 
@@ -169,32 +193,61 @@
 ## 任务构建过程与调查问卷 Construction of Tasks
 任务构建过程与调查问卷
 
+    调查问卷
+    
+    调查背景
+    调查问卷主要针对任务和数据集设定进⾏，调查对象为FewCLUE⼩小样本学习交流群，获得35份有效样本。
+    
+    调查问卷主要反馈： 
+    1)希望任务丰富多样、适应真实场景; 
+    2)数据集数量量: 提供9个左右数据集；
+    3)当个任务数量量:按类别采样16为主; 
+    4)半监督学习:⼩小样本测试还应提供⼤大量量⽆无标签数据；
+    5)测试零样本学习；
+    
+    详见：resources/FewCLUE 调查问卷-反馈信息
+
 ## 测评报名|提交 Submit
 测评报名|提交 Submit
 
 ## 数据集文件结构 Data set Structure
     5份训练集，对应5份验证集，1份公开测试集，1份用于提交测试集，1份无标签样本，1份合并后的训练和验证集
-    train_0.json：训练集0
-    train_1.json：训练集1
-    train_2.json：训练集2
-    train_3.json：训练集3
-    train_4.json：训练集4
-    train_few_all.json： 合并后的训练集，即训练集0-4合并去重后的结果
-    dev_0.json：验证集0
-    dev_0.json：验证集1
-    dev_0.json：验证集2
-    dev_0.json：验证集3
-    dev_0.json：验证集4
-    dev_few_all.json： 合并后的验证集，即验证集0-4合并去重后的结果
-    test_public.json：公开测试集，用于测试，带标签
-    test.json: 测试集，用于提交，不能带标签
-    unlabeled.json: 无标签的大量样本
+    
+    单个数据集目录结构：
+        train_0.json：训练集0
+        train_1.json：训练集1
+        train_2.json：训练集2
+        train_3.json：训练集3
+        train_4.json：训练集4
+        train_few_all.json： 合并后的训练集，即训练集0-4合并去重后的结果
+        
+        dev_0.json：验证集0，与训练集0对应
+        dev_0.json：验证集1，与训练集1对应
+        dev_0.json：验证集2，与训练集2对应
+        dev_0.json：验证集3，与训练集3对应
+        dev_0.json：验证集4，与训练集4对应
+        dev_few_all.json： 合并后的验证集，即验证集0-4合并去重后的结果
+        
+        test_public.json：公开测试集，用于测试，带标签
+        test.json: 测试集，用于提交，不能带标签
+        
+        unlabeled.json: 无标签的大量样本
 
 ## 教程 Tutorial
-教程（Jupyter Notebook/Google Colab）
+    1.系列PPT分享资料，详见：./resources/ppt
+    2.教程（Jupyter Notebook/Google Colab），添加中。。。
+
+## 问题 Question
+    1. 问：测试系统，什么时候开发？
+       答：测评系统在5月1节后才会开放。
 
 ## 贡献与参与 Contribution & Participation
-贡献与参与
+    问：我有符合代码规范的模型代码，并经过测试，可以贡献到这个项目吗？
+    答：可以的。你可以提交一个pull request，并写上说明。
+    
+    问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
+    答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
+
 
 ## 引用
 引用
