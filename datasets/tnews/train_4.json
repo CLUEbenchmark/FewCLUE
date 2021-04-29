@@ -1,0 +1,240 @@
+{"label": 107, "label_desc": "news_car", "sentence": "铃木维特拉1.4T手自一体，在山东济宁多少钱能落地？", "keywords": "", "id": 11269}
+{"label": 106, "label_desc": "news_house", "sentence": "当涂地铁口100米重点学区花园洋房金色里程高品质南京周边住宅", "keywords": "南京,釜山站,马鞍山,花园洋房,当涂", "id": 24218}
+{"label": 109, "label_desc": "news_tech", "sentence": "比亚迪的对手来了", "keywords": "比亚迪,特斯拉", "id": 27429}
+{"label": 110, "label_desc": "news_military", "sentence": "为什么富人越来越有富，而穷人越来越穷？", "keywords": "幼儿教育,穷人", "id": 11333}
+{"label": 112, "label_desc": "news_travel", "sentence": "你喜欢的那个人，现在在哪个城市？", "keywords": "", "id": 44196}
+{"label": 113, "label_desc": "news_world", "sentence": "澄沙之味", "keywords": "水野美纪,澄沙之味,河濑直美,内田伽罗,日本电影,树木希林", "id": 48929}
+{"label": 116, "label_desc": "news_game", "sentence": "一帮老爷们回家离婚，没想到老婆们早都把结婚证准备好了：走吧！", "keywords": "女人当官,结婚证", "id": 46939}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "70男人不要背双肩包了！现流行“老上海”男包，耐用轻便又拉风", "keywords": "双肩包,男包,男士,衍生词,公文包", "id": 11171}
+{"label": 103, "label_desc": "news_sports", "sentence": "鲁能海报温柔却不失霸气，金敬道领衔，出战权健一人仍然缺席", "keywords": "王永珀,鲁能,金敬道,权健,糜昊伦", "id": 26301}
+{"label": 103, "label_desc": "news_sports", "sentence": "澳大利亚赛国羽男单包揽冠亚军 女单18岁新星决赛与日本选手争冠", "keywords": "陈炳顺,蔡炎炎,陆光祖,峰步美,半决赛", "id": 20525}
+{"label": 103, "label_desc": "news_sports", "sentence": "《奔跑吧》：谁说运动员都是头脑简单的？张国伟高情商为陈赫解围", "keywords": "陈赫,划龙舟,张国伟,运动员,奔跑吧兄弟", "id": 19576}
+{"label": 108, "label_desc": "news_edu", "sentence": "我市推选出一季度五名“新时代好少年”", "keywords": "商丘市,三好学生,新时代,京韵,陈梓涵,段鸿飞", "id": 23012}
+{"label": 104, "label_desc": "news_finance", "sentence": "山东证监局推进投资者教育纳入国民教育体系", "keywords": "证券业,投资者教育纳入国民教育体系,济南大学,山东大学,山东证监局", "id": 37394}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "2018年5月6号 第一篇事件", "keywords": "农村", "id": 5383}
+{"label": 104, "label_desc": "news_finance", "sentence": "2018新财富500富人榜：马化腾马云许家印位列前三", "keywords": "李书福,美的集团,杨惠妍,富人榜,吉利集团", "id": 15074}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "老汉在池塘边打了木桩 却得了怪病 算命说他打到经络上 才会如此", "keywords": "池塘,战友妻子,夫妻俩,八仙桌,县医院,卫生所", "id": 45156}
+{"label": 104, "label_desc": "news_finance", "sentence": "巴菲特股东大会：加密货币的结局会很糟糕", "keywords": "伯克希尔·哈撒韦,生产力,巴菲特,路易桑,加密货币", "id": 47338}
+{"label": 116, "label_desc": "news_game", "sentence": "DNF：瞎子只能混团，输出抢不了DPS？版本更新本职业装备增强", "keywords": "dnf,瞎子,安徒恩", "id": 43121}
+{"label": 116, "label_desc": "news_game", "sentence": "《大掌门2》5月17日即将全平台公测 红甲弟子揭开神秘面纱", "keywords": "铁中棠,天下第一,天涯明月刀,红色弟子,武当派,大掌门2,张三丰", "id": 34156}
+{"label": 110, "label_desc": "news_military", "sentence": "为何美国为首的西方国家不允许伊朗研发核武器，但对以色列拥核却视而不见？", "keywords": "", "id": 12569}
+{"label": 113, "label_desc": "news_world", "sentence": "21岁空姐坐顺风车遇害，这件事给我们什么启发？", "keywords": "", "id": 14640}
+{"label": 103, "label_desc": "news_sports", "sentence": "富力客战国安踢和已满足，提香踢得惊艳乌索肯倒地", "keywords": "广州富力,左翼卫,卢琳,李提香,丁海峰", "id": 15364}
+{"label": 116, "label_desc": "news_game", "sentence": "小狗UZI在得到LPL冠军后，会不会状态下滑，你怎么看？", "keywords": "", "id": 19898}
+{"label": 103, "label_desc": "news_sports", "sentence": "俄罗斯最强壮女子获得了卧推和硬拉的世界纪录", "keywords": "运动员,俄罗斯,利亚,社交网站,纳兹利亚", "id": 17619}
+{"label": 113, "label_desc": "news_world", "sentence": "比亚迪与美国公司首次开发氢燃料电动巴士", "keywords": "Hybrid,Hawaii,夏威夷,比亚迪,氢燃料电池,夏威夷州", "id": 4459}
+{"label": 108, "label_desc": "news_edu", "sentence": "关注｜重磅：生物、地理暂缓纳入全省中招考试科目", "keywords": "标准化考场,地理,纳入全省中招,中招考试科目,省教育厅", "id": 36901}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "中国古装十大美男是谁？", "keywords": "焦恩俊,张智尧,金城武,霍建华,黄海冰", "id": 43933}
+{"label": 100, "label_desc": "news_story", "sentence": "民间故事：乱世藏金，盛世藏玉", "keywords": "广轩阁,牛二,邵老东家,年轻女子,邵仓,玉佩,莽汉", "id": 24713}
+{"label": 110, "label_desc": "news_military", "sentence": "歩兵作战知识，单兵消灭敌人的战斗技巧", "keywords": "根据地,火力,有利地形,短兵相接", "id": 3298}
+{"label": 107, "label_desc": "news_car", "sentence": "那些有钱人都是怎样做生意的？", "keywords": "抵押贷款,信用卡套现,所有权,使用权,保时捷", "id": 36001}
+{"label": 107, "label_desc": "news_car", "sentence": "丰田/日产/本田/松下联手研发固态电池：2030年实现800公里续航目标", "keywords": "Model,电池,丰田,Model S,锂离子电池,电动汽车", "id": 4173}
+{"label": 116, "label_desc": "news_game", "sentence": "现在《穿越火线》的神器真的还特别的多，谁还记得银色杀手的时代", "keywords": "AWM,巴雷特,游戏,穿越火线", "id": 45955}
+{"label": 116, "label_desc": "news_game", "sentence": "抗韩奇侠FW战胜KZ，第一轮五场全胜位列第一，网友：卡萨血亏", "keywords": "BO1,小组赛,RNG,闪电狼,英雄联盟", "id": 35596}
+{"label": 106, "label_desc": "news_house", "sentence": "土地是集体所有，那土地被集体卖了，钱归谁？", "keywords": "", "id": 28424}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "纳黑村的产业革命", "keywords": "产业结构,安龙县,薏仁米,纳黑村,脱贫攻坚", "id": 20693}
+{"label": 113, "label_desc": "news_world", "sentence": "25 岁到 35 岁，人生最关键的十年，你必须做好这三件事", "keywords": "中年危机,灰犀牛,米歇尔,童文红,人到中年,保时捷,犀牛,论老年", "id": 13079}
+{"label": 108, "label_desc": "news_edu", "sentence": "高中毕业干什么好？", "keywords": "", "id": 11975}
+{"label": 100, "label_desc": "news_story", "sentence": "故事：王家设陷钱家除，放走了黄鼠狼一家老小，房子却轰然倒塌", "keywords": "黄鼠狼,村里人,大善人,东山村,六福", "id": 49105}
+{"label": 101, "label_desc": "news_culture", "sentence": "十万火急 乾隆帝的“八百里加急令”为何人？", "keywords": "南书房,八百里加急令,肖像画,乾隆,缪炳泰", "id": 36488}
+{"label": 113, "label_desc": "news_world", "sentence": "8艘大船向叙利亚急运军火！俄罗斯要拉开架势跟美国决战？", "keywords": "叙利亚政府军,化武袭击,库尔德武装,反政府武装,俄罗斯", "id": 22473}
+{"label": 107, "label_desc": "news_car", "sentence": "网约车能取代出租车吗？", "keywords": "取代出租车,网约车,打车市场,交通规划,出租车", "id": 33557}
+{"label": 106, "label_desc": "news_house", "sentence": "不靠养儿防老的瑞典，如何实现在家养老？", "keywords": "老人家,瑞典人,瑞典,葛丽泰,社会住宅", "id": 21732}
+{"label": 116, "label_desc": "news_game", "sentence": "蓝洞公司就想凭这个图赢回人气，玩家：这是绝对不可能的", "keywords": "蓝洞,游戏", "id": 36192}
+{"label": 114, "label_desc": "news_stock", "sentence": "大盘一片绿色，指数是如何做到创新高的？", "keywords": "中信证券,执迷不悟,大盘,银行,创业板", "id": 5182}
+{"label": 101, "label_desc": "news_culture", "sentence": "上联：五粮香天下，怎么对下联？", "keywords": "", "id": 34390}
+{"label": 109, "label_desc": "news_tech", "sentence": "以太坊技术黄皮书学习笔记5：交易", "keywords": "交易T,公式1,KEC,发送者,智能合约", "id": 9259}
+{"label": 101, "label_desc": "news_culture", "sentence": "去年今日此山中，人面桃花相映红。十里桃林今犹在，最后一句如何对？", "keywords": "人面桃花,桃林今", "id": 27995}
+{"label": 106, "label_desc": "news_house", "sentence": "黄其森：“高周转”就是利润 就是竞争力", "keywords": "去化率,高溢价,黄其森,泰禾集团,高周转", "id": 24967}
+{"label": 104, "label_desc": "news_finance", "sentence": "上海和孟买相比，哪个城市更发达？", "keywords": "", "id": 33219}
+{"label": 100, "label_desc": "news_story", "sentence": "我喜欢的女生和我兄弟在一起了", "keywords": "愿赌服输", "id": 26978}
+{"label": 108, "label_desc": "news_edu", "sentence": "妈妈想教孩子认识“钱”，课本上的1角、5角纸币生活中却难找", "keywords": "汉阳区,音乐课,青春修炼手册,流行歌曲,大梦想家,课本,数学,见字如面,稻香", "id": 2861}
+{"label": 104, "label_desc": "news_finance", "sentence": "双十一的义乌是一番怎样的景象？", "keywords": "天猫,双十一,购买力,义乌", "id": 44544}
+{"label": 113, "label_desc": "news_world", "sentence": "汉莎航空一架客机在柏林紧急降落 未致人员伤亡", "keywords": "赫尔辛基,慕尼黑,紧急降落,德国汉莎航空公司,泰格尔机场", "id": 22347}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "全市农机安全监理技能大比武活动在平舆县举行", "keywords": "监理站代表队,农机局,正阳县,拖拉机和联合收割机登记规定,平舆县,上蔡县", "id": 9574}
+{"label": 107, "label_desc": "news_car", "sentence": "3款全球回头率最高的SUV 但在中国却比较少见", "keywords": "凯迪拉克凯雷德,福特汽车公司,林肯领航员,Suburban,越狱,凯迪拉克,雪佛兰,Yukon,领航员,V-8,雪佛兰Suburban", "id": 47439}
+{"label": 110, "label_desc": "news_military", "sentence": "气愤，美轰炸我驻南斯拉夫大使馆后，这国趁机出兵侵占我南海岛礁", "keywords": "歼-10,菲律宾,歼-20,B-2,仁爱礁,大使馆,轰炸机,EP-3,南斯拉夫", "id": 31570}
+{"label": 103, "label_desc": "news_sports", "sentence": "贾斯汀·比伯可谓是一代巨星，从10岁红到现在", "keywords": "赛琳娜,贾斯汀-比伯,东方IC,贾斯汀·,·比伯", "id": 7239}
+{"label": 109, "label_desc": "news_tech", "sentence": "股神巴菲特：中国市场如同奇迹，机会超过美国", "keywords": "边际利润率,巴菲特,经济体,消费升级,内布拉斯加州", "id": 10401}
+{"label": 100, "label_desc": "news_story", "sentence": "故事：父亲带儿子吃面，老板看到他的儿子，打了个电话脸都白了", "keywords": "大叔,人贩子,干拌面", "id": 5484}
+{"label": 108, "label_desc": "news_edu", "sentence": "调查：报考数少了一半！幼升小公民同招第一年，到底哪些人离开了民办？", "keywords": "四五快读,兴趣班,对口,幼儿园,逸夫小学,名额分配", "id": 20983}
+{"label": 108, "label_desc": "news_edu", "sentence": "樱花艺术节——我，为轨道代言！", "keywords": "白草洼,交通学院,轨道交通,ei ei,房山区,艺术节", "id": 34863}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "全面叫停农村建房，那住着危房的那类人怎么办？", "keywords": "自建房,农村宅基地,建房,新农村,农村", "id": 38196}
+{"label": 108, "label_desc": "news_edu", "sentence": "白敬亭：时间总会证明，我不是谁的替代品", "keywords": "流行音乐,古典乐,此时此刻,白敬亭,匆匆那年", "id": 16082}
+{"label": 106, "label_desc": "news_house", "sentence": "今年买房还是明年买房？", "keywords": "房价,房产,购房,楼市,买房", "id": 15850}
+{"label": 106, "label_desc": "news_house", "sentence": "为什么房子越来越贵？", "keywords": "房地产,通货膨胀,买房,房价,房产", "id": 25087}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "“教育部长”进台大被教授狂骂 旁边学生却都笑了", "keywords": "教育部长,吴茂昆来到台湾大学,台大,东森新闻云,大闷锅", "id": 3778}
+{"label": 113, "label_desc": "news_world", "sentence": "战轰美本土附近遛弯，俄强势警告美中东军事行动，底线不容触碰", "keywords": "防空识别区,F-22,俄罗斯,叙利亚,战略轰炸机,杜鲁门", "id": 32184}
+{"label": 112, "label_desc": "news_travel", "sentence": "7月在日本还有合适泡的温泉吗？", "keywords": "", "id": 28096}
+{"label": 101, "label_desc": "news_culture", "sentence": "吉利的东西谁都想有，但多了会适得其反", "keywords": "淮南王刘安,司晨,神仙传·刘安,鸡犬升天,镇平县", "id": 21129}
+{"label": 100, "label_desc": "news_story", "sentence": "中国第一“鬼村”，在河南，就问你敢不敢去？", "keywords": "封门村,沁阳市,世界那么大,太师椅,鬼村", "id": 28907}
+{"label": 114, "label_desc": "news_stock", "sentence": "2018年，股市最大的风险在哪里？", "keywords": "正常化,上证50,常态化,贵州茅台,公司业绩", "id": 10166}
+{"label": 100, "label_desc": "news_story", "sentence": "家家有本难念的经 看农村大集上的众生百态", "keywords": "蜂蜜,大雁蛋,农村,乡亲们,小鱼儿", "id": 15887}
+{"label": 103, "label_desc": "news_sports", "sentence": "上联：万龙聚首，下联怎么接？", "keywords": "", "id": 34135}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "吴磊发5.12地震的微博，却多写了四个字，网友：不真诚不如不发！", "keywords": "微博,吴磊", "id": 18548}
+{"label": 101, "label_desc": "news_culture", "sentence": "“怡黎园”举办第12届“牡丹节” 民众共赏中华文化", "keywords": "中法关系,中国文化,法国,怡黎园,中国园林", "id": 5642}
+{"label": 110, "label_desc": "news_military", "sentence": "国内首个国际文化装备博览会落户上海，企业走出去迎机遇", "keywords": "太阳马戏团,变形金刚,文化装备产业,星纪迷航,国内文化装备,星球大战,文化装备,博览会", "id": 10100}
+{"label": 106, "label_desc": "news_house", "sentence": "房企强制要求提供“房查”资料？武汉：严查！", "keywords": "开发企业,购房资格,房查,购房人提供,房产信息", "id": 47702}
+{"label": 112, "label_desc": "news_travel", "sentence": "隐形贫困人口的真相就是赤裸裸的穷", "keywords": "隐形贫困人口,毒鸡汤,打肿脸充胖子,信用卡,赤裸裸", "id": 40698}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "「新华社“现场云”直播」耕耘在希望的沃土上——库都尔林业局原林苗圃育苗生产全面铺开", "keywords": "库都尔,苗圃,内蒙古,林业局,大兴安岭", "id": 7069}
+{"label": 104, "label_desc": "news_finance", "sentence": "漳泽农商行严格践行百姓贴心好银行的服务承诺", "keywords": "专属客户经理,金融,提升服务品质,银行,天天贷", "id": 22397}
+{"label": 110, "label_desc": "news_military", "sentence": "打死卡扎菲并抢走其黄金手枪的士兵如今下场如何？", "keywords": "", "id": 39171}
+{"label": 114, "label_desc": "news_stock", "sentence": "证金公司会大量买入哪类创业板股？", "keywords": "流通股东,苏交科,爱尔眼科,创业板,迈克生物,绿盟科技,神州泰岳,欣旺达,三环集团,汤臣倍健,安科生物,同花顺,证金公司,昆仑万维", "id": 18203}
+{"label": 109, "label_desc": "news_tech", "sentence": "新零售到底是什么？", "keywords": "物物交换,O2O,零售业,零售,新零售", "id": 41705}
+{"label": 110, "label_desc": "news_military", "sentence": "最后一搏！普京刚就职，安倍就要求“割地”？", "keywords": "俄罗斯,普京,雅尔塔会议,北方四岛,安倍,割地", "id": 27705}
+{"label": 113, "label_desc": "news_world", "sentence": "看普京大帝的新座驾", "keywords": "普京,ZIL,RIA,克里姆林宫,豪华轿车", "id": 10893}
+{"label": 110, "label_desc": "news_military", "sentence": "有哪些国家的领导人是在国外势力介入下被杀的？", "keywords": "", "id": 47891}
+{"label": 101, "label_desc": "news_culture", "sentence": "乳山十大古遗址——圣水岩石刻造像遗址，银滩人您知道吗？", "keywords": "玉虚观,老母殿,石刻造像,怀州清真观记,万寿殿,昆嵛山,牟平县志", "id": 45179}
+{"label": 108, "label_desc": "news_edu", "sentence": "家长和考生速看2018年四川、广西、江西这3个省的高考新信息！", "keywords": "香港中文大学,高考,语文,录取率,提前批", "id": 45730}
+{"label": 114, "label_desc": "news_stock", "sentence": "九家公司股价不超过10元，花数亿元收购同行，股价能配合业绩吗？", "keywords": "比克,发行股份,鱼跃医疗,广东南粤银行,公司拟", "id": 18335}
+{"label": 103, "label_desc": "news_sports", "sentence": "丁俊晖成中国第一人", "keywords": "世锦赛,奥沙利文,宾汉姆,丁俊晖,亨得利", "id": 38865}
+{"label": 107, "label_desc": "news_car", "sentence": "轿车前挡风玻璃内侧刮花了怎么办？", "keywords": "", "id": 22625}
+{"label": 104, "label_desc": "news_finance", "sentence": "规范从业者行为，中国道路运输协会拟出台出租车业自律公约", "keywords": "公约,出租汽车,出租汽车企业,行业管理,中国道路运输协会", "id": 18020}
+{"label": 101, "label_desc": "news_culture", "sentence": "有什么高逼格的微信名字？", "keywords": "九歌,狂犬病毒,专业性,微信名字,梨蕊梅魂", "id": 19296}
+{"label": 113, "label_desc": "news_world", "sentence": "一夜间丢了200架飞机，这个国家心好累～", "keywords": "空客,德黑兰,伊朗,客机,伊朗航空", "id": 40467}
+{"label": 112, "label_desc": "news_travel", "sentence": "我们如何正确的保存金骏眉呢？", "keywords": "", "id": 15441}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "她14岁出道演主角，拒演王家卫电影，48岁美成这样", "keywords": "马廷强,倚天屠龙记,王家卫,黎姿,万千星辉贺台庆,阿飞正传,珠光宝气,退出娱乐圈,金枝欲孽", "id": 30785}
+{"label": 107, "label_desc": "news_car", "sentence": "Logo猜猜猜 造车新势力车标的前世今生", "keywords": "小鹏,Logo,造车新势力,蔚来汽车,奇点汽车", "id": 18319}
+{"label": 103, "label_desc": "news_sports", "sentence": "河南出了多少位明星？最红的明星是谁？", "keywords": "任鲁豫,平顶山,新乡,郑州,张泽群", "id": 2693}
+{"label": 101, "label_desc": "news_culture", "sentence": "世界上有哪些国家是俄罗斯的追随者？", "keywords": "", "id": 43789}
+{"label": 109, "label_desc": "news_tech", "sentence": "翼课学生电脑端使用指南（图文版）", "keywords": "运营商,浏览器,学习中心,谷歌浏览器,翼课网", "id": 27049}
+{"label": 110, "label_desc": "news_military", "sentence": "警告无效，飞行员驾机直接冲向外机：再不离开就一起完蛋！", "keywords": "苏联,战机,战斗机,苏-27,苏27,P-3B,P-8,巴伦支海", "id": 47287}
+{"label": 109, "label_desc": "news_tech", "sentence": "天安运营企业说——传统制造企业的“新”与“变”，对话奇美电子", "keywords": "智能化,主流化,奇美电子,电视面板,4K2K", "id": 36916}
+{"label": 112, "label_desc": "news_travel", "sentence": "涨知识！快跟滨州这位“帅且学识渊博”的地理老师一起“研学”西纸坊", "keywords": "西纸坊,滨州,黄河", "id": 4237}
+{"label": 101, "label_desc": "news_culture", "sentence": "上联：点亮心灯无阴暗，如何接下联？", "keywords": "", "id": 19687}
+{"label": 114, "label_desc": "news_stock", "sentence": "给你一亿人民币或者一家上市公司，二选一。你会选哪个？", "keywords": "股票,力挽狂澜,资产负债表,上市,新三板", "id": 36419}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "演员王丽坤，参加巴黎某品牌活动，皮肤白皙，一袭长裙，美丽动人", "keywords": "飘洋过海来看你,演员王丽坤,室外景,尤如公主,漫画般", "id": 43157}
+{"label": 100, "label_desc": "news_story", "sentence": "婆婆，我们结婚你哭穷，现在还打我家房子的主意，你是当我傻吗", "keywords": "小叔子,Sweet,Aaron,Ice Cream,做生意", "id": 47542}
+{"label": 104, "label_desc": "news_finance", "sentence": "肖磊：币圈真正的较量开始了，谁才是幕后大BOSS?", "keywords": "徐小平,徐明星,红杉资本,红杉,数字货币", "id": 45782}
+{"label": 112, "label_desc": "news_travel", "sentence": "对于阚清子在《亲爱的客栈》里面一直生气，你们怎么看？", "keywords": "", "id": 13984}
+{"label": 101, "label_desc": "news_culture", "sentence": "红楼梦中此人到底如何？姐姐辞世，不伤心就罢了，还借此幽会情人", "keywords": "秦可卿,智能儿,贾宝玉,红楼梦,秦钟", "id": 24068}
+{"label": 107, "label_desc": "news_car", "sentence": "路虎发现神行对比奥迪Q5 如何取舍？", "keywords": "路虎,可靠性,Q5,越野车,发现神", "id": 3531}
+{"label": 100, "label_desc": "news_story", "sentence": "杜月笙 风流的姨太二", "keywords": "姨太,交杯酒,木行老板,杜月笙,相见恨晚", "id": 2949}
+{"label": 112, "label_desc": "news_travel", "sentence": "“甜”与“美”，来马泉都有！沂南马泉樱桃节本周六启幕，世界旅游小姐和您一起摘樱桃", "keywords": "樱桃节,樱桃,沂南,世界旅游小姐,沂蒙马泉休闲园", "id": 11546}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "散户如何“斗破庄家”，看懂了炒股想输钱都难！", "keywords": "股票,出货,猴子,吸筹,股价,筹码,阶段,洗盘,庄家出货,换手率", "id": 12126}
+{"label": 107, "label_desc": "news_car", "sentence": "奇思妙想1", "keywords": "待转区,三秒区", "id": 5951}
+{"label": 112, "label_desc": "news_travel", "sentence": "关西机场落地，如何快速方便的直接去京都？", "keywords": "", "id": 33142}
+{"label": 103, "label_desc": "news_sports", "sentence": "NBA东西部决赛即将打响，“东决”门票正在哄抢，价格几何？", "keywords": "东西部决赛,东决,凯尔特人,门票,NBA", "id": 1715}
+{"label": 112, "label_desc": "news_travel", "sentence": "这样的求婚，你想来几次！", "keywords": "奥伊米亚康,水肺潜水,相亲对象,南极,侣行,珊瑚丛,极限运动", "id": 10611}
+{"label": 107, "label_desc": "news_car", "sentence": "品质保障 看北汽如何为新IP保驾护航", "keywords": "北汽集团,北京汽车,越野车,徐和谊,BJ40,驾享新生态,BJ40L", "id": 40724}
+{"label": 104, "label_desc": "news_finance", "sentence": "一旦遇到“庄家咽喉部”形态股票，立即满仓跟进，坐等庄家抬轿", "keywords": "股民,咽喉部,技术分析,庄家,十字胎,周K线图,大阳线", "id": 14110}
+{"label": 113, "label_desc": "news_world", "sentence": "进口福特要涨价？曝福特进口车滞留海关面临清关延误", "keywords": "林肯汽车,福特,天津港,宝马,福特汽车", "id": 35933}
+{"label": 112, "label_desc": "news_travel", "sentence": "图虫风光摄影：杭州的雪", "keywords": "摄影,风光摄影,觅城,杭州", "id": 338}
+{"label": 113, "label_desc": "news_world", "sentence": "新任美国驻德大使发声！特朗普不想贸易战，最终目的是……", "keywords": "特朗普,贸易战,伊朗,美国,欧洲", "id": 3515}
+{"label": 113, "label_desc": "news_world", "sentence": "网页美工设计怎么样？", "keywords": "", "id": 45078}
+{"label": 109, "label_desc": "news_tech", "sentence": "美国借全世界这么多钱，为什么还这么霸道？", "keywords": "货币战争,经济为什么崩溃,科技实力,军事实力,美国,霸权地位,凯恩斯主义", "id": 4991}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "新晃故事：老杨卖猪", "keywords": "古堆村,架子猪,老杨,乡憨哥,采购员", "id": 44958}
+{"label": 104, "label_desc": "news_finance", "sentence": "大佬们每天的作息时间怎么安排？", "keywords": "李开复,刘强东,董事局主席,董事长兼首席执行官,金山软件", "id": 20415}
+{"label": 104, "label_desc": "news_finance", "sentence": "中国10个电缆品牌一览，用的最多的就是珠江电缆", "keywords": "著名商标,名牌产品,创建于,电线电缆,电缆集团", "id": 1823}
+{"label": 112, "label_desc": "news_travel", "sentence": "乐山大佛是四川最大的石雕佛像吗？", "keywords": "", "id": 3158}
+{"label": 100, "label_desc": "news_story", "sentence": "当我看见男友的前妻和他的娃，我决定马上离开他", "keywords": "前妻", "id": 15266}
+{"label": 107, "label_desc": "news_car", "sentence": "从腾冲极边之旅游记来看：vivo X21让旅行更加智能便捷", "keywords": "腾冲,自驾游,vivo X21,AI,杨力", "id": 49314}
+{"label": 112, "label_desc": "news_travel", "sentence": "印媒评论出全球10大最丑的建筑，中国上榜一个，建筑师不答应了", "keywords": "柳京饭店,俄亥俄州,阿布扎比,莲花庙,首都门,吉尼斯世界纪录大全", "id": 32626}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "没来乳山，怎敢老去~ 快来银滩吧，我养你啊！", "keywords": "电影,乳山银滩,大乳山,喜剧之王,张柏芝", "id": 24466}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "农民在城市买了房，为什么还要在农村老家留套房？这理由你服吗？", "keywords": "农村,农业,老家,农业百事通", "id": 1274}
+{"label": 114, "label_desc": "news_stock", "sentence": "证监会评廖英强案：挑战法律尊严的行为必将付出沉重代价", "keywords": "廖英强,股票,法律,证监会", "id": 11967}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "大胆魔女，请勿造次！你如此敢爱敢恨完全掳走了我的心！", "keywords": "为情所困,金世遗,练霓裳,张显宗,绝代双骄,妖女", "id": 5164}
+{"label": 112, "label_desc": "news_travel", "sentence": "临潼旅游商贸开发区——创建最佳营商环境 助力临潼追赶超越", "keywords": "物流园,临潼,临潼旅游商贸开发区,旅游商贸开发区,临潼旅游商贸", "id": 11972}
+{"label": 104, "label_desc": "news_finance", "sentence": "大智慧烧14亿给李大霄罗杰斯做直播，结果亏17亿要退市了，这是谁的锅？", "keywords": "", "id": 27418}
+{"label": 103, "label_desc": "news_sports", "sentence": "射击世界杯美国站中国首日大获全胜 6枚奖牌独揽5枚", "keywords": "王猛毅,吴嘉宇,吴明阳,卡雷拉,杨巍", "id": 20207}
+{"label": 100, "label_desc": "news_story", "sentence": "飞机起飞后乘客如果突然死亡，尸体将被人这样处理", "keywords": "突然死亡,尸体", "id": 2292}
+{"label": 109, "label_desc": "news_tech", "sentence": "解决“最后一公里”出行痛点 平衡车分羹千亿级市场", "keywords": "滑板车,扭扭车,平衡车,交通工具,最后一公里", "id": 20755}
+{"label": 110, "label_desc": "news_military", "sentence": "外交部公布重大消息，无心侵犯者，无需担忧害怕！", "keywords": "永暑礁,导弹系统,反舰导弹,华春莹,南沙群岛", "id": 23622}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "为什么你还是很贫穷，因为你缺乏这三样东西", "keywords": "冯珂,缺乏爱,熊孩子,王思聪,一代宗师,张靓颖", "id": 22587}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "范冰冰：钟爱绿色小清新衣服，网友：戛纳电影电影节也是绿色裙子", "keywords": "戛纳,范冰冰,电影节,电影", "id": 45091}
+{"label": 100, "label_desc": "news_story", "sentence": "乞丐用传家宝买下流泪老牛，没想到竟然救了自己一命", "keywords": "老汉,御赐金牌,沈葆桢,八旗子弟,乞丐", "id": 36588}
+{"label": 114, "label_desc": "news_stock", "sentence": "为什么券商先知道中签号？", "keywords": "中签号,新股申购,中签,下单申购,申购新股", "id": 46662}
+{"label": 110, "label_desc": "news_military", "sentence": "红警2中犀牛的优点，死亡十字架——高手常用的招数", "keywords": "游戏,哨戒炮,犀牛,红警,坦克", "id": 13900}
+{"label": 104, "label_desc": "news_finance", "sentence": "进口玉米高粱市场逐渐冷清，国内玉米价格持续下跌！", "keywords": "高粱,产玉米拍卖,产玉米,玉米价格,玉米拍卖", "id": 22568}
+{"label": 108, "label_desc": "news_edu", "sentence": "怎样才能在大学里找到生活的色彩？", "keywords": "", "id": 37520}
+{"label": 108, "label_desc": "news_edu", "sentence": "珍爱生命 谨防溺水——淅川县寺湾镇大坪小学防溺水活动阶段总结", "keywords": "预防溺水,淅川县,防溺水,大坪小学", "id": 11400}
+{"label": 114, "label_desc": "news_stock", "sentence": "如果我要在二级市场大量买入乐视股票，除了准备大量资金，还要准备什么？", "keywords": "孙宏斌,乐视,贾跃亭,二级市场,股票", "id": 24210}
+{"label": 114, "label_desc": "news_stock", "sentence": "MSCI下周公布最新调整，中金公司料229只A股或被纳入", "keywords": "中金公司,中国太保,A股,成分股,片仔癀,海康威视,大消费,食品饮料,贵州茅台,小商品城,Shares,MSCI,纳入MSCI,中信建投证券,摩根士丹利,洋河股份,徐工机械,通化东宝,科伦药业,国金证券", "id": 28843}
+{"label": 106, "label_desc": "news_house", "sentence": "万象府台109-142平房源即将推出", "keywords": "万象府,房源", "id": 41478}
+{"label": 108, "label_desc": "news_edu", "sentence": "大学生，你不要在贫穷的路途上渐行渐远", "keywords": "东南大学,图书馆,南京,河海大学,大学生", "id": 43943}
+{"label": 109, "label_desc": "news_tech", "sentence": "现如今去韩国或者日本从事互联网是否会比在国内有发展前景？", "keywords": "", "id": 46894}
+{"label": 114, "label_desc": "news_stock", "sentence": "证券时报：港股“独角兽”股票频频破发的启示", "keywords": "独角兽,IPO,CDR,电讯盈科,发行价", "id": 19321}
+{"label": 103, "label_desc": "news_sports", "sentence": "5月世界排名最新发布，樊振东陈梦NO.1", "keywords": "伊藤美诚,樊振东,张本智和,陈梦,王曼昱", "id": 18578}
+{"label": 113, "label_desc": "news_world", "sentence": "以色列能被中东国家打败吗？", "keywords": "巴勒斯坦人,巴勒斯坦,定居点,犹太人,以色列", "id": 30596}
+{"label": 116, "label_desc": "news_game", "sentence": "“共识世界” – 基于区块链技术的游戏生态圈", "keywords": "游戏开发者,区块链,游戏行业,游戏玩家,游戏", "id": 15373}
+{"label": 116, "label_desc": "news_game", "sentence": "面对的是自然？不，面对的永远是人性——《森林》", "keywords": "游戏,森林,玩家,四川农业大学", "id": 13737}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "63岁李秀明和65岁龚雪，网友：没有打玻尿酸的脸，看着就是舒服", "keywords": "李秀明,百花奖,大桥下面,演艺圈,春苗,幸福家庭,龚雪,孔雀公主", "id": 7306}
+{"label": 112, "label_desc": "news_travel", "sentence": "门牙牙缝隙过大怎么办？", "keywords": "", "id": 45186}
+{"label": 104, "label_desc": "news_finance", "sentence": "一个蔬菜摊一个月能赚多少钱？", "keywords": "", "id": 15972}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "农村弟弟来城里跟姐姐借钱，却被姐夫臭骂，三年后姐夫后悔了", "keywords": "姐夫,姐姐,农村", "id": 39186}
+{"label": 113, "label_desc": "news_world", "sentence": "优越感再受挫？美军高官坦言“中国不再怕我们”", "keywords": "军事力量,兰德公司,军事现代化,国强必霸,布朗,防务新闻,产经新闻", "id": 17127}
+{"label": 113, "label_desc": "news_world", "sentence": "谷歌地球上10个不让你看的地方，被含糊处置了，到底是什么原因？", "keywords": "空军基地,伯利亚,努纳武特,法国,谷歌地球", "id": 23442}
+{"label": 108, "label_desc": "news_edu", "sentence": "日本华人家长谈华教：继承语需以合适方式承继", "keywords": "继承语,日本,林清玄,中文学校", "id": 42356}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "农村唢呐王演奏：万里长城永不倒、江山无限等曲目", "keywords": "唢呐,万里长城,农村", "id": 46567}
+{"label": 116, "label_desc": "news_game", "sentence": "CF生存特训：车神归来血染风车镇！", "keywords": "风车镇,车神", "id": 41534}
+{"label": 104, "label_desc": "news_finance", "sentence": "华纳音乐宣布售出75%Spotify股票 价值约为4亿美元", "keywords": "唱片公司,DoNews,电话会议,Spotify股票,Spotify", "id": 33613}
+{"label": 114, "label_desc": "news_stock", "sentence": "12只高送转老填权股，看历史如何重演！", "keywords": "智光电气,三诺生物,华鹏飞,超跌远端次新,高送转超跌", "id": 20733}
+{"label": 101, "label_desc": "news_culture", "sentence": "普洱茶为何会有酸味？", "keywords": "", "id": 41355}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "二婚女人这四个事最忌讳，尽量别做，不然还会离婚", "keywords": "离婚,女人,老九门,选择再婚", "id": 3714}
+{"label": 110, "label_desc": "news_military", "sentence": "东风5C洲际导弹的威力怎么样？", "keywords": "", "id": 4912}
+{"label": 100, "label_desc": "news_story", "sentence": "微腐 现在想吃肉了算不算晚", "keywords": "微腐,医院,小狐狸", "id": 26706}
+{"label": 106, "label_desc": "news_house", "sentence": "六月份以后买房首付45%是真的还是假的？", "keywords": "", "id": 31375}
+{"label": 100, "label_desc": "news_story", "sentence": "嫂子的药方﻿", "keywords": "黄凤,保护费,人肉包子店,三叉,桃桃", "id": 34475}
+{"label": 114, "label_desc": "news_stock", "sentence": "茅台市值相当于多半个芯片业，暴露了什么问题？", "keywords": "", "id": 31223}
+{"label": 116, "label_desc": "news_game", "sentence": "RNG吃鸡战队状态节节高 他们还需要XDD加入吗？", "keywords": "英雄联盟,王者荣耀,XDD,RNG战队,4保1", "id": 29552}
+{"label": 109, "label_desc": "news_tech", "sentence": "2018最全车联网概念股一览表！短期将有大爆发，值得关注！", "keywords": "东软集团,IMT-2020,车联网,LTE-V2X,运营商", "id": 40054}
+{"label": 106, "label_desc": "news_house", "sentence": "有3400多家上市公司的年净利润，赶不上一个8栋楼小区的房子总价", "keywords": "海通证券,北上广,房地产,平均面积,成都市", "id": 23732}
+{"label": 109, "label_desc": "news_tech", "sentence": "Nike的Flyknit是怎么样的一种鞋面技术？", "keywords": "", "id": 13084}
+{"label": 100, "label_desc": "news_story", "sentence": "富太选婚戒故意刁难设计师，出门后看到对方的车后被打脸", "keywords": "咖啡厅,沈君瑶,程漓月,设计稿,设计师", "id": 28081}
+{"label": 101, "label_desc": "news_culture", "sentence": "说一上联：客来一碗面，面面俱到；替一面馆求下联，如何对？", "keywords": "", "id": 37846}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "八五五农场党员干部多措并举助力春播", "keywords": "农场,农资,党员干部,农业,种植户", "id": 5201}
+{"label": 110, "label_desc": "news_military", "sentence": "茫茫大洋发来消息，远望3号船完成高分五号卫星测控任务", "keywords": "发射升空,太原卫星发射中心,长征四号丙,卫星,运载火箭", "id": 1068}
+{"label": 106, "label_desc": "news_house", "sentence": "金辉5.16亿入主正定古城！百亩住宅将建高端别墅", "keywords": "石家庄,正定县,长安区,金辉,金辉地产", "id": 16436}
+{"label": 106, "label_desc": "news_house", "sentence": "碧桂园是如何通过两次变革开拓房地产市场，轻松完成上亿销售？", "keywords": "高端会所,碧桂园,高端,别墅,贵族学校", "id": 4734}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "农村这种草，有人叫它“血见愁”，有人叫它“牛奶草”，你认识吗", "keywords": "牛奶草,农村,牛奶,火疖子,铁苋菜", "id": 38961}
+{"label": 103, "label_desc": "news_sports", "sentence": "爱妻待产主动承担家务 方硕妻子：你比任何时候都美", "keywords": "方硕,北京男篮", "id": 10628}
+{"label": 106, "label_desc": "news_house", "sentence": "4月主要城市楼市库存环比上升1.2%", "keywords": "城市成交面积,一线城市,成交量,代表城市,城市月度", "id": 6893}
+{"label": 103, "label_desc": "news_sports", "sentence": "如此逗比的播求 绝对没见到过", "keywords": "播求泰拳王子播求,播求泰拳王子播求泰拳,泰拳,泰拳王子播求泰拳王子,王子播求泰拳王子播求", "id": 28352}
+{"label": 103, "label_desc": "news_sports", "sentence": "为了生命，他们献出了生命！", "keywords": "跳伞十五勇士,超级英雄,铁军战士武文斌,敬礼娃娃,邱光华机组", "id": 37654}
+{"label": 116, "label_desc": "news_game", "sentence": "RNG全员终于出发前往MSI, 网友却表示担心：这么迟去，状态会好吗", "keywords": "MSI,英雄联盟,LPL,RNG", "id": 20662}
+{"label": 108, "label_desc": "news_edu", "sentence": "立夏了，上联：春风春雨春雷，春山春水春月，千秋春色千秋梦", "keywords": "千秋梦", "id": 40181}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "前时尚集团总裁苏芒正式离职 与老板同事合影留念", "keywords": "前同事,苏芒,永远在一起,时尚芭莎,大时尚", "id": 6008}
+{"label": 106, "label_desc": "news_house", "sentence": "「商业街设计」春风十里不如“上市里”——烟台上市里落地开街", "keywords": "烟台,商业街,上市,烟台市,效果上市", "id": 20539}
+{"label": 113, "label_desc": "news_world", "sentence": "林孜财金：5.14黄金技术面分析！", "keywords": "呈金叉,布林带,伊朗,伊斯兰革命卫队,以色列", "id": 32731}
+{"label": 116, "label_desc": "news_game", "sentence": "面对敌人围攻无路可走，请求火炮轰炸同归于尽：这才是大炮", "keywords": "火炮", "id": 17420}
+{"label": 109, "label_desc": "news_tech", "sentence": "谁来拯救特斯拉", "keywords": "SpaceX,马斯克,特斯拉,巴菲特,Boring", "id": 8778}
+{"label": 112, "label_desc": "news_travel", "sentence": "5.19旅游日，恰逢周末，山西47个景区免费！你会去“凑热闹”吗？", "keywords": "丹朱岭,新绛,中国旅游日,祁寯藻,免头道门票", "id": 44864}
+{"label": 103, "label_desc": "news_sports", "sentence": "火箭愿意打鹈鹕，还是愿意打勇士，欢迎各位球迷积极发表个人观点？", "keywords": "", "id": 48131}
+{"label": 109, "label_desc": "news_tech", "sentence": "陈光标之前那么高调，为什么最近不出来了？", "keywords": "冰桶挑战,企业家,陈光标,邓丽君,说陈光标", "id": 36934}
+{"label": 107, "label_desc": "news_car", "sentence": "「龙岗松兴」松兴集团周年庆钜惠鹏城 劲享十重大礼", "keywords": "GS4,GA6,广汽传祺,传祺GA6,GS8,GS7,GA8,传祺GA8,传祺GS4,购物卡十500", "id": 32425}
+{"label": 114, "label_desc": "news_stock", "sentence": "什么是可转债，为什么最近这么流行？", "keywords": "债券,中签率,东方雨虹,股票,可转债", "id": 5282}
+{"label": 114, "label_desc": "news_stock", "sentence": "今日开盘：小幅低开 沪指跌幅 0.04%", "keywords": "纺织服装,有色金属,家用电器,财新网,纽约商品交易所", "id": 6448}
+{"label": 110, "label_desc": "news_military", "sentence": "“5·12”救援机长：守护人民安全 我们责无旁贷", "keywords": "坝顶,指挥部,直升机,唐家山堰塞湖,米-26直升机,重型直升机,擂鼓镇", "id": 3129}
+{"label": 108, "label_desc": "news_edu", "sentence": "常春藤该怎么养？", "keywords": "", "id": 32362}
+{"label": 108, "label_desc": "news_edu", "sentence": "你男朋友（老公）是怎么把你骗到手的", "keywords": "凤梨酥,旺仔牛奶,骗到手,演唱会,啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊,班级,♡♡♡", "id": 39498}
+{"label": 107, "label_desc": "news_car", "sentence": "追逐星星的男人们-张北草原天路游记", "keywords": "野狐岭,草原天路,在路上,XC60,张北县,杰克·凯鲁亚克,张北草原", "id": 43814}
+{"label": 109, "label_desc": "news_tech", "sentence": "英雄联盟和王者荣耀你更喜欢哪一款？", "keywords": "", "id": 21974}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "用“龙头”企业带动中医药产业提质升级", "keywords": "中医药,中药材,中药,甘肃省,甘肃", "id": 25576}
+{"label": 101, "label_desc": "news_culture", "sentence": "为什么赵云三枪没刺死周仓呢？", "keywords": "", "id": 45571}
+{"label": 114, "label_desc": "news_stock", "sentence": "证券时报：资本市场法律尊严不容戏弄", "keywords": "廖英强,抢帽子交易,作奸犯科,法律,证券市场", "id": 49306}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "心中有阳光，草木闲情的光阴，也是如诗般", "keywords": "", "id": 49713}
+{"label": 101, "label_desc": "news_culture", "sentence": "孔子相老子求教，老子一言不发却让孔子悟得一个人生道理（收藏）", "keywords": "孔子", "id": 28292}
+{"label": 101, "label_desc": "news_culture", "sentence": "这也是语言的魅力", "keywords": "", "id": 2735}
+{"label": 104, "label_desc": "news_finance", "sentence": "个人交社保，应该交多少钱？", "keywords": "缴费,养老金,缴费年限养老金,社平工资,社保", "id": 40725}
+{"label": 100, "label_desc": "news_story", "sentence": "她把“隔壁小王”藏家中阁楼10年，然后还继承老公财产！", "keywords": "Fred,Walburga,洛杉矶,Otto,Herman", "id": 44176}
+{"label": 116, "label_desc": "news_game", "sentence": "暴雪化身慈善家？守望先锋天使慈善皮肤“粉红天使”今日上线！", "keywords": "暴雪,粉红天使,粉红丝带,慈善事业,乳腺癌,守望先锋", "id": 44263}
+{"label": 107, "label_desc": "news_car", "sentence": "雷克萨斯ES究竟有多大的实力", "keywords": "凯迪拉克CT6,凯美瑞,E-CVT,SPORT,新ES,宝马5系,大众集团,RAV4,雷克萨斯,A6L,S90,CT6,凯迪拉克,LF-A,奥迪,奥迪A6", "id": 34193}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "从校服到婚服，从恋人到夫妇，从家人到父母，他们关系转换自然", "keywords": "贝儿,永不瞑目,爸爸去哪儿,陆雨萱,绝缘体,陆毅鲍蕾,潜规则", "id": 22094}
+{"label": 112, "label_desc": "news_travel", "sentence": "睡前必看的几则南宁教育资讯", "keywords": "保税区,凭祥,12315消费投诉,南宁,南宁市,水污染防治行动计划", "id": 3893}
+{"label": 114, "label_desc": "news_stock", "sentence": "大户一直在抛售，股价却没有下跌，是什么原因？", "keywords": "", "id": 17050}
+{"label": 109, "label_desc": "news_tech", "sentence": "将来有可能取代电动汽车的新能源汽车是什么动力？", "keywords": "", "id": 10714}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "粤海又放大招，投资2.4亿年产能30万吨的江苏粤海今日投产", "keywords": "江苏粤海,水产养殖,苏州大学,养殖户,华东地区", "id": 40376}
+{"label": 116, "label_desc": "news_game", "sentence": "EOS超级节点竞选将近，吃瓜群众如何在这场博弈中获利？", "keywords": "中心化,EOS超级节点,人类历史,去中心化程度,投票权", "id": 41744}
+{"label": 116, "label_desc": "news_game", "sentence": "暴雪、EA纷纷入局，游戏跟AI怎么结合", "keywords": "人工智能系统,人工智能,头号玩家,守望先锋,排兵布阵,魔兽世界,星际争霸", "id": 31120}
+{"label": 107, "label_desc": "news_car", "sentence": "原来这些不能挡子弹，我们被影视剧骗了", "keywords": "挡子弹,子弹", "id": 22844}
+{"label": 108, "label_desc": "news_edu", "sentence": "如何评价北京邮电大学呢？", "keywords": "北京邮电大学,西安电子科技大学,电子科技大学,北邮,校区", "id": 7119}
+{"label": 107, "label_desc": "news_car", "sentence": "开车玩手机还想保证安全！吉利这款新车满足你的要求", "keywords": "吉利汽车,吉客智能生态系统,车载,吉利,帝豪GL", "id": 34049}
+{"label": 109, "label_desc": "news_tech", "sentence": "第一篇文章", "keywords": "", "id": 21731}
+{"label": 102, "label_desc": "news_entertainment", "sentence": "须知：所有小三都会犯下的错误", "keywords": "女星,小三", "id": 45684}
+{"label": 115, "label_desc": "news_agriculture", "sentence": "东升77的产量怎么样？", "keywords": "", "id": 31716}
+{"label": 101, "label_desc": "news_culture", "sentence": "鸿鹄、老鹰、家鸡｜也说“北大校长道歉门”", "keywords": "家鸡,广场效应,北大校长,林建华,北京大学,史记·陈涉世家", "id": 36198}
+{"label": 106, "label_desc": "news_house", "sentence": "买房首付不够怎么办？下面四种方法为您支招", "keywords": "信用贷款,有价证券,首付款,买房,购房者", "id": 47375}
+{"label": 106, "label_desc": "news_house", "sentence": "华敏翰尊国际｜华敏翰尊国际写字楼推荐021-60543447", "keywords": "写字楼,春熙路,延安西路,翰尊国际大厦,江苏路", "id": 2963}
+{"label": 110, "label_desc": "news_military", "sentence": "这国飞行员大批辞职，只因压力过大，战争成为辞职主因", "keywords": "俄罗斯,军事强国,德国空军,德国,战争", "id": 3944}
+{"label": 110, "label_desc": "news_military", "sentence": "中国近现代史上贡献最大的将军是谁？理由是什么？", "keywords": "", "id": 25120}
+{"label": 100, "label_desc": "news_story", "sentence": "打工女借贷款给流浪乞丐看病，同事都说她傻，没想一年后身家百万", "keywords": "黄梅乡,糖葫芦,刘梅", "id": 49663}

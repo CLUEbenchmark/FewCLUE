@@ -1,0 +1,29 @@
+dev_0.json
+true:22 false:23
+dev_1.json
+true:24 false:21
+dev_2.json
+true:26 false:19
+dev_3.json
+true:22 false:23
+dev_4.json
+true:24 false:21
+
+train_0.json
+true:26 false:19
+train_1.json
+true:26 false:19
+train_2.json
+true:19 false:26
+train_3.json
+true:19 false:26
+train_4.json
+true:25 false:20
+
+train_few_all.json
+true:110 false:103
+dev_few_all.json
+true:77 false:73
+
+cluewsc_publicTest.json
+true:34 false:120
