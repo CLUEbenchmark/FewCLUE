@@ -285,10 +285,11 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
    
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_0.jpeg)
    
-    MLM pre-training: 预训练，利用上下文预测[MASK]位置的信息; Fine-tuning：通过下游任务微调，获得[CLS]位置的句子语义表示，并预测句子的标签。
+    MLM pre-training: 预训练，利用上下文预测[MASK]位置的信息; Fine-tuning：通过下游任务微调，获得[CLS]位置的句子语义表示，
+    并预测句子的标签。见下图：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_2.jpeg)
    
-    BERT的输入表示：三部分信息求和，包括字的向量、段落向量、位置向量
+    BERT的输入表示：三部分信息求和，包括字的向量、段落向量、位置向量。见下图：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_3.jpeg)
 
 ####    2.GPT3: Language Models are Few-Shot Learners
@@ -326,8 +327,7 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
    
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg)
-   
+    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="80%" height="80%" />   
     LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
     缺点：依然假设模板是自然语言的版本；非全自动化的：先找模板，然在最优模板上做任务。
@@ -343,9 +343,11 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
     离散模板搜索-->连续端到端学习:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
     
+    中文例子：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg)
    
-    这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，这里的token数目是一个超参数。
+    这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，
+    这里的token数目是一个超参数。
 
 
 ## 测评报名|提交 Submit
