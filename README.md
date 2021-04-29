@@ -1,6 +1,8 @@
 # FewCLUE
 
-中文小样本学习测评基准 FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
+中文小样本学习测评基准
+ 
+FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 
 ## 简介 Intorudction 
  预训练语言模型，包括用于语言理解或文本生成的模型，通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
@@ -353,6 +355,8 @@
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
+
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg)
 
 ## License和相关引用
 
