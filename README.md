@@ -359,13 +359,20 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg)
 
 ## 引用 Reference
+
 1、<a href='https://arxiv.org/abs/2005.14165'>GPT3: Language Models are Few-Shot Learners</a>
+
 2、<a href='https://arxiv.org/pdf/2009.07118.pdf'>PET: It's Not Just Size That Matters: Small Language Models Are Also Few-Shot Learners</a>
+
 3、<a href='https://kexue.fm/archives/7764'>必须要GPT3吗？不，BERT的MLM模型也能小样本学习</a>
+
 4、<a href="https://arxiv.org/pdf/2012.15723.pdf">LM_BFF: Making Pre-trained Language Models Better Few-shot Learners</a>
+
 5、<a href='https://zhuanlan.zhihu.com/p/341609647'>GPT-3的最强落地方式？陈丹琦提出小样本微调框架LM-BFF，比普通微调提升11%</a>
-6、论文：<a href='https://arxiv.org/pdf/2103.10385.pdf'>GPT Understands, Too</a>
-7、文章：<a href='https://kexue.fm/archives/8295'>P-tuning：自动构建模版，释放语言模型潜能</a>
+
+6、<a href='https://arxiv.org/pdf/2103.10385.pdf'>论文：GPT Understands, Too</a>
+
+7、<a href='https://kexue.fm/archives/8295'>文章：P-tuning：自动构建模版，释放语言模型潜能</a>
 
 
 ## License
