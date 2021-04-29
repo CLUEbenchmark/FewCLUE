@@ -29,22 +29,18 @@
 ## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集政策规模。使用RoBERT12层chinese_roberta_wwm_ext作为基础模型。
 
-| 模型   | score     | cecmmnt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
+| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="#">Human</a>        | - |?   | ?    |  90.3  | ？ |71.0 | 98.0 | 66.0 |  84.0|  87.1|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">TrainAll</a>        | - |-   | -     | -  |  |-  | -  | -  | - | 1- |
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuning</a>        | - |70.2   | 63.1    | 35.3  |  |52.0N | 49.3N | 17.9N | 50.0N| 15.0N|
-| <a href="#">PET</a>      | - | 78.6N | 64.0  | 36.0 |  |51.2N  | 50.0N| 35.1N | 55.0N | 57.5N |
-| <a href="#">PtuningB</a>      | - | 88.5N | 65.4  | 35.9 |  |  48.2N  | 51.0N | 32.0N| 50.0N | 15.0N |
-| <a href="#">PtuningGPT</a>      | - | 76.4？  | 60.4？   |   |   |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="#">Zero-shot</a>      | - |   |    |   |   |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
-| <a href="#">半监督</a>      | - |   |    |   |   |     |  |  |   |   |
-
-    PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; Zero-shot: GPT类Zero-shot; TrainAll: 在5份合并后的数据上训练；半监督：小样本+无标签数据;
+| <a href="#">Human</a>        |  |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
+| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuning</a>        | - |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6NN | 50.2N |29.6N | 50.1N| 15.0N|
+| <a href="#">PET</a>      | - | 78.6N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 57.5N |
+| <a href="#">PtuningB</a>      | - | 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 15.0N |
+| <a href="#">PtuningGPT</a>      | - | 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
+| <a href="#">Zero-shot</a>      | - |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
+    FT: fine-tuning; PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; Zero-shot: GPT类Zero-shot; 半监督：小样本+无标签数据;
     N”，代表已更新。wsc: cluewsc; cecmnt：cecmmnt(sentiment)，情感2分类; bustm: bustm(opposts); 
-    ?：代表新的数据集下还没有跑过实验。如跑过实验了，去掉“？”，改为N。
-
-
+     ?：代表新的数据集下还没有跑过实验。如跑过实验了，去掉“？”，改为N。
+     
 ## FewCLUE特点
 1、任务类型多样、具有广泛代表性。包含多个不同类型的任务，包括情感分析任务、自然语言推理、多种文本分类、文本匹配任务和成语阅读理解等。
 
