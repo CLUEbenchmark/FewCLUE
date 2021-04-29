@@ -117,6 +117,15 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
            python3 ptuning_iflytek.py
               
 
+## NLPCC2021-小模型测评
+
+<a href='https://www.cluebenchmarks.com/NLPCC.html'>测评入口</a>
+
+<a href='http://tcci.ccf.org.cn/conference/2021/cfpt.php'>NLPCC2021官方链接</a>
+
+    比赛证书：测评前三名队伍会获得NLPCC和CCF中国信息技术技术委员会认证的证书；
+    优胜队伍有机会提交测评任务的论文（Task Report），并投稿到NLPCC会议（CCF推荐会议）
+
 ## 数据集介绍 Introduction of datasets
 
 ####   分类任务 Single Sentence Tasks
@@ -241,6 +250,7 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
     任务构建过程参考了本次调查问卷，以及近年来比较有代表性的结合预训练语言模型的小样本学习的论文。
     
    调查问卷反馈详见：<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/questionnaire/FewCLUE%E8%B0%83%E6%9F%A5%E9%97%AE%E5%8D%B7-%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF.pdf'>FewCLUE调查问卷-反馈信息</a>
+
 
 ## 数据集文件结构 Data set Structure
     5份训练集，对应5份验证集，1份公开测试集，1份用于提交测试集，1份无标签样本，1份合并后的训练和验证集
