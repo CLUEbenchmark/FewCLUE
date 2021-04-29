@@ -270,7 +270,7 @@
     下面报导一则[MASK]新闻。八个月了，终于又能在赛场上看到女排姑娘们了。
     [MASK]的地方可以填“体育”，也可以填“财经”、“娱乐”，但联合概率上看“体育”最大，那么“体育”可以做为预测的标签。
     
-    优缺点：
+    PET的优缺点：
     优点：将任务进行了转换后，不再需要向之前的fine-tuning阶段一样引入新的最后一层，即没有引入任何参数；将下游任务转换成与预训练的语言模型一致的形式。
     缺点：可能需要手工构造Pattern; 不同的Pattern效果差异很大
     
@@ -287,8 +287,10 @@
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg)
    
+    LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
     缺点：依然假设模板是自然语言的版本；非全自动化的：先找模板，然在最优模板上做任务。
+    
     
 ####    5.Ptuning: GPT Understands, Too
     模型和示例：
@@ -297,10 +299,13 @@
     并且它可以只学习模板对应的参数，如10个embedding，而之前的方法一般都是需要学习所有的字的表示；
     论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
    
-    离散模板搜索-->连续端到端学习
+    离散模板搜索-->连续端到端学习:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
+    
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg)
+    这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，这里的token数目是一个超参数。
 
-   
+
 ## 测评报名|提交 Submit
 
 <a href='https://www.CLUEbenchmarks.com'>提交</a>到测评系统(5月份开放，五一之后)
