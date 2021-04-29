@@ -282,9 +282,8 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
     模型简介：
     BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；
     通过下游任务微调，仅新引入部分参数，而不需对整个网络从头训练。
-   
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_0.jpeg)
-   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_0.jpeg"  width="75%" height="75%" />   
+
     MLM pre-training: 预训练，利用上下文预测[MASK]位置的信息; Fine-tuning：通过下游任务微调，获得[CLS]位置的句子语义表示，
     并预测句子的标签。见下图：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_2.jpeg)
@@ -345,8 +344,8 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
     
     中文例子：
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg)
-   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="75%" height="75%" />   
+      
     这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，
     这里的token数目是一个超参数。
 
