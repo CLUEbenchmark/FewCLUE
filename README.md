@@ -303,6 +303,7 @@
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
     
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg)
+   
     这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，这里的token数目是一个超参数。
 
 
