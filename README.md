@@ -1,6 +1,6 @@
 # FewCLUE
 
-中文小样本学习测评基准 FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
+中文小样本学习测评基准 FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 
 ## 简介 Intorudction 
  预训练语言模型，包括用于语言理解或文本生成的模型，通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
@@ -59,7 +59,7 @@
 从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
 
 
-## 基线模型：运行及介绍（附图） Baselines and Know to run
+## 基线模型及运行 Baselines and Know to run
     目前支持4类代码：直接fine-tuning、PET、Ptuning、GPT
     
     直接fine-tuning: 
@@ -205,10 +205,7 @@
     4)半监督学习:⼩小样本测试还应提供⼤大量量⽆无标签数据；
     5)测试零样本学习；
     
-    详见：resources/FewCLUE 调查问卷-反馈信息
-
-## 测评报名|提交 Submit
-测评报名|提交 Submit
+   详见：<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/questionnaire/FewCLUE%E8%B0%83%E6%9F%A5%E9%97%AE%E5%8D%B7-%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF.pdf'>FewCLUE调查问卷-反馈信息</a>
 
 ## 数据集文件结构 Data set Structure
     5份训练集，对应5份验证集，1份公开测试集，1份用于提交测试集，1份无标签样本，1份合并后的训练和验证集
@@ -233,21 +230,31 @@
         
         unlabeled.json: 无标签的大量样本
 
+## 测评报名|提交 Submit
+
+<a href='https://www.CLUEbenchmarks.com'>提交</a>到测评系统(5月份开放，五一之后)
+
 ## 教程 Tutorial
-    1.系列PPT分享资料，详见：./resources/ppt
-    2.教程（Jupyter Notebook/Google Colab），添加中。。。
+   1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
+   
+   2.教程（Jupyter Notebook/Google Colab），添加中。。。
 
 ## 问题 Question
     1. 问：测试系统，什么时候开发？
        答：测评系统在5月1节后才会开放。
 
 ## 贡献与参与 Contribution & Participation
-    问：我有符合代码规范的模型代码，并经过测试，可以贡献到这个项目吗？
-    答：可以的。你可以提交一个pull request，并写上说明。
+    1.问：我有符合代码规范的模型代码，并经过测试，可以贡献到这个项目吗？
+     答：可以的。你可以提交一个pull request，并写上说明。
     
-    问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
-    答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
+    2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
+      答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
 
 
 ## 引用
-引用
+    @misc{FewCLUE,
+      title={FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation},
+      author={CLUE benchmark},
+      year={2021},
+      howpublished={\url{https://github.com/CLUEbenchmark/FewCLUE}},
+    }
