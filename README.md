@@ -29,14 +29,14 @@
 ## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集政策规模。使用RoBERT12层chinese_roberta_wwm_ext作为基础模型。
 
-| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
+| 模型   | score     | cecmmnt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="#">Human</a>        |  |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuning</a>        | - |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6NN | 50.2N |29.6N | 50.1N| 15.0N|
-| <a href="#">PET</a>      | - | 78.6N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 57.5N |
-| <a href="#">PtuningB</a>      | - | 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 15.0N |
-| <a href="#">PtuningGPT</a>      | - | 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="#">Zero-shot</a>      | - |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
+| <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
+| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuning</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
+| <a href="#">PET</a>      | 54.34 | 78.6N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 57.5N |
+| <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 15.0N |
+| <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
+| <a href="#">Zero-shot</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
     FT: fine-tuning; PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; Zero-shot: GPT类Zero-shot; 半监督：小样本+无标签数据;
     N”，代表已更新。wsc: cluewsc; cecmnt：cecmmnt(sentiment)，情感2分类; bustm: bustm(opposts); 
      ?：代表新的数据集下还没有跑过实验。如跑过实验了，去掉“？”，改为N。
