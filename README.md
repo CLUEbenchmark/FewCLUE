@@ -241,9 +241,9 @@
    BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；通过下游任务微调，仅新引入部分参数，
    而不需对整个网络从头训练。
    
-   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
-   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
-   ![alt text](https://github.com/brightmart/text_classification/blob/master/images/RCNN.JPG)
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_0.jpeg)
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_2.jpeg)
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_3.jpeg)
 
  
    2.GPT3
