@@ -26,7 +26,9 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 |     CLUEWSC  | 32 | 32  |  976 | 290  | 2 | 0| CorefResolution  | Acc | ChineseFictionBooks 
 
     EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
-    OCNLI: 自然语言推理；BUSTM: 对话短文本匹配；CHID:成语阅读理解；CSL:摘要判断关键词判别；CLUEWSC:代词消歧
+    OCNLI: 自然语言推理；BUSTM: 对话短文本匹配；CHID:成语阅读理解；CSL:摘要判断关键词判别；CLUEWSC: 代词消歧
+    EPRSTMT,CSLDCP,BUSTM 为新任务；其他任务（TNEWS,CHID,IFLYTEK,OCNLI,CSL,CLUEWSC）来自于CLUE benchmark，部分数据集做了新的标注。
+    
 
 ## 实验结果 Experiments
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
@@ -39,10 +41,10 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="#">Zero-shot</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |   25.3N  | 50.0N | 27.7N |  52.2N |  52.2N |
-    PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; N”，代表已更新
-    Zero-shot: 零样本学习。前4个任务采用GPT模型，后5个任务采用chinese_roberta_wwm_ext为基础模型。
-    由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
-    GPT模型：https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow
+    PtuningB: Ptuning_RoBERTa; PtuningGPT: Ptuning_GPT; 报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
+    Zero-shot: 零样本学习。前4个任务采用GPT模型，后5个任务采用chinese_roberta_wwm_ext为基础模型。N”，代表已更新；
+    五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
+   <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
 ## 实验结果 vs 人类水平   Human Performance & Benchmark Results
  
