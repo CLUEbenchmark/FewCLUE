@@ -242,11 +242,19 @@
    而不需对整个网络从头训练。
    
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_0.jpeg)
+   
+   MLM pre-training: 预训练，利用上下文预测[MASK]位置的信息; Fine-tuning：通过下游任务微调，获得[CLS]位置的句子语义表示，并预测句子的标签。
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_2.jpeg)
+   
+   BERT的输入表示：三部分信息求和，包括字的向量、段落向量、位置向量
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_3.jpeg)
 
- 
    2.GPT3
+   GPT3: GPT-3延续单向语言模型训练方式，把模型尺寸增大到了1750亿，并且使用45TB数据进行训练。
+   同时，GPT-3主要聚焦于更通用的NLP模型，解决当前BERT类模型的两个缺点：对领域内有标签数据的过分依赖；对于领域数据分布的过拟合。
+   GPT-3的主要目标是用更少的领域数据、且不经过微调去解决问题。
+   
+   小样本学习的例子：
    
    3.PET，Pattern-Exploiting Training
    将任务转化为完形填空。包括两部分，一部分将输入文本转化为完形填空，里面包含一个需要[MASK]的部分。
