@@ -238,6 +238,7 @@
 
 ## 模型简介（附图）
 ####   1.BERT.Fine-tuning
+    模型简介：
     BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；
     通过下游任务微调，仅新引入部分参数，而不需对整个网络从头训练。
    
@@ -250,6 +251,7 @@
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_3.jpeg)
 
 ####    2.GPT3: Language Models are Few-Shot Learners
+    模型介绍：
     GPT3: GPT-3延续单向语言模型训练方式，把模型尺寸增大到了1750亿，并且使用45TB数据进行训练。
     同时，GPT-3主要聚焦于更通用的NLP模型，解决当前BERT类模型的两个缺点：对领域内有标签数据的过分依赖；对于领域数据分布的过拟合。
     GPT-3的主要目标是用更少的领域数据、且不经过微调去解决问题。
@@ -259,6 +261,7 @@
 
     
 ####   3.PET: Pattern-Exploiting Training
+    模型和示例：
     将任务转化为完形填空。包括两部分，一部分将输入文本转化为完形填空，里面包含一个需要[MASK]的部分。
    
     如输入文本“这个手机壳很不错”，转化为：这个手机壳很不错。我觉得[MASK]好。这里的[MASK]计算需要填写的部分。
@@ -266,8 +269,23 @@
  
     下面报导一则[MASK]新闻。八个月了，终于又能在赛场上看到女排姑娘们了。
     [MASK]的地方可以填“体育”，也可以填“财经”、“娱乐”，但联合概率上看“体育”最大，那么“体育”可以做为预测的标签。
-
+    
+    优缺点：
+    优点：将任务进行了转换后，不再需要向之前的fine-tuning阶段一样引入新的最后一层，即没有引入任何参数；将下游任务转换成与预训练的语言模型一致的形式。
+    缺点：可能需要手工构造Pattern; 不同的Pattern效果差异很大
+    
 ####    4.LM-BFF:   
+    模型和示例：
+    LM-BFF是一套针对小样本进行微调的技术，主要包括两部分：基于提示（prompt）进行微调，关键是如何自动化生成提示模板；
+    将样本示例以上下文的形式添加到每个输入中，关键是如何对示例进行采样；
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff.jpeg)
+    
+    LM-BFF的基本方式如上图所示，红框部分就是提示模板，篮框部分就是额外的样本示例:
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_1.jpeg)
+   
+    在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
+    然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化。
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg)
 
 ####    5.Ptuning
    
