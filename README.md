@@ -121,12 +121,13 @@ FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation
 
 ## NLPCC2021-小模型测评
 
-<a href='https://www.cluebenchmarks.com/NLPCC.html'>测评入口</a>
+<a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名与提交入口</a>
 
 <a href='http://tcci.ccf.org.cn/conference/2021/cfpt.php'>NLPCC2021官方链接</a>
 
     比赛证书：测评前三名队伍会获得NLPCC和CCF中国信息技术技术委员会认证的证书；
     优胜队伍有机会提交测评任务的论文（Task Report），并投稿到NLPCC会议（CCF推荐会议）
+
 
 ## 数据集介绍 Introduction of datasets
 
