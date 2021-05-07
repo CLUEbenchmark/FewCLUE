@@ -21,9 +21,9 @@ train_set_index = args.train_set_index
 assert train_set_index in {"0", "1", "2", "3", "4", "all"}, 'train_set_index must in {"0", "1", "2", "3", "4", "all"}'
 from tqdm import tqdm
 
-config_path = '/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/config.json'
-checkpoint_path = '/home/stark/workdir/language_model/nezha-gpt/cn_gpt'
-dict_path = '/home/stark/workdir/language_model/nezha-gpt/vocab.txt'
+config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/config.json'
+checkpoint_path = '/path/language_model/nezha-gpt/cn_gpt'
+dict_path = '/path/language_model/nezha-gpt/vocab.txt'
 
 # 建立分词器
 tokenizer = Tokenizer(dict_path, do_lower_case=True)
