@@ -375,10 +375,9 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     correct label:no
     incorrect label:yes
     如果我们随机掩盖的token是“Oil”
-    对于correct label，得到pattern：[mask] price rise, no, oil price fall。我们让模型去预测[MASK]
-    对应的token是Oil。
-    对于incorrect label，得到pattern：[mask] price rise, yes, oil price fall。这时候，由于label不是
-    正确的，所以模型不去预测这个[MASK]，即不计算损失。
+    对于correct label，得到pattern：[mask] price rise, no, oil price fall。我们让模型去预测[MASK]对应的token是Oil。
+    对于incorrect label，得到pattern：[mask] price rise, yes, oil price fall。这时候，由于label不是正确的，所以模型不
+    去预测这个[MASK]，即不计算损失。
     
 
   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
