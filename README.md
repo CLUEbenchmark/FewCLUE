@@ -1,12 +1,12 @@
 # FewCLUE
 
 中文小样本学习测评基准
- 
+
 FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 ## 简介 Intorudction 
  预训练语言模型，包括用于语言理解(BERT类)或文本生成模型（GPT类），通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
- 
+
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
 
 ## 任务描述和统计 Task Descriptions and Statistics
@@ -19,21 +19,21 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 |    IFLYTEK   | 928 | 690  | 1749  | 2279 | 119  | 7558 | LongTextClassify| Acc |AppDesc |
 |     | Sentence | Pair | Tasks |
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 | NLI  |  Acc | 5Genres |
-|    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSmlarty | Acc | AIVirtualAssistant | 
+|    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSmlarty | Acc | AIVirtualAssistant |
 |   |Reading |Comprhnsn |Tasks |
 |     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
-|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI| 
+|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI|
 |     CLUEWSC  | 32 | 32  |  976 | 290  | 2 | 0| CorefResolution  | Acc | ChineseFictionBooks 
 
     EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
     OCNLI: 自然语言推理；BUSTM: 对话短文本匹配；CHID:成语阅读理解；CSL:摘要判断关键词判别；CLUEWSC: 代词消歧
     EPRSTMT,CSLDCP,BUSTM 为新任务；其他任务（TNEWS,CHID,IFLYTEK,OCNLI,CSL,CLUEWSC）来自于CLUE benchmark，部分数据集做了新的标注。
-    
+
 
 ## 实验结果 Experiments
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
 
-| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |    
+| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
 | <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
@@ -49,7 +49,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
 ## 实验结果 vs 人类水平   Human Performance & Benchmark Results
- 
+
 ### 1.人类水平  Human Performance
 
     我们采取如下方式测评人类水平。按照训练，然后测评的方式。首先，人类会在训练集上学习30个样本，
@@ -107,8 +107,9 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
            bash run_classifier_multi_dataset.sh
            计算8个任务cecmmnt tnews iflytek ocnli csl cluewsc bustm csldcp，每个任务6个训练集的训练模型结果
            结果包括验证集和测试集的准确率，以及无标签测试集的生成提交文件
-          
-      
+
+
+​      
     PET/Ptuning/GPT:
         环境准备：
           预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
@@ -119,7 +120,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
            cd ./baselines/models_keras/ptuning
         2、运行代码
            python3 ptuning_iflytek.py
-              
+
 
 ## NLPCC2021-小模型测评
 
@@ -185,7 +186,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     "label":"entailment","label0":"entailment","label1":"entailment","label2":"entailment","label3":"entailment","label4":"entailment",
     "genre":"lit","prem_id":"lit_635","id":0
     }
-    
+
 ##### 6.BUSTM 小布助手对话短文本匹配数据集 XiaoBu Dialogue Short Text Matching 
     对话短文本语义匹配数据集，源于小布助手。它是OPPO为品牌手机和IoT设备自研的语音助手，为用户提供便捷对话式服务。
     意图识别是对话系统中的一个核心任务，而对话短文本语义匹配是意图识别的主流算法方案之一。要求根据短文本query-pair，预测它们是否属于同一语义。
@@ -249,11 +250,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     3)当个任务数量量:按类别采样16为主; 
     4)半监督学习:⼩小样本测试还应提供⼤大量量⽆无标签数据；
     5)测试零样本学习；
-    
+
   任务构建过程
-  
+
     任务构建过程参考了本次调查问卷，以及近年来比较有代表性的结合预训练语言模型的小样本学习的论文。
-    
+
    调查问卷反馈详见：<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/questionnaire/FewCLUE%E8%B0%83%E6%9F%A5%E9%97%AE%E5%8D%B7-%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF.pdf'>FewCLUE调查问卷-反馈信息</a>
 
 
@@ -290,7 +291,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     MLM pre-training: 预训练，利用上下文预测[MASK]位置的信息; Fine-tuning：通过下游任务微调，获得[CLS]位置的句子语义表示，
     并预测句子的标签。见下图：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_2.jpeg)
-   
+
     BERT的输入表示：三部分信息求和，包括字的向量、段落向量、位置向量。见下图：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bert_3.jpeg)
 
@@ -303,21 +304,21 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     GPT3中的零样本学习、单样本学习、少样本学习。通过给模型0、1或多个示例形式实现，但没有更新模型的参数：
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/gpt3_1.jpeg)
 
-    
+
 ####   3.PET: Pattern-Exploiting Training
     模型和示例：
     将任务转化为完形填空。包括两部分，一部分将输入文本转化为完形填空，里面包含一个需要[MASK]的部分。
-   
+       
     如输入文本“这个手机壳很不错”，转化为：这个手机壳很不错。我觉得[MASK]好。这里的[MASK]计算需要填写的部分。
     另一部分将需要预测的标签对应到一个字符上。如，有两个情感分类的标签POSITIVE和NEGATIVE。POSITIVE-->good; NEGATIVE-->bad。
- 
+     
     下面报导一则[MASK]新闻。八个月了，终于又能在赛场上看到女排姑娘们了。
     [MASK]的地方可以填“体育”，也可以填“财经”、“娱乐”，但联合概率上看“体育”最大，那么“体育”可以做为预测的标签。
     
     PET的优缺点：
     优点：将任务进行了转换后，不再需要向之前的fine-tuning阶段一样引入新的最后一层，即没有引入任何参数；将下游任务转换成与预训练的语言模型一致的形式。
     缺点：可能需要手工构造Pattern; 不同的Pattern效果差异很大
-    
+
 ####    4.LM-BFF: Making Pre-trained Language Models Better Few-shot Learners  
     模型和示例：
     LM-BFF是一套针对小样本进行微调的技术，主要包括两部分：基于提示（prompt）进行微调，关键是如何自动化生成提示模板；
@@ -326,7 +327,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
     LM-BFF的基本方式如上图所示，红框部分就是提示模板，篮框部分就是额外的样本示例:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_1.jpeg)
-   
+
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="75%" height="75%" />   
@@ -334,15 +335,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
     缺点：依然假设模板是自然语言的版本；非全自动化的：先找模板，然在最优模板上做任务。
-    
-    
+
+
+​    
 ####    5.Ptuning: GPT Understands, Too
     模型和示例：
     人工选择模板，或者机器自动选择模板，都是比较繁琐的工作，但对效果影响很大。那有没有能自动构建模型的方式呢？
     Ptuning放弃了模板必须是自然语言的假设，通过使用BERT系列中未使用的字的表示来自动设法学习到最佳的模板；
     并且它可以只学习模板对应的参数，如10个embedding，而之前的方法一般都是需要学习所有的字的表示；
     论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
-   
+       
     离散模板搜索-->连续端到端学习:
    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
     
@@ -352,6 +354,14 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，
     这里的token数目是一个超参数。
 
+####   6.ADAPET: Improving and Simplifying Pattern Exploiting Training
+
+    模型和示例：
+    ADAPET（A Densely-supervised Approach to Pattern Exploiting Training）做为PET的改进方法，共提出了两种改进方式： Decoupling Label Losses和Label Conditioning。
+    1、 Decoupling Label Losses：在预测label的[MASK]时，计算了词表中所有token的概率，选取概率最大的token做为label。
+    2、 Label Conditioning：随机掩盖原句中的original token，根据label去预测这些original token。具体地，当label正确时，预测original token；当label不正确时，不去预测original token。
+
+  ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
 
 ## 测评报名|提交 Submit
 
@@ -359,7 +369,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 ## 教程 Tutorial
    1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
-   
+
    2.教程（Jupyter Notebook/Google Colab），添加中。。。
 
 ## 问题 Question
@@ -372,7 +382,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
-   
+
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/qqq.jpeg"  width="45%" height="45%" />   
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
