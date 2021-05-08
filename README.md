@@ -135,7 +135,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 <a href='https://www.cluebenchmarks.com/submit.html'>测评系统已开放:</a>
 
-<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="85%" height="85%" />   
+<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" />   
 
 <a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
 
