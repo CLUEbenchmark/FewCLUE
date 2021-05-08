@@ -38,7 +38,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
 | <a href="#">FineTuningR</a>        | | 64.6N |60.0N   | 33.3N    | 36.2N  | 50.6N |49.9N | 34.5N |50.0N | |
-| <a href="#">PET</a>      | 56.06 | 87.2N | 64.0  | 43.9N | 56.9N |51.2N  | 50.0N| 35.1N | 55.0N | 61.3N |
+| <a href="#">PET</a>      | 57.01 | 87.2N | 64.0  | 43.9N | 56.9N |51.2N  | 59.2N| 35.1N | 55.0N | 61.3N |
 | <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="#">Zero-shot-G</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |     |  |  |   |   |
