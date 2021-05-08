@@ -385,11 +385,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 ## 测评报名|提交 Submit
 
-<a href='https://www.CLUEbenchmarks.com'>提交</a>到测评系统(现已开放，5月9日)
+<a href='https://www.CLUEbenchmarks.com'>测评系统已开放</a>
 
-<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="60%" height="60%" />   
+<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="80%" height="80%" />   
 
-<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example/fewclue_submit_examples.zip'>提交样例(zip压缩包)</a>
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
 
 ### <a href='https://docs.qq.com/doc/DR2pyTGltUURmb0hk'>测评方案</a>
 
@@ -403,7 +403,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
     违反以上规则，一经发现，将取消测评资格。
 
-### 赛程及提交：
+### <a href='https://www.cluebenchmarks.com/submit.html'>赛程及提交</a>
 
     第一阶段（5月9日--6月4日）：只需要针对一份数据集做训练和预测：
         {train_0.json, dev_0.json, test.json}
@@ -425,9 +425,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
         
         最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
     
-    6月25日发布测评结果---->
-                 
-    7月15日优胜队伍测评论文(task report)提交截止
+    6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
 ## 教程 Tutorial
