@@ -122,8 +122,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
            python3 ptuning_iflytek.py
 
 
-## NLPCC2021-小模型测评
-##### 报名注册、奖励、提交样例、排行榜、赛程与测评方案
+## FewCLUE小样本测评
+##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
 <a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名;</a>  <a href='http://tcci.ccf.org.cn/conference/2021/cfpt.php'> NLPCC2021官方链接</a>
 
