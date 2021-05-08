@@ -122,7 +122,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
            python3 ptuning_iflytek.py
 
 
-## NLPCC2021-小模型测评
+## NLPCC2021-小模型测评: 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
 <a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名与提交入口</a>
 
@@ -130,6 +130,51 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
     比赛证书：测评前三名队伍会获得NLPCC和CCF中国信息技术技术委员会认证的证书；
     优胜队伍有机会提交测评任务的论文（Task Report），并投稿到NLPCC会议（CCF推荐会议）
+
+
+<a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名与提交入口</a>
+
+<a href='https://www.cluebenchmarks.com/submit.html'>测评系统已开放:</a>
+
+<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="85%" height="85%" />   
+
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
+
+### <a href='https://docs.qq.com/doc/DR2pyTGltUURmb0hk'>测评方案</a>
+
+    比赛规则
+    ● 本次测评只能使用本测评提供的数据；
+    ● 禁止任何形式人工标注；
+    ● 禁止仅使用开源的模型和代码，没有算法贡献的情况出现；
+    ● 本次比赛只能使用单模型（单模型的定义：一个任务只能有一个预测函数，所有任务只能使用同一个预训练模型，在计算图中只能有一个预训练模型）完成任务，不能集成多个模型进行预测；
+    ● 模型调优阶段( finetune)只能使用比赛提供的数据；预训练阶段可使用外部数据（方案评审环节，说明来源）
+    ● 禁止为了做本次测评找大量相似文本，去做任何形式的训练。
+    
+    违反以上规则，一经发现，将取消测评资格。
+
+### <a href='https://www.cluebenchmarks.com/submit.html'>赛程及提交</a>
+
+    第一阶段（5月9日--6月4日）：只需要针对一份数据集做训练和预测：
+        {train_0.json, dev_0.json, test.json}
+        
+        最后提交的文件为：fewclue_submit_examples.zip，包括了上面的所有文件的压缩包。
+        压缩命名如：zip fewclue_submit_examples.zip *.json
+        
+    第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
+        eprstmt_predict_x.json
+        csldcp_predict_x.json
+        tnews_predict_x.json
+        iflytek_predict_x.json
+        ocnli_predict_x.json
+        bustm_predict_x.json
+        chid_predict_x.json
+        csl_predict_x.json
+        cluewsc_predict_x.json
+        x包括{0,1,2,3,4,all}，即每个数据集需要在test.json上预测6次。
+        
+        最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
+    
+    6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
 ## 数据集介绍 Introduction of datasets
@@ -381,51 +426,6 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
 
   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
-
-
-## 测评报名|提交 Submit
-
-<a href='https://www.CLUEbenchmarks.com'>测评系统已开放</a>
-
-<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="80%" height="80%" />   
-
-<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
-
-### <a href='https://docs.qq.com/doc/DR2pyTGltUURmb0hk'>测评方案</a>
-
-    比赛规则
-    ● 本次测评只能使用本测评提供的数据；
-    ● 禁止任何形式人工标注；
-    ● 禁止仅使用开源的模型和代码，没有算法贡献的情况出现；
-    ● 本次比赛只能使用单模型（单模型的定义：一个任务只能有一个预测函数，所有任务只能使用同一个预训练模型，在计算图中只能有一个预训练模型）完成任务，不能集成多个模型进行预测；
-    ● 模型调优阶段( finetune)只能使用比赛提供的数据；预训练阶段可使用外部数据（方案评审环节，说明来源）
-    ● 禁止为了做本次测评找大量相似文本，去做任何形式的训练。
-    
-    违反以上规则，一经发现，将取消测评资格。
-
-### <a href='https://www.cluebenchmarks.com/submit.html'>赛程及提交</a>
-
-    第一阶段（5月9日--6月4日）：只需要针对一份数据集做训练和预测：
-        {train_0.json, dev_0.json, test.json}
-        
-        最后提交的文件为：fewclue_submit_examples.zip，包括了上面的所有文件的压缩包。
-        压缩命名如：zip fewclue_submit_examples.zip *.json
-        
-    第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
-        eprstmt_predict_x.json
-        csldcp_predict_x.json
-        tnews_predict_x.json
-        iflytek_predict_x.json
-        ocnli_predict_x.json
-        bustm_predict_x.json
-        chid_predict_x.json
-        csl_predict_x.json
-        cluewsc_predict_x.json
-        x包括{0,1,2,3,4,all}，即每个数据集需要在test.json上预测6次。
-        
-        最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
-    
-    6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
 ## 教程 Tutorial
