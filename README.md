@@ -428,13 +428,13 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     模型和示例
     EFL不采用pet、lm-bff等完形填空式（close question）的prompt的finetune方法，而是将finetune的任务转变成了文本蕴含任务（textual entaiment），并对标签设计了细粒度的文本描述。
     对单句的分类任务
-   eg：将情感分类任务变成文本蕴含任务
+    eg：将情感分类任务变成文本蕴含任务
      sent1:I like the movie
      label:position
      xin= [CLS]sent1[SEP]sent2[EOS], 其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述
      再使用finetune的方法判断[CLS]为entail或者not entail
-   对多句的分类任务
-   eg：对BUSTM，退化成普通的finetune任务
+    对多句的分类任务
+    eg：对BUSTM，退化成普通的finetune任务
      sent1: 女孩到底是不是你
      sent2: 你不是女孩么
      xin=[CLS]sent1[SEP]sent2[EOS],其中sent2就是原句的sent2
