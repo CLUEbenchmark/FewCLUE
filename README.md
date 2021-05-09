@@ -428,23 +428,32 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     对于correct label，得到pattern：[mask] price rise, no, oil price fall。我们让模型去预测[MASK]对应的token是Oil。
     对于incorrect label，得到pattern：[mask] price rise, yes, oil price fall。这时候，由于label不是正确的，所以模型不
     去预测这个[MASK]，即不计算损失。
-    ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
     
 #### 7.EFL:Entailment as Few-Shot Learner
     模型和示例
     EFL不采用pet、lm-bff等完形填空式（close question）的prompt的finetune方法，而是将finetune的任务转变成了文本蕴含任务（textual entaiment），并对标签设计了细粒度的文本描述。
-    对单句的分类任务
+    它会先在文本蕴含任务中先进行训练得到基础模型，英文上文本蕴含任务MNLI、中文对应的是CMNLI、OCNLI，然后做具体任务。数据集具体见CLUE项目。
+    
+    1）对单句的分类任务：
     eg：将情感分类任务变成文本蕴含任务
      sent1:I like the movie
      label:positive
-     xin= [CLS]sent1[SEP]sent2[EOS], 其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述
+     xin= [CLS]sent1[SEP]sent2[EOS], 其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述。
+     即xin= [CLS]I like the movie[SEP]This indicates positive user sentiment[EOS]
      再使用finetune的方法判断[CLS]为entail或者not entail
-    对多句的分类任务
+     
+    2）多句的分类任务：
     eg：对BUSTM，退化成普通的finetune任务
      sent1: 女孩到底是不是你
      sent2: 你不是女孩么
      xin=[CLS]sent1[SEP]sent2[EOS],其中sent2就是原句的sent2
      再使用finetune的方法判断[CLS]为entail或者not entail
+     
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg)
+   
+   标签描述的影响：
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg)
 
 
 ## 教程 Tutorial
@@ -484,6 +493,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 7、<a href='https://kexue.fm/archives/8295'>文章：P-tuning：自动构建模版，释放语言模型潜能</a>
 
 8、<a href='https://arxiv.org/abs/2103.11955'>ADAPET: Improving and Simplifying Pattern Exploiting Training</a>
+
+9、<a href='https://arxiv.org/abs/2104.14690'>EFL:Entailment as Few-Shot Learner</a>
 
 ## License
 
