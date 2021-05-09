@@ -36,7 +36,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
 | <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.11N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
+| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
