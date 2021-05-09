@@ -396,7 +396,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
        
     离散模板搜索-->连续端到端学习:
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="85%" height="85%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="87%" height="87%" />   
 
     
     中文例子：
@@ -451,7 +451,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      xin=[CLS]sent1[SEP]sent2[EOS],其中sent2就是原句的sent2
      再使用finetune的方法判断[CLS]为entail或者not entail
    
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="85%" height="85%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
    
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
