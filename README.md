@@ -380,7 +380,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="75%" height="75%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="75%" height="68%" />   
     
     LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
@@ -396,10 +396,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
        
     离散模板搜索-->连续端到端学习:
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="85%" height="85%" />   
+
     
     中文例子：
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="80%" height="80%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="85%" height="85%" />   
       
     这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，
     这里的token数目是一个超参数。
@@ -449,11 +450,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      sent2: 你不是女孩么
      xin=[CLS]sent1[SEP]sent2[EOS],其中sent2就是原句的sent2
      再使用finetune的方法判断[CLS]为entail或者not entail
-     
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg)
+   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="85%" height="85%" />   
    
    标签描述的影响：
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg)
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
 
 ## 教程 Tutorial
