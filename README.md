@@ -426,6 +426,10 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
 
+#### 7.EFL:Entailment as Few-Shot Learner
+    模型和示例
+    EFL
+
 
 ## 教程 Tutorial
    1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
