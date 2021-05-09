@@ -127,8 +127,8 @@ class DataGen(object):
         return labels_ids
 
     def get_data(self, parent_path=data_parent_path):
-        if self.task_name == TaskName.CECMMNT:
-            train_data, valid_data, test_data = self.get_cecmmnt_data(parent_path, cecmmnt_paths)
+        if self.task_name == TaskName.EPRSTMT:
+            train_data, valid_data, test_data = self.get_cecmmnt_data(parent_path, eprstmt_paths)
         elif self.task_name == TaskName.BUSTM:
             train_data, valid_data, test_data = self.get_bustm_data(parent_path, bustm_paths)
         elif self.task_name == TaskName.OCNLI:

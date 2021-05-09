@@ -16,7 +16,7 @@ import argparse
 
 # 参数
 parser = argparse.ArgumentParser(description="参数控制")
-parser.add_argument("-t", "--task_name", help="training set index", type=str, default=TaskName.CECMMNT)
+parser.add_argument("-t", "--task_name", help="training set index", type=str, default=TaskName.EPRSTMT)
 parser.add_argument("-z", "--zero_shot", help="few-shot or zero-shot", action='store_true', default=False)
 args = parser.parse_args()
 task_name = args.task_name    # 选择任务
@@ -25,7 +25,7 @@ zero_shot = args.zero_shot    # 是否进行零样本学习
 
 
 # # 任务名称
-# task_name = TaskName.CECMMNT
+# task_name = TaskName.EPRSTMT
 # task_name = TaskName.BUSTM
 # task_name = TaskName.OCNLI
 # # task_name = TaskName.OCEMOTION # 任务取消了

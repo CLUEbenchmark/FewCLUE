@@ -194,7 +194,7 @@ def evaluate_gpt(data, model, labels):
 
 
 def get_evaluator(task_name, valid_generator, test_generator, labels, zero_shot):
-    if task_name == TaskName.CECMMNT or task_name == TaskName.CSLDCP:
+    if task_name == TaskName.EPRSTMT or task_name == TaskName.CSLDCP:
         return Evaluator(evaluate_seq2seq, valid_generator, test_generator, task_name, labels, zero_shot)
     elif task_name == TaskName.CHID:
         return Evaluator(evaluate_gpt, valid_generator, test_generator, task_name, labels, zero_shot)
