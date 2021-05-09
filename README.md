@@ -431,14 +431,31 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     eg：将情感分类任务变成文本蕴含任务
      sent1:I like the movie
      label:positive
-     xin= [CLS]sent1[SEP]sent2[EOS], 其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述
+     xin= [CLS]sent1[SEP]sent2[EOS]= [CLS]I like the movie[SEP]This indicates positive user sentiment[EOS](正例的构建: entail)
+     其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述
+     another sent:I cannot believe what happend
+     xin=[CLS]sent1[SEP]another sent[EOS]= [CLS]I like the movie[SEP]I cannot believe what happend[EOS](负例的构建: not entail)
      再使用finetune的方法判断[CLS]为entail或者not entail
     对多句的分类任务
     eg：对BUSTM，退化成普通的finetune任务
      sent1: 女孩到底是不是你
      sent2: 你不是女孩么
-     xin=[CLS]sent1[SEP]sent2[EOS],其中sent2就是原句的sent2
+     xin=[CLS]sent1[SEP]sent2[EOS](正例的构建: entail)
+     其中sent2就是原句的sent2
+     another sent1: 天上有只鸟
+     another sent2: 有只鸟在天上飞
+     xin=[CLS]sent1[SEP]another sent1[EOS](负例的构建:not entail)
      再使用finetune的方法判断[CLS]为entail或者not entail
+    对多分类任务:
+    eg: 例如多情感分类任务(包含五个情感分类great/good/ok/bad/terrible):
+     sent1=I am happy to help others
+     label:great
+     xin=[CLS]sent1[SEP]sent2[EOS]
+     xin1=[CLS]I am happy to help others[SEP]this is great[EOS](正例:entail)
+     xin2=[CLS]I am happy to help others[SEP]this is good[EOS](负例:not entail)
+     xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
+     xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
+     xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
 
 
 ## 教程 Tutorial
