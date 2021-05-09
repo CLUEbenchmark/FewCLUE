@@ -137,7 +137,9 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 <a href='https://www.cluebenchmarks.com/submit.html'>测评系统已开放:</a>
 
-<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" />   
+测评流程：<a href='https://www.cluebenchmarks.com/'>登录</a>--><a href='https://www.cluebenchmarks.com/NLPCC.html'>FewCLUE测评注册</a>--><a href='https://github.com/CLUEbenchmark/FewCLUE#%E5%9F%BA%E7%BA%BF%E6%A8%A1%E5%9E%8B%E5%8F%8A%E8%BF%90%E8%A1%8C-baselines-and-how-to-run'>训练模型</a>--><a href='https://www.cluebenchmarks.com/submit.html'>提交</a>--><a href='https://www.cluebenchmarks.com/fewclue.html'>查看FewCLUE榜</a>
+
+<a href='https://www.cluebenchmarks.com/submit.html'><img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" /></a>  
 
 <a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
 
@@ -490,11 +492,14 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
-
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/qqq.jpeg"  width="45%" height="45%" />   
+   
+   添加微信入FewCLUE群:
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />   
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
 
+   QQ群:836811304
+   
 ## 引用 Reference
 
 1、<a href='https://arxiv.org/abs/2005.14165'>GPT3: Language Models are Few-Shot Learners</a>
