@@ -35,16 +35,18 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
+| <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
-| <a href="#">FineTuningR</a>        | | 64.6N |60.0N   | 33.3N    | 36.2N  | 50.6N |49.9N | 34.5N |50.0N | |
-| <a href="#">PET</a>      | 57.01 | 87.2N | 64.0  | 43.9N | 56.9N |51.2N  | 59.2N| 35.1N | 55.0N | 61.3N |
-| <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
-| <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="#">Zero-shot-G</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |     |  |  |   |   |
-| <a href="#">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-    FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
-    Zero-shot: 零样本学习。前4个任务采用GPT模型，后5个任务采用chinese_roberta_wwm_ext为基础模型。N”，代表已更新；
+| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 64.6N |60.0N   | 33.3N    | 36.2N  | 50.6N |49.9N | 34.5N |50.0N | |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.01 | 87.2N | 64.0  | 43.9N | 56.9N |51.2N  | 59.2N| 35.1N | 55.0N | 61.3N |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
+| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |     |  |  |   |   |
+| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
+    
+    FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
+    FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
+    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
     五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
@@ -194,7 +196,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      数据量：训练集（536），验证集（536），公开测试集（1784），测试集（2999），无标签语料（67）
      
      例子：
-     {"id": 23, "sentence": "外包装上有点磨损，试听后感觉不错", "label": "Positive"}
+     {"content": "通过几年的观察和实践，初步掌握了盆栽菊花的栽培技术及方法，并进行了总结，以满足人们对花卉消费的需求，提高观赏植物的商品价值，为企业化生产的盆菊提供技术指导。",
+     "label": "园艺学", "id": 1770}
+     {"content": "GPS卫星导航定位精度的高低很大程度上取决于站星距离(即伪距)的测量误差.载波相位平滑伪距在保证环路参数满足动态应力误差要求的基础上。。。本文详细论述了载波相位平滑伪距的原理和工程实现方法,并进行了仿真验证.", 
+     "label": "航空宇航科学与技术", "id": 979}
+
      每一条数据有三个属性，从前往后分别是 id,sentence,label。其中label标签，Positive 表示正向，Negative 表示负向。
 ```
 
