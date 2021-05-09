@@ -433,7 +433,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
 #### 7.EFL:Entailment as Few-Shot Learner
     模型和示例
-    EFL不采用pet、lm-bff等完形填空式（close question）的prompt的finetune方法，而是将finetune的任务转变成了文本蕴含任务（textual entaiment），并对标签设计了细粒度的文本描述。
+    EFL不采用pet、lm-bff等完形填空式（close question）的prompt的finetune方法，而是将finetune的任务转变成了文本蕴含任务（textual entaiment），
+    并对标签设计了细粒度的文本描述。
     它会先在文本蕴含任务中先进行训练得到基础模型，英文上文本蕴含任务MNLI、中文对应的是CMNLI、OCNLI，然后做具体任务。数据集具体见CLUE项目。
     
     1）对单句的分类任务：
@@ -456,6 +457,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      another sent2: 有只鸟在天上飞
      xin=[CLS]sent1[SEP]another sent1[EOS](负例的构建:not entail)
      再使用finetune的方法判断[CLS]为entail或者not entail
+     
     3) 对多分类任务:
     eg: 例如多情感分类任务(包含五个情感分类great/good/ok/bad/terrible):
      sent1=I am happy to help others
