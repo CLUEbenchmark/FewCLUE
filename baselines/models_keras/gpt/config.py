@@ -17,7 +17,7 @@ dict_path = '../../../pretrained_models/models_gpt/vocab.txt'
 
 # 数据路径
 data_parent_path = "../../../datasets/"
-cecmmnt_paths = ['cecmmnt/train_0.json', 'cecmmnt/dev_0.json', 'cecmmnt/test_public.json']
+eprstmt_paths = ['eprstmt/train_0.json', 'eprstmt/dev_0.json', 'eprstmt/test_public.json']
 bustm_paths = ['bustm/train_0.json', 'bustm/dev_0.json', 'bustm/test_public.json']
 ocnli_paths = ['ocnli/train_0.json', 'ocnli/dev_0.json', 'ocnli/test_public.json']
 ocemotion_paths = ['ocemotion/train_few_0.json', 'ocemotion/dev_few_0.json', 'ocemotion/test_public.json']
@@ -30,7 +30,7 @@ chid_paths = ['chid/train_0.json', 'chid/dev_0.json', 'chid/test_public.json']
 
 
 class TaskName(object):
-    CECMMNT = "cecmmnt"
+    EPRSTMT = "eprstmt"
     BUSTM = "bustm"
     OCNLI = "ocnli"
     OCEMOTION = "ocemotion"
@@ -45,7 +45,7 @@ class TaskName(object):
 # 每个任务下，标签的字数要一致
 # 各个任务标签
 labels_map = {
-    TaskName.CECMMNT: [u"不满意", u"很满意"],
+    TaskName.EPRSTMT: [u"不满意", u"很满意"],
     TaskName.BUSTM: [u"反", u"正"],
     TaskName.OCNLI: [u"中立", u"包含", u"矛盾"],
     TaskName.OCEMOTION: [u"喜欢", u"开心", u"伤心", u"愤怒", u"厌恶", u"惊讶", u"恐惧"],
@@ -59,9 +59,9 @@ labels_map = {
 
 # 各个任务标签索引
 labels_index_map = {
-    TaskName.CECMMNT: {
-        "Negative": labels_map[TaskName.CECMMNT].index(u"不满意"),
-        "Positive": labels_map[TaskName.CECMMNT].index(u"很满意")
+    TaskName.EPRSTMT: {
+        "Negative": labels_map[TaskName.EPRSTMT].index(u"不满意"),
+        "Positive": labels_map[TaskName.EPRSTMT].index(u"很满意")
     },
     TaskName.BUSTM: {
         0: labels_map[TaskName.BUSTM].index(u"反"),
