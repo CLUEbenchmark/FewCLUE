@@ -470,6 +470,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
      xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
      xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
+     
    
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
    
