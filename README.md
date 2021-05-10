@@ -35,16 +35,18 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="#">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 46.37 |73.7N   | 61.1N    | 34.0N  | 28.6N |43.6N | 50.2N |29.6N | 50.1N| 15.0N|
-| <a href="#">FineTuningR</a>        | | 64.6N |60.0N   | 33.3N    | 36.2N  | 50.6N |49.9N | 34.5N |50.0N | |
-| <a href="#">PET</a>      | 57.01 | 87.2N | 64.0  | 43.9N | 56.9N |51.2N  | 59.2N| 35.1N | 55.0N | 61.3N |
-| <a href="#">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
-| <a href="#">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="#">Zero-shot-G</a>      | 40.07 |  54.8N |  50N  | 34.4N  |  26.23N |     |  |  |   |   |
-| <a href="#">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-    FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
-    Zero-shot: 零样本学习。前4个任务采用GPT模型，后5个任务采用chinese_roberta_wwm_ext为基础模型。N”，代表已更新；
+| <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
+| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
+| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
+| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
+| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
+| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
+    
+    FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
+    FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
+    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
     五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
@@ -135,7 +137,9 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 <a href='https://www.cluebenchmarks.com/submit.html'>测评系统已开放:</a>
 
-<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" />   
+测评流程：<a href='https://www.cluebenchmarks.com/'>登录</a>--><a href='https://www.cluebenchmarks.com/NLPCC.html'>FewCLUE测评注册</a>--><a href='https://github.com/CLUEbenchmark/FewCLUE#%E5%9F%BA%E7%BA%BF%E6%A8%A1%E5%9E%8B%E5%8F%8A%E8%BF%90%E8%A1%8C-baselines-and-how-to-run'>训练模型</a>--><a href='https://www.cluebenchmarks.com/submit.html'>提交</a>--><a href='https://www.cluebenchmarks.com/fewclue.html'>查看FewCLUE榜</a>
+
+<a href='https://www.cluebenchmarks.com/submit.html'><img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" /></a>  
 
 <a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
 
@@ -194,7 +198,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      数据量：训练集（536），验证集（536），公开测试集（1784），测试集（2999），无标签语料（67）
      
      例子：
-     {"id": 23, "sentence": "外包装上有点磨损，试听后感觉不错", "label": "Positive"}
+     {"content": "通过几年的观察和实践，初步掌握了盆栽菊花的栽培技术及方法，并进行了总结，以满足人们对花卉消费的需求，提高观赏植物的商品价值，为企业化生产的盆菊提供技术指导。",
+     "label": "园艺学", "id": 1770}
+     {"content": "GPS卫星导航定位精度的高低很大程度上取决于站星距离(即伪距)的测量误差.载波相位平滑伪距在保证环路参数满足动态应力误差要求的基础上。。。本文详细论述了载波相位平滑伪距的原理和工程实现方法,并进行了仿真验证.", 
+     "label": "航空宇航科学与技术", "id": 979}
+
      每一条数据有三个属性，从前往后分别是 id,sentence,label。其中label标签，Positive 表示正向，Negative 表示负向。
 ```
 
@@ -374,7 +382,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
     在“Thank you <X> me to your party <Y> week ”，T5会在<X>生成“ for inviting ”、在<Y>生成“last ”。
     然后我们就可以基于T5去填充占位符<X>和<Y>，生成提示模板T。我们选定的模板应该是使得训练集中的输出概率最大化:
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="75%" height="75%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/lm_bff_2.jpeg"  width="75%" height="68%" />   
     
     LB-BFF的优缺点
     优点：结合T5的生成能力，自动化找到最优的模板，省去人工搜寻模板的过程。
@@ -390,10 +398,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     论文中实验了GPT类的模型也可以使用Ptuning方式取得很好的文本理解效果。
        
     离散模板搜索-->连续端到端学习:
-   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg)
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="87%" height="87%" />   
+
     
     中文例子：
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="80%" height="80%" />   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="85%" height="85%" />   
       
     这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]。也就是用几个从未见过的token来构成模板，
     这里的token数目是一个超参数。
@@ -422,9 +431,50 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     对于correct label，得到pattern：[mask] price rise, no, oil price fall。我们让模型去预测[MASK]对应的token是Oil。
     对于incorrect label，得到pattern：[mask] price rise, yes, oil price fall。这时候，由于label不是正确的，所以模型不
     去预测这个[MASK]，即不计算损失。
+   ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
     
-
-  ![alt text](https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ADAPET.png)
+#### 7.EFL:Entailment as Few-Shot Learner
+    模型和示例
+    EFL不采用pet、lm-bff等完形填空式（close question）的prompt的finetune方法，而是将finetune的任务转变成了文本蕴含任务（textual entaiment），
+    并对标签设计了细粒度的文本描述。
+    它会先在文本蕴含任务中先进行训练得到基础模型，英文上文本蕴含任务MNLI、中文对应的是CMNLI、OCNLI，然后做具体任务。数据集具体见CLUE项目。
+    
+    1）对单句的分类任务：
+    eg：将情感分类任务变成文本蕴含任务
+     sent1:I like the movie
+     label:positive
+     xin= [CLS]sent1[SEP]sent2[EOS]= [CLS]I like the movie[SEP]This indicates positive user sentiment[EOS](正例的构建: entail)
+     其中sent2 =This indicates positive user sentiment,为对label的细粒度的文本描述
+     another sent:I cannot believe what happend
+     xin=[CLS]sent1[SEP]another sent[EOS]= [CLS]I like the movie[SEP]I cannot believe what happend[EOS](负例的构建: not entail)
+     再使用finetune的方法判断[CLS]为entail或者not entail
+     
+    2）多句的分类任务：
+    eg：对BUSTM，退化成普通的finetune任务
+     sent1: 女孩到底是不是你
+     sent2: 你不是女孩么
+     xin=[CLS]sent1[SEP]sent2[EOS](正例的构建: entail)
+     其中sent2就是原句的sent2
+     another sent1: 天上有只鸟
+     another sent2: 有只鸟在天上飞
+     xin=[CLS]sent1[SEP]another sent1[EOS](负例的构建:not entail)
+     再使用finetune的方法判断[CLS]为entail或者not entail
+     
+    3) 对多分类任务:
+    eg: 例如多情感分类任务(包含五个情感分类great/good/ok/bad/terrible):
+     sent1=I am happy to help others
+     label:great
+     xin=[CLS]sent1[SEP]sent2[EOS]
+     xin1=[CLS]I am happy to help others[SEP]this is great[EOS](正例:entail)
+     xin2=[CLS]I am happy to help others[SEP]this is good[EOS](负例:not entail)
+     xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
+     xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
+     xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
+   
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
+   
+   标签描述的影响：
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
 #### 7.EFL:Entailment as Few-Shot Learner
     模型和示例
@@ -446,11 +496,14 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
-
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/qqq.jpeg"  width="45%" height="45%" />   
+   
+   添加微信入FewCLUE群:
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />   
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
 
+   QQ群:836811304
+   
 ## 引用 Reference
 
 1、<a href='https://arxiv.org/abs/2005.14165'>GPT3: Language Models are Few-Shot Learners</a>
@@ -468,6 +521,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 7、<a href='https://kexue.fm/archives/8295'>文章：P-tuning：自动构建模版，释放语言模型潜能</a>
 
 8、<a href='https://arxiv.org/abs/2103.11955'>ADAPET: Improving and Simplifying Pattern Exploiting Training</a>
+
+9、<a href='https://arxiv.org/abs/2104.14690'>EFL:Entailment as Few-Shot Learner</a>
 
 ## License
 
