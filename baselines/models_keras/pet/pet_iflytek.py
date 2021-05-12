@@ -165,11 +165,11 @@ def load_data(filename, set_type="train"): # 加载数据
     return D
 
 # 加载数据集，只截取一部分，模拟小数据集
-train_data = load_data('ready_data/iflytek/iflytek_8/train_{}.json'.format(train_set_index))
+train_data = load_data('datasets/iflytek/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
-    valid_data += load_data('ready_data/iflytek/iflytek_8/dev_{}.json'.format(i))
-test_data = load_data('ready_data/iflytek/iflytek_8/test_public.json')
+    valid_data += load_data('datasets/iflytek/dev_{}.json'.format(i))
+test_data = load_data('datasets/iflytek/test_public.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
