@@ -124,7 +124,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
         2、运行代码
            python3 ptuning_iflytek.py
 
+Zero-shot
+```
+环境准备：
+    预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+    需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
 
+运行：
+1、在FewClue根目录运行脚本：
+bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprstmt\ocnli...]
+```
 ## FewCLUE小样本测评
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
