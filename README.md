@@ -132,7 +132,7 @@ Zero-shot
 
 运行：
 1、在FewClue根目录运行脚本：
-bash ./baselines/models_keras/zero_shot/pet_zeroshot.sh [iflytek\tnews\eprstmt\ocnli...]
+bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprstmt\ocnli...]
 ```
 ## FewCLUE小样本测评
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
