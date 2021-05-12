@@ -34,6 +34,7 @@ from processors import collate_fn, xlnet_collate_fn
 from tools.common import seed_everything, save_numpy
 from tools.common import init_logger, logger
 from tools.progressbar import ProgressBar
+from task_label_description import tnews_label_descriptions,eprstmt_label_descriptions
 
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig,
                                                                                 RobertaConfig)), ())
@@ -45,6 +46,10 @@ MODEL_CLASSES = {
     'albert': (BertConfig, AlbertForSequenceClassification, BertTokenizer)
 }
 
+TASK_LABELS_DESC={
+        "tnews":tnews_label_descriptions,
+        "eprstmt":eprstmt_label_descriptions,
+        }
 
 def train(args, train_dataset, model, tokenizer):
     """ Train the model """
@@ -220,10 +225,7 @@ def evaluate(args, model, tokenizer, prefix=""):
 
 
 def predict(args, model, tokenizer, label_list, prefix=""):
-    label_en2zh ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'汽车','news_travel':'旅游','news_finance':'财经',
-                  'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
-                  'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
-    all_label_description=["这是一条"+value+"新闻" for key,value in label_en2zh.items()]
+    task_label_description=TASK_LABELS_DESC[args.task_name]
 
     pred_task_names = (args.task_name,)
     pred_outputs_dirs = (args.output_dir,)
@@ -273,12 +275,12 @@ def predict(args, model, tokenizer, label_list, prefix=""):
                     preds = np.append(preds, logits.detach().cpu().numpy(), axis=0)
             pbar(step)
         print(' ')
-        assert len(preds)%len(label_en2zh)==0
+        assert len(preds)%len(task_label_description)==0
         sentence_labels=[]
-        for i in range(int(len(preds)/len(label_en2zh))):
-            sentence_label=all_label_description[np.argmax(preds[i*len(label_en2zh):(i+1)*len(label_en2zh),0])]
+        for i in range(int(len(preds)/len(task_label_description))):
+            sentence_label=list(task_label_description.values())[np.argmax(preds[i*len(task_label_description):(i+1)*len(task_label_description),0])]
             sentence_labels.append(sentence_label)
-        assert len(sentence_labels)==int(len(preds)/len(label_en2zh))
+        assert len(sentence_labels)==int(len(preds)/len(task_label_description))
         assert len(sentence_labels)==len(test_sentences_labels)
 
         if args.output_mode == "classification":
@@ -327,12 +329,14 @@ def load_and_cache_examples(args, task, tokenizer, data_type='train'):
         # HACK(label indices are swapped in RoBERTa pretrained model)
         label_list[1], label_list[2] = label_list[2], label_list[1]
 
+    task_label_description=TASK_LABELS_DESC[args.task_name]
+
     if data_type == 'train':
-        examples,test_sentences,test_sentences_labels = processor.get_train_examples(args.data_dir)
+        examples,test_sentences,test_sentences_labels = processor.get_train_examples(args.data_dir,task_label_description)
     elif data_type == 'dev':
-        examples,test_sentences,test_sentences_labels = processor.get_dev_examples(args.data_dir)
+        examples,test_sentences,test_sentences_labels = processor.get_dev_examples(args.data_dir,task_label_description)
     else:
-        examples,test_sentences,test_sentences_labels = processor.get_test_examples(args.data_dir)
+        examples,test_sentences,test_sentences_labels = processor.get_test_examples(args.data_dir,task_label_description)
 
     features = convert_examples_to_features(examples,
                                             tokenizer,
@@ -443,6 +447,7 @@ def main():
     parser.add_argument('--server_ip', type=str, default='', help="For distant debugging.")
     parser.add_argument('--server_port', type=str, default='', help="For distant debugging.")
     args = parser.parse_args()
+
 
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)

@@ -14,6 +14,7 @@ from bert4keras.snippets import open
 import os
 from config import *
 import json
+import pdb
 
 # 建立分词器
 tokenizer = Tokenizer(dict_path, do_lower_case=True)

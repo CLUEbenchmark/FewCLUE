@@ -28,7 +28,7 @@ training_type = args.training_type
 maxlen = 256
 batch_size = 8
 
-base_model_path='/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/'
+base_model_path='../../pretrained_models/chinese_roberta_wwm_ext_L-12_H-768_A-12/'
 config_path = base_model_path+'bert_config.json'
 checkpoint_path =  base_model_path+'bert_model.ckpt'
 dict_path = base_model_path+'vocab.txt'
@@ -73,9 +73,9 @@ def get_mask_idx(text, mask_words):
     return [m-offset for m in _mask]
 
 # 加载数据集
-train_data = load_data('datasets/cluewsc/train_0.json')
-valid_data = load_data('datasets/cluewsc/dev_few_all.json')
-test_data = load_data('datasets/cluewsc/test_public.json')
+train_data = load_data('../../../datasets/cluewsc/train_0.json')
+valid_data = load_data('../../../datasets/cluewsc/dev_few_all.json')
+test_data = load_data('../../../datasets/cluewsc/test_public.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # TODO 0.01  # 标注数据的比例
