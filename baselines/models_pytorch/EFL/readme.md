@@ -15,5 +15,6 @@
 ## 已有结果
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href='https://arxiv.org/abs/2104.14690'>EFL wo PT</a>      |  |   |    |  |   |44.8 |  |  |   |   |
-| <a href='https://arxiv.org/abs/2104.14690'>EFL</a>      | 0.679 |   |    |  |   | |  |  |   |   |
+| <a href='https://arxiv.org/abs/2104.14690'>EFL wo PT</a>^[正负样本比例1:1]      | 67.9 |   |    |  | 25.9 |44.8 |  |  |   |   |
+| <a href='https://arxiv.org/abs/2104.14690'>EFL wo PT</a>^[正负样本比例1:8]      |-- |   |    |  |41.7 |52 |  |  |   |   |
+| <a href='https://arxiv.org/abs/2104.14690'>EFL</a>      |  |   |    |  |   | |  |  |   |   |
