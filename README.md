@@ -124,7 +124,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
         2、运行代码
            python3 ptuning_iflytek.py
 
-Zero-shot
+Zero-shot roberta版
 ```
 环境准备：
     预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
@@ -134,6 +134,19 @@ Zero-shot
 1、在FewClue根目录运行脚本：
 bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprstmt\ocnli...]
 ```
+
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/baselines/models_keras/gpt/readme.md'>Zero-shot gpt版</a>
+
+1. 模型下载：    
+    下载chinese_roberta_wwm_ext模型（运行gpt模型时，需要其中的vocab.txt文件，可只下载该文件）和
+   <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'> Chinese GPT模型</a>到pretrained_models目录下。
+
+1. 运行方式：
+    ```
+    cd baselines/models_keras/gpt
+    # -z 表示零样本学习，-t 表示不同任务名称，可替换为eprstmt,bustm,ocnli,csldcp,tnews,wsc,ifytek,csl
+    python run_gpt.py -t chid -z # 运行chid任务，并使用零样本学习的方式
+    ```
 ## FewCLUE小样本测评
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
