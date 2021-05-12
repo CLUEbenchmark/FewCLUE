@@ -140,46 +140,111 @@ def clue_convert_examples_to_features(examples, tokenizer,
                           input_len=input_len))
     return features
 
+class EprstmtProcessor(DataProcessor):
 
-class TnewsProcessor(DataProcessor):
-    """Processor for the TNEWS data set (CLUE version)."""
-
-    def get_train_examples(self, data_dir):
+    def get_train_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train.json")), "train")
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir):
+    def get_dev_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev.json")), "dev")
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir):
+    def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test_public.json")), "test")
+            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
         labels = ["entail","not_entail"]
         return labels
 
-    def _create_examples(self, lines, set_type):
+    def _create_examples(self, lines, set_type,task_label_description):
         """Creates examples for the training and dev sets."""
-        label_en2zh ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'汽车','news_travel':'旅游','news_finance':'财经',
-                      'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
-                      'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
-
-        all_label_description=["这是一条"+value+"新闻" for key,value in label_en2zh.items()]
 
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['sentence']
-            label = str(line['label']) if set_type != 'test' else "100"
-            label_description="这是一条"+label_en2zh[line["label_desc"]]+"新闻" # 这是一条科技新闻
-            if label_description not in label_sentences_dict:
-                label_sentences_dict[label_description]=[]
-            label_sentences_dict[label_description].append(text_a)
+            label=line["label"]
+            if label not in label_sentences_dict:
+                label_sentences_dict[label]=[]
+            label_sentences_dict[label].append(text_a)
+
+        index=0
+        examples = []
+        K=min([len(value) for key,value in label_sentences_dict.items()])
+        test_sentences=[]
+        test_sentences_labels=[]
+
+        for key,value in label_sentences_dict.items():
+            if set_type=="test":
+                for sentence in value:
+                    test_sentences.append(sentence)
+                    test_sentences_labels.append(task_label_description[key])
+                    for _,label_description in task_label_description.items():
+                        text_a=sentence
+                        text_b=label_description
+                        guid=str(index)
+                        examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+                        index+=1
+            else:
+                for sentence in value:
+                    text_a=sentence
+                    text_b=task_label_description[key] #这表达了正面的情感
+                    guid=str(index)
+                    examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
+                    index+=1
+                not_this_label_sentences=[]
+                for _key,_value in label_sentences_dict.items():
+                    if _key!=key:
+                        not_this_label_sentences.extend(_value)
+                negative_sentences=sample(not_this_label_sentences,K)
+                for sentence in negative_sentences:
+                    text_a=sentence
+                    text_b=task_label_description[key]
+                    guid=str(index)
+                    examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+                    index+=1
+
+        return examples,test_sentences,test_sentences_labels
+
+
+class TnewsProcessor(DataProcessor):
+    """Processor for the TNEWS data set (CLUE version)."""
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
+
+        label_sentences_dict={}
+        for (i, line) in enumerate(lines):
+            text_a = line['sentence']
+            label_desc=line["label_desc"]
+            if label_desc not in label_sentences_dict:
+                label_sentences_dict[label_desc]=[]
+            label_sentences_dict[label_desc].append(text_a)
 
         index=0
         examples = []
@@ -191,8 +256,8 @@ class TnewsProcessor(DataProcessor):
             if set_type=="test":
                 for sentence in value:
                     test_sentences.append(sentence)
-                    test_sentences_labels.append(key)
-                    for label_description in all_label_description:
+                    test_sentences_labels.append(task_label_description[key])
+                    for _,label_description in task_label_description.items():
                         text_a=sentence
                         text_b=label_description
                         guid=str(index)
@@ -201,7 +266,7 @@ class TnewsProcessor(DataProcessor):
             else:
                 for sentence in value:
                     text_a=sentence
-                    text_b=key
+                    text_b=task_label_description[key]# 这是一条科技新闻
                     guid=str(index)
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
                     index+=1
@@ -212,7 +277,7 @@ class TnewsProcessor(DataProcessor):
                 negative_sentences=sample(not_this_label_sentences,K)
                 for sentence in negative_sentences:
                     text_a=sentence
-                    text_b=key
+                    text_b=task_label_description[key]
                     guid=str(index)
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
@@ -531,6 +596,7 @@ clue_tasks_num_labels = {
     'wsc': 2,
     'copa': 2,
     'tnews': 15,
+    'eprstmt': 2,
 }
 
 clue_processors = {
@@ -542,6 +608,7 @@ clue_processors = {
     'csl': CslProcessor,
     'wsc': WscProcessor,
     'copa': CopaProcessor,
+    'eprstmt': EprstmtProcessor,
 }
 
 clue_output_modes = {
@@ -553,4 +620,5 @@ clue_output_modes = {
     'csl': "classification",
     'wsc': "classification",
     'copa': "classification",
+    'eprstmt': "classification",
 }
