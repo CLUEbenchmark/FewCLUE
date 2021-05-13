@@ -34,7 +34,7 @@ from processors import collate_fn, xlnet_collate_fn
 from tools.common import seed_everything, save_numpy
 from tools.common import init_logger, logger
 from tools.progressbar import ProgressBar
-from task_label_description import tnews_label_descriptions,eprstmt_label_descriptions
+from task_label_description import tnews_label_descriptions,eprstmt_label_descriptions,csldcp_label_description,iflytek_label_description
 
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig,
                                                                                 RobertaConfig)), ())
@@ -49,6 +49,8 @@ MODEL_CLASSES = {
 TASK_LABELS_DESC={
         "tnews":tnews_label_descriptions,
         "eprstmt":eprstmt_label_descriptions,
+        "csldcp":csldcp_label_description,
+        "iflytek":iflytek_label_description,
         }
 
 def train(args, train_dataset, model, tokenizer):

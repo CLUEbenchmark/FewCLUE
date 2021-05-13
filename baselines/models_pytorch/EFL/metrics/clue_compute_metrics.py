@@ -37,21 +37,15 @@ def compute_metrics(task_name, preds, labels):
     assert len(preds) == len(labels)
     if task_name == "cls":
         return {"acc": simple_accuracy(preds, labels)}
-    elif task_name == "cmnli":
-        return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "ocnli":
         return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "iflytek":
         return {"acc": simple_accuracy(preds, labels)}
-    elif task_name == "wsc":
-        return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "tnews":
         return {"acc": simple_accuracy(preds, labels)}
-    elif task_name == "afqmc":
-        return {"acc": simple_accuracy(preds, labels)}
-    elif task_name == "copa":
-        return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "eprstmt":
+        return {"acc": simple_accuracy(preds, labels)}
+    elif task_name == "csldcp":
         return {"acc": simple_accuracy(preds, labels)}
     else:
         raise KeyError(task_name)
