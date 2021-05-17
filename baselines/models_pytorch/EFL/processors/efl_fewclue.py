@@ -176,13 +176,11 @@ class CsldcpProcessor(DataProcessor):
         index=0
         examples = []
         K=min([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
                     test_sentences_labels.append(task_label_description[key])
                     for _,label_description in task_label_description.items():
                         text_a=sentence
@@ -209,7 +207,7 @@ class CsldcpProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 class EprstmtProcessor(DataProcessor):
 
@@ -247,13 +245,11 @@ class EprstmtProcessor(DataProcessor):
         index=0
         examples = []
         K=min([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
                     test_sentences_labels.append(task_label_description[key])
                     for _,label_description in task_label_description.items():
                         text_a=sentence
@@ -280,8 +276,50 @@ class EprstmtProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
+
+class BustmProcessor(DataProcessor):
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
+
+        label_sentences_dict={}
+        test_sentences_labels=[]
+        examples = []
+        for (i, line) in enumerate(lines):
+            text_a = line['sentence1']
+            text_b=line["sentence2"]
+            label=line["label"]
+            guid=str(i)
+            if label=="1":
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
+            else:
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+            if set_type=="test":
+                test_sentences_labels.append(task_label_description[label])
+
+        return examples,test_sentences_labels
 
 class TnewsProcessor(DataProcessor):
     """Processor for the TNEWS data set (CLUE version)."""
@@ -320,13 +358,11 @@ class TnewsProcessor(DataProcessor):
         index=0
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
                     test_sentences_labels.append(task_label_description[key])
                     for _,label_description in task_label_description.items():
                         text_a=sentence
@@ -353,7 +389,7 @@ class TnewsProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 
 class IflytekProcessor(DataProcessor):
@@ -393,13 +429,11 @@ class IflytekProcessor(DataProcessor):
         index=0
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
                     test_sentences_labels.append(task_label_description[key])
                     for _,label_description in task_label_description.items():
                         text_a=sentence
@@ -426,7 +460,7 @@ class IflytekProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 
 class OcnliProcessor(DataProcessor):
@@ -506,6 +540,7 @@ clue_tasks_num_labels = {
     'csldcp': 67,
     'tnews': 15,
     'eprstmt': 2,
+    'bustm': 2,
 }
 
 clue_processors = {
@@ -515,6 +550,7 @@ clue_processors = {
     'csl': CslProcessor,
     'csldcp': CsldcpProcessor,
     'eprstmt': EprstmtProcessor,
+    'bustm': BustmProcessor,
 }
 
 clue_output_modes = {
@@ -524,4 +560,5 @@ clue_output_modes = {
     'csl': "classification",
     'csldcp': "classification",
     'eprstmt': "classification",
+    'bustm': "classification",
 }
