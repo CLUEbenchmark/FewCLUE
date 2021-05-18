@@ -204,3 +204,7 @@ iflytek_labels ={
 iflytek_label_description={key:"这段文本的应用描述主题是"+key for key,value in iflytek_labels.items()}
 
 bustm_label_description={"1":"entail","0":"not_entail"}
+
+ocnli_label_description={"contradiction":"contradiction","entailment":"entailment","neutral":"neutral"}
+
+chid_label_description={}

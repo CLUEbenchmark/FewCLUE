@@ -34,7 +34,15 @@ from processors import collate_fn, xlnet_collate_fn
 from tools.common import seed_everything, save_numpy
 from tools.common import init_logger, logger
 from tools.progressbar import ProgressBar
-from task_label_description import tnews_label_descriptions,eprstmt_label_descriptions,csldcp_label_description,iflytek_label_description,bustm_label_description
+from task_label_description import (
+        tnews_label_descriptions,
+        eprstmt_label_descriptions,
+        csldcp_label_description,
+        iflytek_label_description,
+        bustm_label_description,
+        ocnli_label_description,
+        chid_label_description
+        )
 
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig,
                                                                                 RobertaConfig)), ())
@@ -52,6 +60,8 @@ TASK_LABELS_DESC={
         "csldcp":csldcp_label_description,
         "iflytek":iflytek_label_description,
         "bustm":bustm_label_description,
+        "ocnli":ocnli_label_description,
+        "chid":chid_label_description,
         }
 
 def train(args, train_dataset, model, tokenizer):
@@ -283,6 +293,14 @@ def predict(args, model, tokenizer, label_list, prefix=""):
             for i in range(len(preds)):
                 sentence_label=list(task_label_description.values())[np.argmax(preds[i])]
                 sentence_labels.append(sentence_label)
+        elif args.task_name in ["chid"]:
+            assert len(preds)%7==0
+            pdb.set_trace()
+            for i in range(int(len(preds)/7)):
+                sentence_label=test_sentences_labels[i][0][np.argmax(preds[i*7:(i+1)*7,0])]
+                sentence_labels.append(sentence_label)
+            assert len(sentence_labels)==int(len(preds)/7)
+            test_sentences_labels=[item[0][item[1]] for item in test_sentences_labels]
 
         assert len(sentence_labels)==len(test_sentences_labels)
 
