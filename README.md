@@ -184,7 +184,9 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         最后提交的文件为：fewclue_submit_examples.zip，包括了上面的所有文件的压缩包。
         压缩命名如：zip fewclue_submit_examples.zip *.json
-        
+    
+    第一阶段前15名，有资格进入到第二阶段。
+    
     第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
         eprstmt_predict_x.json
         csldcp_predict_x.json
