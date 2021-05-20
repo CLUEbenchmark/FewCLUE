@@ -18,17 +18,19 @@
            结果包括验证集和测试集的准确率，以及无标签测试集的生成提交文件
 
 
-​      
-    PET/Ptuning/GPT:
-        环境准备：
-          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
-          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
-        
-        运行：
+​         
+
+     PET/Ptuning/GPT:
+       	环境准备：
+            预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+            需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
+    	运行：
         1、进入到相应的目录，运行相应的代码。以ptuning为例：
            cd ./baselines/models_keras/ptuning
         2、运行代码
            python3 ptuning_iflytek.py
+
+
 
 ~~~
 ADAPET: 目前支持EPRSTMT、bustm、ocnli、cluewsc、csl、chid任务
