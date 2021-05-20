@@ -185,8 +185,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         最后提交的文件为：fewclue_submit_examples.zip，包括了上面的所有文件的压缩包。
         压缩命名如：zip fewclue_submit_examples.zip *.json
     
-    第一阶段前15名，有资格进入到第二阶段。
-    
+    第一阶段前15名，有资格进入到第二阶段：   
     第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
         eprstmt_predict_x.json
         csldcp_predict_x.json
@@ -201,6 +200,11 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
     
+    最终成绩： 线上得分* 0.65 + 线上方案评审 * 0.35
+    
+    前10名有资格进入线上答辩环节：
+    线上方案评审：方案评审通过考察参赛队伍提交方案的新颖性、实用性和解释、答辩表现力来打分，由5位评审老师打分；每只队伍有10分钟的时间讲解方案，5分钟来回答问题。
+
     6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
