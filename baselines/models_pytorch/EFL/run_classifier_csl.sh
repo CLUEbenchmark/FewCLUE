@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-TASK_NAME="bustm"
+TASK_NAME="csl"
 #MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
-MODEL_NAME="./ocnli_output/bert/"
+MODEL_NAME="./cmnli_output/bert/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 export CUDA_VISIBLE_DEVICES="0"
 
@@ -25,7 +25,7 @@ if [ $# == 0 ]; then
       --do_eval \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
+      --max_seq_length=256 \
       --per_gpu_train_batch_size=4 \
       --per_gpu_eval_batch_size=4 \
       --learning_rate=2e-5 \
@@ -44,7 +44,7 @@ elif [ $1 == "predict" ]; then
       --do_predict \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
+      --max_seq_length=256 \
       --per_gpu_train_batch_size=16 \
       --per_gpu_eval_batch_size=16 \
       --learning_rate=2e-5 \

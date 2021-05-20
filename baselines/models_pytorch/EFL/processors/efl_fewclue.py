@@ -176,6 +176,7 @@ class CsldcpProcessor(DataProcessor):
 
         index=0
         examples = []
+        ratio=8
         K=min([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
 
@@ -200,7 +201,7 @@ class CsldcpProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -247,6 +248,8 @@ class EprstmtProcessor(DataProcessor):
         examples = []
         K=min([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
+        # 负例不够8倍
+        ratio=1
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
@@ -269,7 +272,7 @@ class EprstmtProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -308,7 +311,7 @@ class BustmProcessor(DataProcessor):
         test_sentences_labels=[]
         examples = []
         index=0
-        ratio=8
+        ratio=4
         for line in lines:
             text_a = line['sentence1']
             text_b = line["sentence2"]
@@ -323,6 +326,8 @@ class BustmProcessor(DataProcessor):
             if ratio>1 and set_type!="test":
                 negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
                 for negative_sentence in negative_sentences:
+                    if negative_sentence==text_a:
+                        continue
                     index+=1
                     guid = "%s-%s" % (set_type, index)
                     examples.append(InputExample(guid=guid,text_a=text_a,text_b=negative_sentence,label="not_entail"))
@@ -413,6 +418,7 @@ class TnewsProcessor(DataProcessor):
             label_sentences_dict[label_desc].append(text_a)
 
         index=0
+        ratio=8
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
@@ -438,7 +444,7 @@ class TnewsProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -548,7 +554,7 @@ class OcnliProcessor(DataProcessor):
         test_sentences_labels=[]
         examples = []
         index=0
-        ratio=8
+        ratio=4
         for line in lines:
             text_a = line['sentence1']
             text_b = line["sentence2"]
@@ -560,6 +566,8 @@ class OcnliProcessor(DataProcessor):
             if ratio>1 and set_type!="test":
                 negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
                 for negative_sentence in negative_sentences:
+                    if negative_sentence==text_a:
+                        continue
                     index+=1
                     guid = "%s-%s" % (set_type, index)
                     examples.append(InputExample(guid=guid,text_a=text_a,text_b=negative_sentence,label="contradiction"))
@@ -569,39 +577,118 @@ class OcnliProcessor(DataProcessor):
 
         return examples,test_sentences_labels
 
-class CslProcessor(DataProcessor):
+class WscProcessor(DataProcessor):
     """Processor for the CSL data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir):
+    def get_train_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train.json")), "train")
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir):
+    def get_dev_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev.json")), "dev")
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir):
+    def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test")
+            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
-        return ["0", "1"]
+        labels = ["entail","not_entail"]
+        return labels
 
-    def _create_examples(self, lines, set_type):
+    def _create_examples(self, lines, set_type,task_label_description):
         """Creates examples for the training and dev sets."""
         examples = []
+        test_sentences_labels=[]
+        ratio=1
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
-            text_a = " ".join(line['keyword'])
-            text_b = line['abst']
-            label = str(line['label']) if set_type != 'test' else '0'
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
+            text_a = line['text']
+            text_a_list = list(text_a)
+            target = line['target']
+            query = target['span1_text']
+            query_idx = target['span1_index']
+            pronoun = target['span2_text']
+            pronoun_idx = target['span2_index']
+            assert text_a[pronoun_idx: (pronoun_idx + len(pronoun))] == pronoun, "pronoun: {}".format(pronoun)
+            assert text_a[query_idx: (query_idx + len(query))] == query, "query: {}".format(query)
+            if pronoun_idx > query_idx:
+                text_a_list.insert(query_idx, "_")
+                text_a_list.insert(query_idx + len(query) + 1, "_")
+                text_a_list.insert(pronoun_idx + 2, "[")
+                text_a_list.insert(pronoun_idx + len(pronoun) + 2 + 1, "]")
+            else:
+                text_a_list.insert(pronoun_idx, "[")
+                text_a_list.insert(pronoun_idx + len(pronoun) + 1, "]")
+                text_a_list.insert(query_idx + 2, "_")
+                text_a_list.insert(query_idx + len(query) + 2 + 1, "_")
+            text_a = "".join(text_a_list)
+            text_b=pronoun+"是指"+query
+
+            if line['label']=="false":
+                examples.append( InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+            else:
+                examples.append( InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
+            if set_type=="test":
+                test_sentences_labels.append(task_label_description[line['label']])
+
+        return examples,test_sentences_labels
+
+class CslProcessor(DataProcessor):
+    """Processor for the CSL data set (CLUE version)."""
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
+        label_sentences_dict={}
+        test_sentences_labels=[]
+        examples = []
+        index=0
+        ratio=8
+        for line in lines:
+            text_a = line['abst']
+            keywords = line["keyword"]
+            keywords_desc=",".join(keywords)+"这些关键词都为真实关键词"
+            label = int(line["label"])
+            guid = "%s-%s" % (set_type, index)
+            if label==1:
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="entail"))
+            else:
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="not_entail"))
+            if ratio>1 and set_type!="test":
+                negative_sentences=[line['abst'] for line in sample(lines,ratio-1)]
+                for negative_sentence in negative_sentences:
+                    index+=1
+                    guid = "%s-%s" % (set_type, index)
+                    examples.append(InputExample(guid=guid,text_a=negative_sentence,text_b=keywords_desc,label="not_entail"))
+            if set_type=="test":
+                test_sentences_labels.append(task_label_description[label])
+            index+=1
+
+        return examples,test_sentences_labels
 
 clue_tasks_num_labels = {
     'iflytek': 116,
@@ -612,6 +699,7 @@ clue_tasks_num_labels = {
     'eprstmt': 2,
     'bustm': 2,
     'chid': 2,
+    'cluewsc': 2,
 }
 
 clue_processors = {
@@ -623,6 +711,7 @@ clue_processors = {
     'eprstmt': EprstmtProcessor,
     'bustm': BustmProcessor,
     'chid': ChidProcessor,
+    'cluewsc': WscProcessor,
 }
 
 clue_output_modes = {
@@ -634,4 +723,5 @@ clue_output_modes = {
     'eprstmt': "classification",
     'bustm': "classification",
     'chid': "classification",
+    'cluewsc': "classification",
 }

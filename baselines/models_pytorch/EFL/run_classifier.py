@@ -41,7 +41,9 @@ from task_label_description import (
         iflytek_label_description,
         bustm_label_description,
         ocnli_label_description,
-        chid_label_description
+        chid_label_description,
+        csl_label_description,
+        cluewsc_label_description,
         )
 
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig,
@@ -62,6 +64,8 @@ TASK_LABELS_DESC={
         "bustm":bustm_label_description,
         "ocnli":ocnli_label_description,
         "chid":chid_label_description,
+        "csl":csl_label_description,
+        "cluewsc":cluewsc_label_description,
         }
 
 def train(args, train_dataset, model, tokenizer):
@@ -289,7 +293,7 @@ def predict(args, model, tokenizer, label_list, prefix=""):
                 sentence_label=list(task_label_description.values())[np.argmax(preds[i*len(task_label_description):(i+1)*len(task_label_description),0])]
                 sentence_labels.append(sentence_label)
             assert len(sentence_labels)==int(len(preds)/len(task_label_description))
-        elif args.task_name in ["bustm","ocnli"]:
+        elif args.task_name in ["bustm","ocnli","csl","cluewsc"]:
             for i in range(len(preds)):
                 sentence_label=list(task_label_description.values())[np.argmax(preds[i])]
                 sentence_labels.append(sentence_label)
