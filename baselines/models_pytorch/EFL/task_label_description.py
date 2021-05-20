@@ -3,10 +3,13 @@
 tnews_labels ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'汽车','news_travel':'旅游','news_finance':'财经',
             'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
             'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
-tnews_label_descriptions= {key:"这是一条"+value+"新闻" for key,value in tnews_labels.items()}
+# tnews_label_descriptions= {key:"这是一条"+value+"新闻" for key,value in tnews_labels.items()}
+tnews_label_descriptions= {key:"报道一条"+value+"新闻" for key,value in tnews_labels.items()}
 
-eprstmt_labels ={'Negative':'负面','Positive':'正面'}
-eprstmt_label_descriptions= {key:"这表达了"+value+"的情感" for key,value in eprstmt_labels.items()}
+# eprstmt_labels ={'Negative':'负面','Positive':'正面'}
+eprstmt_labels ={'Negative':'不满意','Positive':'满意'}
+# eprstmt_label_descriptions= {key:"这表达了"+value+"的情感" for key,value in eprstmt_labels.items()}
+eprstmt_label_descriptions= {key:value for key,value in eprstmt_labels.items()}
 
 csldcp_labels = {
 "材料科学与工程":"材料",
@@ -78,7 +81,8 @@ csldcp_labels = {
 "植物保护":"植物",
 }
 
-csldcp_label_description={key:"这段文本的文献学科分类是"+key for key,value in csldcp_labels.items()}
+# csldcp_label_description={key:"这段文本的文献学科分类是"+key for key,value in csldcp_labels.items()}
+csldcp_label_description={key:"这篇论文阐述了"+key for key,value in csldcp_labels.items()}
 
 iflytek_labels ={
 '银行': '银行',
@@ -208,3 +212,7 @@ bustm_label_description={"1":"entail","0":"not_entail"}
 ocnli_label_description={"contradiction":"contradiction","entailment":"entailment","neutral":"neutral"}
 
 chid_label_description={}
+
+csl_label_description={1:"entail",0:"not_entail"}
+
+cluewsc_label_description={"true":"entail","false":"not_entail"}

@@ -25,7 +25,7 @@ if [ $# == 0 ]; then
       --do_eval \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
+      --max_seq_length=256 \
       --per_gpu_train_batch_size=4 \
       --per_gpu_eval_batch_size=4 \
       --learning_rate=2e-5 \
@@ -44,7 +44,7 @@ elif [ $1 == "predict" ]; then
       --do_predict \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
+      --max_seq_length=256 \
       --per_gpu_train_batch_size=16 \
       --per_gpu_eval_batch_size=16 \
       --learning_rate=2e-5 \
