@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 TASK_NAME="chid"
-MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
-#MODEL_NAME="./cmnli_output/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
+MODEL_NAME="./cmnli_output/bert/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-export CUDA_VISIBLE_DEVICES="0"
+export CUDA_VISIBLE_DEVICES="1"
 
 export FewCLUE_DATA_DIR=../../../datasets/
 
