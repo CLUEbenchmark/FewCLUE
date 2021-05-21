@@ -299,7 +299,6 @@ def predict(args, model, tokenizer, label_list, prefix=""):
                 sentence_labels.append(sentence_label)
         elif args.task_name in ["chid"]:
             assert len(preds)%7==0
-            pdb.set_trace()
             for i in range(int(len(preds)/7)):
                 sentence_label=test_sentences_labels[i][0][np.argmax(preds[i*7:(i+1)*7,0])]
                 sentence_labels.append(sentence_label)

@@ -493,6 +493,7 @@ class IflytekProcessor(DataProcessor):
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
+        ratio=8
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
@@ -515,7 +516,7 @@ class IflytekProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]

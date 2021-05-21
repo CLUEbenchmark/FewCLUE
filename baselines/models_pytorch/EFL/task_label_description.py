@@ -206,6 +206,7 @@ iflytek_labels ={
 }
 
 iflytek_label_description={key:"这段文本的应用描述主题是"+key for key,value in iflytek_labels.items()}
+# iflytek_label_description={key:"这是一款"+key+"应用" for key,value in iflytek_labels.items()}
 
 bustm_label_description={"1":"entail","0":"not_entail"}
 
