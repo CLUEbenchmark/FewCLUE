@@ -39,11 +39,12 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |        | 53.9N |  | 52.1N |  |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-    
+
     FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
     FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
     Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
@@ -112,16 +113,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 
 ​      
-    PET/Ptuning/GPT:
-        环境准备：
-          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
-          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
-        
-        运行：
-        1、进入到相应的目录，运行相应的代码。以ptuning为例：
-           cd ./baselines/models_keras/ptuning
-        2、运行代码
-           python3 ptuning_iflytek.py
+​    PET/Ptuning/GPT:
+​        环境准备：
+​          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+​          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
+​        
+​        运行：
+​        1、进入到相应的目录，运行相应的代码。以ptuning为例：
+​           cd ./baselines/models_keras/ptuning
+​        2、运行代码
+​           python3 ptuning_iflytek.py
 
 Zero-shot roberta版
 ```
@@ -204,7 +205,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     
     前10名有资格进入线上答辩环节：
     线上方案评审：方案评审通过考察参赛队伍提交方案的新颖性、实用性和解释、答辩表现力来打分，由5位评审老师打分；每只队伍有10分钟的时间讲解方案，5分钟来回答问题。
-
+    
     6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
@@ -428,7 +429,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     离散模板搜索-->连续端到端学习:
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="87%" height="87%" />   
 
-    
+
     中文例子：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="85%" height="85%" />   
       
@@ -498,10 +499,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
      xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
      xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
      xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
-     
+
    
+
+
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
-   
+
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
@@ -525,14 +528,14 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
-   
+
    添加微信入FewCLUE群:
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />   
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
 
    QQ群:836811304
-   
+
 ## 引用 Reference
 
 1、<a href='https://arxiv.org/abs/2005.14165'>GPT3: Language Models are Few-Shot Learners</a>
