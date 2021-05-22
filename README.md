@@ -46,10 +46,12 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |        | 53.9N |  | 52.1N |  |
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
 
-    FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
+    Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 
+    Ptuning: 自动构建模板; Zero-shot: 零样本学习；EFL:自然语言推理形式; ADAPET:PET改进版，带正确标签条件优化
     FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
-    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
-    五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
+    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；
+    报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；CLUE榜单已经可以提交；
+    由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
 ## 实验结果 vs 人类水平   Human Performance & Benchmark Results
