@@ -21,8 +21,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 | NLI  |  Acc | 5Genres |
 |    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSmlarty | Acc | AIVirtualAssistant |
 |   |Reading |Comprhnsn |Tasks |
-|     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
-|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI|
+|     CHID  | 42 |  42 | 2002 | 2000  | 7 | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
+|     CSL  | 32 |  32 | 2828 | 3000 | 2 | 19841 | KeywordRecogntn| Acc | AcademicCNKI|
 |     CLUEWSC  | 32 | 32  |  976 | 290  | 2 | 0| CorefResolution  | Acc | ChineseFictionBooks 
 
     EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
