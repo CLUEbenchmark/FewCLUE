@@ -4,7 +4,7 @@ tnews_labels ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'�
             'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
             'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
 # tnews_label_descriptions= {key:"这是一条"+value+"新闻" for key,value in tnews_labels.items()}
-tnews_label_descriptions= {key:"报道一条"+value+"新闻" for key,value in tnews_labels.items()}
+tnews_label_descriptions= {key:"下面报道一条"+value+"新闻" for key,value in tnews_labels.items()}
 
 # eprstmt_labels ={'Negative':'负面','Positive':'正面'}
 eprstmt_labels ={'Negative':'不满意','Positive':'满意'}

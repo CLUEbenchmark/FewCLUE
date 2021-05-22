@@ -22,9 +22,7 @@
 
 1. 正负样本比例1:1
 2. 正负样本比例1:8,其中ocnli为三分类，构建了4倍的contradiction样本,bustm构建了4倍的负例样本
-3. ocnli/csl/chid任务: 采用的cmnli的在chinese_roberta_wwm_ext_L-12_H-768_A-12进行再训练的模型作为预训练模型
-   eprstmt/bustm/csldcp/tnews/wsc/iflytek: 采用的ocnli的在chinese_roberta_wwm_ext_L-12_H-768_A-12进行再训练的模型作为预训练模型
-   样本采样比例和EFL wo PT(2)一样
+3. 采用已有的中文文本蕴含任务如cmnli或者ocnli对模型进行预先训练，再拿这个预先训练的模型作为预训练模型
 
 #### 备注
 1. 目前都是在train_0 dev_0 和test_public上做的训练和测试
