@@ -22,14 +22,13 @@ if [ $# == 0 ]; then
       --model_name_or_path=$MODEL_NAME \
       --task_name=$TASK_NAME \
       --do_train \
-      --do_eval \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
       --max_seq_length=128 \
       --per_gpu_train_batch_size=4 \
       --per_gpu_eval_batch_size=4 \
       --learning_rate=2e-5 \
-      --num_train_epochs=10.0 \
+      --num_train_epochs=5.0 \
       --logging_steps=3335 \
       --save_steps=3335 \
       --output_dir=$CURRENT_DIR/${TASK_NAME}_output/ \
