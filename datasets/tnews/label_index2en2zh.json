@@ -1,0 +1,15 @@
+{"label": "100", "label_desc": "news_story","label_zh":"故事"}
+{"label": "101", "label_desc": "news_culture","label_zh":"文化"}
+{"label": "102", "label_desc": "news_entertainment","label_zh":"娱乐"}
+{"label": "103", "label_desc": "news_sports"," label_zh":"体育"}
+{"label": "104", "label_desc": "news_finance","label_zh":"财经"}
+{"label": "106", "label_desc": "news_house"," label_zh":"房产"}
+{"label": "107", "label_desc": "news_car","label_zh":"汽车"}
+{"label": "108", "label_desc": "news_edu","label_zh":"教育"}
+{"label": "109", "label_desc": "news_tech","label_zh":"科技"}
+{"label": "110", "label_desc": "news_military","label_zh":"军事"}
+{"label": "112", "label_desc": "news_travel","label_zh":"旅游"}
+{"label": "113", "label_desc": "news_world","label_zh":"国际"}
+{"label": "114", "label_desc": "news_stock" ,"label_zh":"股票"}
+{"label": "115", "label_desc": "news_agriculture" ,"label_zh":"农业"}
+{"label": "116", "label_desc": "news_game"," label_zh":"电竞"}
