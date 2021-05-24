@@ -43,6 +43,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
+| <a href='https://arxiv.org/abs/2104.14690'>EFL wo PT</a>      |  |   |    |  |   |44.8N |  |  |   |   |
     
     FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
     FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
@@ -123,7 +124,29 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
         2、运行代码
            python3 ptuning_iflytek.py
 
+Zero-shot roberta版
+```
+环境准备：
+    预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+    需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
 
+运行：
+1、在FewClue根目录运行脚本：
+bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprstmt\ocnli...]
+```
+
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/baselines/models_keras/gpt/readme.md'>Zero-shot gpt版</a>
+
+1. 模型下载：    
+    下载chinese_roberta_wwm_ext模型（运行gpt模型时，需要其中的vocab.txt文件，可只下载该文件）和
+   <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'> Chinese GPT模型</a>到pretrained_models目录下。
+
+1. 运行方式：
+    ```
+    cd baselines/models_keras/gpt
+    # -z 表示零样本学习，-t 表示不同任务名称，可替换为eprstmt,bustm,ocnli,csldcp,tnews,wsc,ifytek,csl
+    python run_gpt.py -t chid -z # 运行chid任务，并使用零样本学习的方式
+    ```
 ## FewCLUE小样本测评
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
@@ -470,11 +493,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
      xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
      xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
      xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
+     
    
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
    
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
+
+#### 7.EFL:Entailment as Few-Shot Learner
+    模型和示例
+    EFL
 
 
 ## 教程 Tutorial
