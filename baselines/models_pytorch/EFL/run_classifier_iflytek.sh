@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 TASK_NAME="iflytek"
-MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
-#MODEL_NAME="./cmnli_output/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
+MODEL_NAME="./ocnli_output/bert/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-export CUDA_VISIBLE_DEVICES="0"
+export CUDA_VISIBLE_DEVICES="1"
 
 export FewCLUE_DATA_DIR=../../../datasets/
 
@@ -17,7 +17,7 @@ fi
 cd $CURRENT_DIR
 echo "Start running..."
 if [ $# == 0 ]; then
-    python run_classifier.py \
+    CUDA_VISIBLE_DEVICES=1 python run_classifier.py \
       --model_type=bert \
       --model_name_or_path=$MODEL_NAME \
       --task_name=$TASK_NAME \
@@ -37,7 +37,7 @@ if [ $# == 0 ]; then
       --seed=42
 elif [ $1 == "predict" ]; then
     echo "Start predict..."
-    python run_classifier.py \
+    CUDA_VISIBLE_DEVICES=1 python run_classifier.py \
       --model_type=bert \
       --model_name_or_path=$MODEL_NAME \
       --task_name=$TASK_NAME \

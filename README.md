@@ -9,6 +9,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
 
+
+
+
+### UPDATE:
+
+  ******* 2021-05-24: 更新了iflytek的测试集(test.json)，请重新拉取一下，并在这个测试集上做预测。
+  
+  ******* 2021-05-22: 添加了ADAPET和EFL的baseline
+
+
 ## 任务描述和统计 Task Descriptions and Statistics
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
@@ -21,8 +31,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 |    OCNLI   | 32  | 32  |  2520 |  3000 | 3  | 20000 | NLI  |  Acc | 5Genres |
 |    BUSTM   | 32 | 32  | 1772 | 2000  | 2 | 4251|SemanticSmlarty | Acc | AIVirtualAssistant |
 |   |Reading |Comprhnsn |Tasks |
-|     CHID  | 42 |  42 | 2002 | 2000  | 7？ | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
-|     CSL  | 32 |  32 | 2828 | 3000 | 2? | 19841 | KeywordRecogntn| Acc | AcademicCNKI|
+|     CHID  | 42 |  42 | 2002 | 2000  | 7 | 7585 |  MultipleChoice,idiom | Acc  | Novel,EssayNews |
+|     CSL  | 32 |  32 | 2828 | 3000 | 2 | 19841 | KeywordRecogntn| Acc | AcademicCNKI|
 |     CLUEWSC  | 32 | 32  |  976 | 290  | 2 | 0| CorefResolution  | Acc | ChineseFictionBooks 
 
     EPRSTMT:电商评论情感分析；CSLDCP：科学文献学科分类；TNEWS:新闻分类；IFLYTEK:APP应用描述主题分类；
@@ -37,18 +47,21 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
 | <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
-| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/pet">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
-| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-| <a href='https://arxiv.org/abs/2104.14690'>EFL wo PT</a>      |  |   |    |  |   |44.8N |  |  |   |   |
-    
-    FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
+| <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
+| <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     |53.4 | 85.6N |  67.6N | 67.5N | 46.7N | 53.5N  |   54.2N  | 44.0N | 61.6N |  28.2N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |        | 53.9N |  | 52.1N |  |
+| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
+
+    Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 
+    Ptuning: 自动构建模板; Zero-shot: 零样本学习；EFL:自然语言推理形式; ADAPET:PET改进版，带正确标签条件优化
     FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
-    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；
-    五一后待榜单可以提交后，将报告在测试集（test.json）上的效果；由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
+    Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；
+    报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；CLUE榜单已经可以提交；
+    由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
 ## 实验结果 vs 人类水平   Human Performance & Benchmark Results
@@ -101,11 +114,11 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     直接fine-tuning: 
         一键运行.基线模型与代码
         1、克隆项目 
-           git clone https://github.com/CLUEbenchmark/FewCLUEDatasets.git
+           git clone https://github.com/CLUEbenchmark/FewCLUE.git
         2、进入到相应的目录
            分类任务  
                例如：
-               cd FewCLUEDatasets/baseline/models_tf/fine_tuning/bert/
+               cd FewCLUE/baseline/models_tf/fine_tuning/bert/
         3、运行对应任务的脚本(GPU方式): 会自动下载模型并开始运行。
            bash run_classifier_multi_dataset.sh
            计算8个任务cecmmnt tnews iflytek ocnli csl cluewsc bustm csldcp，每个任务6个训练集的训练模型结果
@@ -113,16 +126,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
 
 ​      
-    PET/Ptuning/GPT:
-        环境准备：
-          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
-          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
-        
-        运行：
-        1、进入到相应的目录，运行相应的代码。以ptuning为例：
-           cd ./baselines/models_keras/ptuning
-        2、运行代码
-           python3 ptuning_iflytek.py
+​    PET/Ptuning/GPT:
+​        环境准备：
+​          预先安装Python 3.x(或2.7), Tesorflow 1.14+, Keras 2.3.1, bert4keras。
+​          需要预先下载预训练模型：chinese_roberta_wwm_ext，并放入到pretrained_models目录下
+​        
+​        运行：
+​        1、进入到相应的目录，运行相应的代码。以ptuning为例：
+​           cd ./baselines/models_keras/ptuning
+​        2、运行代码
+​           python3 ptuning_iflytek.py
 
 Zero-shot roberta版
 ```
@@ -185,7 +198,8 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         最后提交的文件为：fewclue_submit_examples.zip，包括了上面的所有文件的压缩包。
         压缩命名如：zip fewclue_submit_examples.zip *.json
-        
+    
+    第一阶段前15名，有资格进入到第二阶段：   
     第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
         eprstmt_predict_x.json
         csldcp_predict_x.json
@@ -199,6 +213,11 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         x包括{0,1,2,3,4,all}，即每个数据集需要在test.json上预测6次。
         
         最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
+    
+    最终成绩： 线上得分* 0.65 + 线上方案评审 * 0.35
+    
+    前10名有资格进入线上答辩环节：
+    线上方案评审：方案评审通过考察参赛队伍提交方案的新颖性、实用性和解释、答辩表现力来打分，由5位评审老师打分；每只队伍有10分钟的时间讲解方案，5分钟来回答问题。
     
     6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
@@ -423,7 +442,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     离散模板搜索-->连续端到端学习:
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning.jpeg"  width="87%" height="87%" />   
 
-    
+
     中文例子：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ptuning_2.jpeg"  width="85%" height="85%" />   
       
@@ -493,10 +512,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
      xin3=[CLS]I am happy to help others[SEP]this is ok[EOS](负例:not entail)
      xin4=[CLS]I am happy to help others[SEP]this is bad[EOS](负例:not entail)
      xin5=[CLS]I am happy to help others[SEP]this is terrible[EOS](负例:not entail)
-     
+
    
+
+
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl.jpeg"  width="88%" height="88%" />   
-   
+
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
@@ -520,14 +541,14 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     
     2.问：我正在研究小样本学习，具有较强的模型研究能力，怎么参与到此项目？
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
-   
+
    添加微信入FewCLUE群:
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />   
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
 
    QQ群:836811304
-   
+
 ## 引用 Reference
 
 1、<a href='https://arxiv.org/abs/2005.14165'>GPT3: Language Models are Few-Shot Learners</a>

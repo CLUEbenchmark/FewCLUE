@@ -131,6 +131,7 @@ def clue_convert_examples_to_features(examples, tokenizer,
             logger.info("token_type_ids: %s" % " ".join([str(x) for x in token_type_ids]))
             logger.info("label: %s (id = %d)" % (example.label, label))
             logger.info("input length: %d" % (input_len))
+            logger.info(" ")
 
         features.append(
             InputFeatures(input_ids=input_ids,
@@ -155,7 +156,7 @@ class CsldcpProcessor(DataProcessor):
     def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -168,22 +169,21 @@ class CsldcpProcessor(DataProcessor):
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['content']
-            label=line["label"]
+            label=line["label"] if "label" in line else list(task_label_description.keys())[0]
             if label not in label_sentences_dict:
                 label_sentences_dict[label]=[]
             label_sentences_dict[label].append(text_a)
 
         index=0
         examples = []
+        ratio=8
         K=min([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
-                    test_sentences_labels.append(task_label_description[key])
+                    test_sentences_labels.append(str(key))
                     for _,label_description in task_label_description.items():
                         text_a=sentence
                         text_b=label_description
@@ -201,7 +201,7 @@ class CsldcpProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -209,7 +209,7 @@ class CsldcpProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 class EprstmtProcessor(DataProcessor):
 
@@ -226,7 +226,7 @@ class EprstmtProcessor(DataProcessor):
     def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -239,7 +239,7 @@ class EprstmtProcessor(DataProcessor):
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['sentence']
-            label=line["label"]
+            label=line["label"] if "label" in line else list(task_label_description.keys())[0]
             if label not in label_sentences_dict:
                 label_sentences_dict[label]=[]
             label_sentences_dict[label].append(text_a)
@@ -247,14 +247,14 @@ class EprstmtProcessor(DataProcessor):
         index=0
         examples = []
         K=min([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
+        # 负例不够8倍
+        ratio=1
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
-                    test_sentences_labels.append(task_label_description[key])
+                    test_sentences_labels.append(str(key))
                     for _,label_description in task_label_description.items():
                         text_a=sentence
                         text_b=label_description
@@ -272,7 +272,7 @@ class EprstmtProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -280,10 +280,64 @@ class EprstmtProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 
-class TnewsProcessor(DataProcessor):
+class BustmProcessor(DataProcessor):
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
+        label_sentences_dict={}
+        test_sentences_labels=[]
+        examples = []
+        index=0
+        ratio=4
+        for line in lines:
+            text_a = line['sentence1']
+            text_b = line["sentence2"]
+            label=line["label"] if "label" in line else list(task_label_description.keys())[0]
+            guid = "%s-%s" % (set_type, index)
+            if label.strip()=='-':
+                continue
+            if label=="1":
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
+            else:
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+            if ratio>1 and set_type!="test":
+                negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
+                for negative_sentence in negative_sentences:
+                    if negative_sentence==text_a:
+                        continue
+                    index+=1
+                    guid = "%s-%s" % (set_type, index)
+                    examples.append(InputExample(guid=guid,text_a=text_a,text_b=negative_sentence,label="not_entail"))
+            if set_type=="test":
+                test_sentences_labels.append(str(label))
+            index+=1
+
+        return examples,test_sentences_labels
+
+class ChidProcessor(DataProcessor):
     """Processor for the TNEWS data set (CLUE version)."""
 
     def get_train_examples(self, data_dir,task_label_description):
@@ -308,26 +362,71 @@ class TnewsProcessor(DataProcessor):
 
     def _create_examples(self, lines, set_type,task_label_description):
         """Creates examples for the training and dev sets."""
+        index=0
+        examples = []
+        test_sentences_labels=[]
+        for line in lines:
+            label=int(line["answer"]) if "answer" in line else ''
+            candidates=line["candidates"]
+            content=line["content"]
+            for candidate_index in range(len(candidates)):
+                guid = "%s-%s" % (set_type, index)
+                candidate=candidates[candidate_index]
+                candidate_string="位置#idiom#处的成语应该填写"+candidate
+                if candidate_index==label:
+                    examples.append(InputExample(guid=guid, text_a=content, text_b=candidate_string, label="entail"))
+                else:
+                    examples.append(InputExample(guid=guid, text_a=content, text_b=candidate_string, label="not_entail"))
+                index+=1
+            if set_type=="test":
+                test_sentences_labels.append((candidates,label))
+
+        return examples,test_sentences_labels
+
+class TnewsProcessor(DataProcessor):
+    """Processor for the TNEWS data set (CLUE version)."""
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
 
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['sentence']
-            label_desc=line["label_desc"]
-            if label_desc not in label_sentences_dict:
-                label_sentences_dict[label_desc]=[]
-            label_sentences_dict[label_desc].append(text_a)
+            label=str(line["label"]) if "label" in line else list(task_label_description.keys())[0]
+            if label not in label_sentences_dict:
+                label_sentences_dict[label]=[]
+            label_sentences_dict[label].append(text_a)
 
         index=0
+        ratio=8
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
-                    test_sentences_labels.append(task_label_description[key])
+                    test_sentences_labels.append(str(key))
                     for _,label_description in task_label_description.items():
                         text_a=sentence
                         text_b=label_description
@@ -345,7 +444,7 @@ class TnewsProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -353,7 +452,7 @@ class TnewsProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 
 class IflytekProcessor(DataProcessor):
@@ -372,7 +471,7 @@ class IflytekProcessor(DataProcessor):
     def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -385,7 +484,7 @@ class IflytekProcessor(DataProcessor):
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['sentence']
-            label_desc=line["label_des"]
+            label_desc=line["label_des"] if "label_des" in line else list(task_label_description.keys())[0]
             if label_desc not in label_sentences_dict:
                 label_sentences_dict[label_desc]=[]
             label_sentences_dict[label_desc].append(text_a)
@@ -393,14 +492,13 @@ class IflytekProcessor(DataProcessor):
         index=0
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
-        test_sentences=[]
         test_sentences_labels=[]
+        ratio=8
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
                 for sentence in value:
-                    test_sentences.append(sentence)
-                    test_sentences_labels.append(task_label_description[key])
+                    test_sentences_labels.append(str(key))
                     for _,label_description in task_label_description.items():
                         text_a=sentence
                         text_b=label_description
@@ -418,7 +516,7 @@ class IflytekProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,8*K)
+                negative_sentences=sample(not_this_label_sentences,ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -426,78 +524,172 @@ class IflytekProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
                     index+=1
 
-        return examples,test_sentences,test_sentences_labels
+        return examples,test_sentences_labels
 
 
 class OcnliProcessor(DataProcessor):
     """Processor for the CMNLI data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir):
+    def get_train_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train.json")), "train")
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir):
+    def get_dev_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev.json")), "dev")
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir):
+    def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test")
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
         return ["contradiction", "entailment", "neutral"]
 
-    def _create_examples(self, lines, set_type):
+    def _create_examples(self, lines, set_type,task_label_description):
         """Creates examples for the training and dev sets."""
+        label_sentences_dict={}
+        test_sentences_labels=[]
         examples = []
-        for (i, line) in enumerate(lines):
-            guid = "%s-%s" % (set_type, i)
-            text_a = line["sentence1"]
+        index=0
+        ratio=4
+        for line in lines:
+            text_a = line['sentence1']
             text_b = line["sentence2"]
-            label = str(line["label"]) if set_type != 'test' else 'neutral'
+            label = line["label"] if "label" in line else list(task_label_description.keys())[0]
+            guid = "%s-%s" % (set_type, index)
             if label.strip()=='-':
                 continue
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
+            examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
+            if ratio>1 and set_type!="test":
+                negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
+                for negative_sentence in negative_sentences:
+                    if negative_sentence==text_a:
+                        continue
+                    index+=1
+                    guid = "%s-%s" % (set_type, index)
+                    examples.append(InputExample(guid=guid,text_a=text_a,text_b=negative_sentence,label="contradiction"))
+            if set_type=="test":
+                test_sentences_labels.append(str(label))
+            index+=1
+
+        return examples,test_sentences_labels
+
+class WscProcessor(DataProcessor):
+    """Processor for the CSL data set (CLUE version)."""
+
+    def get_train_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+
+    def get_dev_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+
+    def get_test_examples(self, data_dir,task_label_description):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+
+    def get_labels(self):
+        """See base class."""
+        labels = ["entail","not_entail"]
+        return labels
+
+    def _create_examples(self, lines, set_type,task_label_description):
+        """Creates examples for the training and dev sets."""
+        examples = []
+        test_sentences_labels=[]
+        ratio=1
+        for (i, line) in enumerate(lines):
+            guid = "%s-%s" % (set_type, i)
+            text_a = line['text']
+            text_a_list = list(text_a)
+            target = line['target']
+            query = target['span1_text']
+            query_idx = target['span1_index']
+            pronoun = target['span2_text']
+            pronoun_idx = target['span2_index']
+            assert text_a[pronoun_idx: (pronoun_idx + len(pronoun))] == pronoun, "pronoun: {}".format(pronoun)
+            assert text_a[query_idx: (query_idx + len(query))] == query, "query: {}".format(query)
+            if pronoun_idx > query_idx:
+                text_a_list.insert(query_idx, "_")
+                text_a_list.insert(query_idx + len(query) + 1, "_")
+                text_a_list.insert(pronoun_idx + 2, "[")
+                text_a_list.insert(pronoun_idx + len(pronoun) + 2 + 1, "]")
+            else:
+                text_a_list.insert(pronoun_idx, "[")
+                text_a_list.insert(pronoun_idx + len(pronoun) + 1, "]")
+                text_a_list.insert(query_idx + 2, "_")
+                text_a_list.insert(query_idx + len(query) + 2 + 1, "_")
+            text_a = "".join(text_a_list)
+            text_b=pronoun+"是指"+query
+
+            if "label" in line and line['label']=="false":
+                examples.append( InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
+            else:
+                examples.append( InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
+            if set_type=="test":
+                test_sentences_labels.append(str(line['label']) if "label" in line else str(list(task_label_description.keys())[0]))
+
+        return examples,test_sentences_labels
 
 class CslProcessor(DataProcessor):
     """Processor for the CSL data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir):
+    def get_train_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train.json")), "train")
+            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir):
+    def get_dev_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev.json")), "dev")
+            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir):
+    def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test")
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
-        return ["0", "1"]
+        labels = ["entail","not_entail"]
+        return labels
 
-    def _create_examples(self, lines, set_type):
+    def _create_examples(self, lines, set_type,task_label_description):
         """Creates examples for the training and dev sets."""
+        label_sentences_dict={}
+        test_sentences_labels=[]
         examples = []
-        for (i, line) in enumerate(lines):
-            guid = "%s-%s" % (set_type, i)
-            text_a = " ".join(line['keyword'])
-            text_b = line['abst']
-            label = str(line['label']) if set_type != 'test' else '0'
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
+        index=0
+        ratio=8
+        for line in lines:
+            text_a = line['abst']
+            keywords = line["keyword"]
+            keywords_desc=",".join(keywords)+"这些关键词都为真实关键词"
+            label = line["label"] if "label" in line else list(task_label_description.keys())[0]
+            guid = "%s-%s" % (set_type, index)
+            if label=="1":
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="entail"))
+            else:
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="not_entail"))
+            if ratio>1 and set_type!="test":
+                negative_sentences=[line['abst'] for line in sample(lines,ratio-1)]
+                for negative_sentence in negative_sentences:
+                    index+=1
+                    guid = "%s-%s" % (set_type, index)
+                    examples.append(InputExample(guid=guid,text_a=negative_sentence,text_b=keywords_desc,label="not_entail"))
+            if set_type=="test":
+                test_sentences_labels.append(str(label))
+            index+=1
+
+        return examples,test_sentences_labels
 
 clue_tasks_num_labels = {
     'iflytek': 116,
@@ -506,6 +698,9 @@ clue_tasks_num_labels = {
     'csldcp': 67,
     'tnews': 15,
     'eprstmt': 2,
+    'bustm': 2,
+    'chid': 2,
+    'cluewsc': 2,
 }
 
 clue_processors = {
@@ -515,6 +710,9 @@ clue_processors = {
     'csl': CslProcessor,
     'csldcp': CsldcpProcessor,
     'eprstmt': EprstmtProcessor,
+    'bustm': BustmProcessor,
+    'chid': ChidProcessor,
+    'cluewsc': WscProcessor,
 }
 
 clue_output_modes = {
@@ -524,4 +722,7 @@ clue_output_modes = {
     'csl': "classification",
     'csldcp': "classification",
     'eprstmt': "classification",
+    'bustm': "classification",
+    'chid': "classification",
+    'cluewsc': "classification",
 }

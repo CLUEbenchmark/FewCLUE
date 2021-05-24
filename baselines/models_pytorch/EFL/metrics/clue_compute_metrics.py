@@ -35,7 +35,9 @@ def pearson_and_spearman(preds, labels):
 
 def compute_metrics(task_name, preds, labels):
     assert len(preds) == len(labels)
-    if task_name == "cls":
+    if task_name == "csl":
+        return {"acc": simple_accuracy(preds, labels)}
+    if task_name == "cluewsc":
         return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "ocnli":
         return {"acc": simple_accuracy(preds, labels)}
@@ -46,6 +48,10 @@ def compute_metrics(task_name, preds, labels):
     elif task_name == "eprstmt":
         return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "csldcp":
+        return {"acc": simple_accuracy(preds, labels)}
+    elif task_name == "bustm":
+        return {"acc": simple_accuracy(preds, labels)}
+    elif task_name == "chid":
         return {"acc": simple_accuracy(preds, labels)}
     else:
         raise KeyError(task_name)
