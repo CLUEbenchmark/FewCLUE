@@ -290,12 +290,12 @@ def predict(args, model, tokenizer, label_list, prefix=""):
         if args.task_name in ["iflytek","csldcp","tnews","eprstmt"]:
             assert len(preds)%len(task_label_description)==0
             for i in range(int(len(preds)/len(task_label_description))):
-                sentence_label=list(task_label_description.values())[np.argmax(preds[i*len(task_label_description):(i+1)*len(task_label_description),0])]
+                sentence_label=list(task_label_description.keys())[np.argmax(preds[i*len(task_label_description):(i+1)*len(task_label_description),0])]
                 sentence_labels.append(sentence_label)
             assert len(sentence_labels)==int(len(preds)/len(task_label_description))
         elif args.task_name in ["bustm","ocnli","csl","cluewsc"]:
             for i in range(len(preds)):
-                sentence_label=list(task_label_description.values())[np.argmax(preds[i])]
+                sentence_label=list(task_label_description.keys())[np.argmax(preds[i])]
                 sentence_labels.append(sentence_label)
         elif args.task_name in ["chid"]:
             assert len(preds)%7==0
@@ -307,24 +307,17 @@ def predict(args, model, tokenizer, label_list, prefix=""):
 
         assert len(sentence_labels)==len(test_sentences_labels)
 
-        if args.output_mode == "classification":
-            predict_label = np.argmax(preds, axis=1)
-        elif args.output_mode == "regression":
-            predict_label = np.squeeze(preds)
-
         output_submit_file = os.path.join(pred_output_dir, prefix, "test_prediction.json")
-        output_logits_file = os.path.join(pred_output_dir, prefix, "test_logits")
         output_labels_file = os.path.join(pred_output_dir, prefix, "test_labels")
 
         # 保存标签结果
         with open(output_submit_file, "w") as writer:
-            for i, pred in enumerate(predict_label):
+            for i, pred in enumerate(sentence_labels):
                 json_d = {}
                 json_d['id'] = i
-                json_d['label'] = str(label_map[pred])
+                json_d['label'] = str(pred)
                 writer.write(json.dumps(json_d) + '\n')
         # 保存中间预测结果
-        save_numpy(file_path=output_logits_file, data=preds)
         with open(output_labels_file,'w') as writer:
             writer.writelines("%s\n" % sentence_label for sentence_label in sentence_labels)
 
