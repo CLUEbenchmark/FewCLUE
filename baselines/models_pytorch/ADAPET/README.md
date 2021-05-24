@@ -46,7 +46,7 @@ https://arxiv.org/pdf/2103.11955.pdf
        
 ### 如何添加新的任务？
 
-   <a href='./ADAPET/adapet_修改流程.pdf'>ADAPET/adapet_修改流程.pdf</a>
+   <a href='./adapet_修改流程.pdf'>ADAPET/adapet_修改流程.pdf</a>
 
         
         
