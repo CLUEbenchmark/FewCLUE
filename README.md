@@ -43,7 +43,6 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-| LM-BFF |  | 84.59 | | | | | | | | |
     
     FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); Ptuning: 自动构建模板; Zero-shot: 零样本学习；Human: 人类测评成绩。
     FineTuningB:FineTuningBert; FineTuningR:FineTuningRoberta; PtuningB:Ptuning_RoBERTa; PtuningGPT:Ptuning_GPT; 
