@@ -43,7 +43,7 @@ def convert_datasets(datasets: Dict, output_dir):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tasks", type=str, nargs="+", 
-        default=["iflytek", "eprstmt", "tnews", "ocnli"], help="Task names")
+        default=["iflytek", "eprstmt", "tnews", "ocnli", "bustm"], help="Task names")
 
     parser.add_argument("--data_dir", type=str, default="datasets", help="Path to original data")
     parser.add_argument("--output_dir", type=str, default="datasets/lm-bff", help="Output path")
