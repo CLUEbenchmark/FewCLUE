@@ -314,7 +314,10 @@ def predict(args, model, tokenizer, label_list, prefix=""):
             for i, pred in enumerate(sentence_labels):
                 json_d = {}
                 json_d['id'] = i
-                json_d['label'] = str(pred)
+                if args.task_name=="chid":
+                    json_d['answer'] = str(pred)
+                else:
+                    json_d['label'] = str(pred)
                 writer.write(json.dumps(json_d) + '\n')
         # 保存中间预测结果
         with open(output_labels_file,'w') as writer:
