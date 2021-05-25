@@ -353,7 +353,7 @@ class ChidProcessor(DataProcessor):
     def get_test_examples(self, data_dir,task_label_description):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test_public.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -379,7 +379,7 @@ class ChidProcessor(DataProcessor):
                     examples.append(InputExample(guid=guid, text_a=content, text_b=candidate_string, label="not_entail"))
                 index+=1
             if set_type=="test":
-                test_sentences_labels.append((candidates,label))
+                test_sentences_labels.append(str(label))
 
         return examples,test_sentences_labels
 
@@ -484,10 +484,10 @@ class IflytekProcessor(DataProcessor):
         label_sentences_dict={}
         for (i, line) in enumerate(lines):
             text_a = line['sentence']
-            label_desc=line["label_des"] if "label_des" in line else list(task_label_description.keys())[0]
-            if label_desc not in label_sentences_dict:
-                label_sentences_dict[label_desc]=[]
-            label_sentences_dict[label_desc].append(text_a)
+            label=str(line["label"]) if "label" in line else list(task_label_description.keys())[0]
+            if label not in label_sentences_dict:
+                label_sentences_dict[label]=[]
+            label_sentences_dict[label].append(text_a)
 
         index=0
         examples = []
