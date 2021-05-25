@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 TASK_NAME="iflytek"
 #MODEL_NAME="./chinese_roberta_wwm_ext_L-12_H-768_A-12/"
-MODEL_NAME="./ocnli_output/bert/"
+MODEL_NAME="./ocnli_output_pretrain/bert/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 export CUDA_VISIBLE_DEVICES="1"
 
@@ -25,11 +25,11 @@ if [ $# == 0 ]; then
       --do_eval \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
-      --per_gpu_train_batch_size=4 \
-      --per_gpu_eval_batch_size=4 \
+      --max_seq_length=256 \
+      --per_gpu_train_batch_size=16 \
+      --per_gpu_eval_batch_size=32 \
       --learning_rate=2e-5 \
-      --num_train_epochs=10.0 \
+      --num_train_epochs=5.0 \
       --logging_steps=3335 \
       --save_steps=3335 \
       --output_dir=$CURRENT_DIR/${TASK_NAME}_output/ \
@@ -44,12 +44,12 @@ elif [ $1 == "predict" ]; then
       --do_predict \
       --do_lower_case \
       --data_dir=$FewCLUE_DATA_DIR/${TASK_NAME}/ \
-      --max_seq_length=128 \
-      --per_gpu_train_batch_size=16 \
-      --per_gpu_eval_batch_size=16 \
+      --max_seq_length=256 \
+      --per_gpu_train_batch_size=32 \
+      --per_gpu_eval_batch_size=32 \
       --learning_rate=2e-5 \
       --predict_checkpoints=0 \
-      --num_train_epochs=3.0 \
+      --num_train_epochs=5.0 \
       --logging_steps=3335 \
       --save_steps=3335 \
       --output_dir=$CURRENT_DIR/${TASK_NAME}_output/ \

@@ -300,10 +300,9 @@ def predict(args, model, tokenizer, label_list, prefix=""):
         elif args.task_name in ["chid"]:
             assert len(preds)%7==0
             for i in range(int(len(preds)/7)):
-                sentence_label=test_sentences_labels[i][0][np.argmax(preds[i*7:(i+1)*7,0])]
+                sentence_label=str(np.argmax(preds[i*7:(i+1)*7,0]))
                 sentence_labels.append(sentence_label)
             assert len(sentence_labels)==int(len(preds)/7)
-            test_sentences_labels=[item[0][item[1]] for item in test_sentences_labels]
 
         assert len(sentence_labels)==len(test_sentences_labels)
 
