@@ -17,6 +17,7 @@ from src.data.cslReader import cslReader
 from src.data.chidReader import chidReader
 from src.data.tnewsReader import tnewsReader
 from src.data.iflytekReader import iflytekReader
+from src.data.csldcpReader import csldcpReader
 
 class DatasetReader(object):
     '''
@@ -63,6 +64,8 @@ class DatasetReader(object):
             self.dataset_reader = tnewsReader(self.config, tokenizer, dataset_num)
         elif self.dataset == "iflytek":
             self.dataset_reader = iflytekReader(self.config, tokenizer, dataset_num)
+        elif self.dataset == "csldcp":
+            self.dataset_reader = csldcpReader(self.config, tokenizer, dataset_num)
         else:
             raise ValueError("Invalid Dataset name")
 

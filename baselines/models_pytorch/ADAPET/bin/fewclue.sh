@@ -3,7 +3,7 @@ export PET_ELECTRA_ROOT=`pwd`
 export PYTHONPATH=$PET_ELECTRA_ROOT:$PYTHONPATH
 export PYTHON_EXEC=python
 set -exu
-export CUDA_VISIBLE_DEVICES="5"
+export CUDA_VISIBLE_DEVICES="4"
 TASKNAME=$1
 config_file="config/$TASKNAME.json"
 
