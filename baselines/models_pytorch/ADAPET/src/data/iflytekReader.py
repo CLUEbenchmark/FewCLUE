@@ -22,11 +22,11 @@ class iflytekReader(object):
 
         # modify
         # self.pet_labels = [["很", "不"]]
-        self.pet_labels = [[{'两性','买房','买车','二手','交通','亲子','仙侠','休闲','体育','保险','借贷','免费','公务','其他','养生','养车','兼职','减肥','出国','办公','动作','医疗',
+        self.pet_labels = [['两性','买房','买车','二手','交通','亲子','仙侠','休闲','体育','保险','借贷','免费','公务','其他','养生','养车','兼职','减肥','出国','办公','动作','医疗',
         '博客','卡牌','同城','唱歌','团购','在线','地图','外卖','女性','婚庆','婚恋','家政','射击','小学','小说','工作','工具','彩票','影像','影视', '快递','情侣','成人','打车','技术',
         '挂号','搞笑','摄影','支付','收款','政务','教育','教辅','新闻','旅游','日程','杂志','棋牌','母婴','民宿','民航','求职','汽车','漫画','理财','生活','电台','电商','电子','百科',
         '直播','相机','社交','社区','票务','租房','租车','竞技','笔记','策略','约会','经营','绘画','美妆','美颜','职考','股票','艺术','英语','菜谱','行程','行车','装修','视频','记账',
-        '论坛','语言','购物','资讯','赚钱','超市','运动','违章','通讯','酒店','铁路','银行','问答','音乐','预定','飞行','餐饮','驾校','魔幻'}]]
+        '论坛','语言','购物','资讯','赚钱','超市','运动','违章','通讯','酒店','铁路','银行','问答','音乐','预定','飞行','餐饮','驾校','魔幻']]
         self.pet_patterns = [["[SENTENCE]","？这是一个{}新闻[SEP]".format(self.tokenizer.mask_token), ""],
                              ["这是一个{}新闻？","[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""],
                              ["下面播报一则{}新闻：", "[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""]]
@@ -92,15 +92,15 @@ class iflytekReader(object):
 
                 dict_input = {}
                 dict_input["sentence"] = json_string["sentence"]
-                dict_input["id"] = json_string["id"]
+                dict_input["id"] = str(json_string["id"])
 
                 dict_output = {}
-                print("sentence1:",json_string["sentence"])
+                # print("sentence1:",json_string["sentence"])
                 if len(json_string["sentence"])<3: continue
                 if "label" in json_string:
                     # print('json_string["label"]:',json_string["label"])
                     dict_output["lbl"] = self.dict_lbl_2_idx[json_string["label"]]
-                    print('2:',"read_dataset.lbl:",dict_output["lbl"])
+                    # print('2:',"read_dataset.lbl:",dict_output["lbl"])
                 else:
                     1/0
                     # print("【ERROR】.获取标签失败。原始数据：",line)
