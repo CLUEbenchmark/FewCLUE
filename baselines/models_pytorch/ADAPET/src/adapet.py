@@ -66,7 +66,8 @@ class adapet(torch.nn.Module):
         # print('list_lbl ',list_lbl) # list_lbl = ['故事', '文化', '娱乐', '体育', '财经', '房产', '汽车', '教育', '科技', '军事', '旅游', '国际', '股票', '农业', '电竞']
         # Get ids for lbls
         lbl_ids = np.ones((self.num_lbl, self.config.max_num_lbl_tok)) * self.tokenizer.pad_token_id
-        # print("lbl_ids:",lbl_ids,";\nlist_lbl:",list_lbl) # lbl_ids = [[0. 0.] [0. 0.]]
+
+        # print("list_lbl:",list_lbl) # lbl_ids = [[0. 0.] [0. 0.]]
 
         for i, lbl in enumerate(list_lbl):
             i_lbl_ids = self.tokenizer(lbl, add_special_tokens=False)["input_ids"]
