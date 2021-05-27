@@ -24,9 +24,9 @@ class tnewsReader(object):
         # modify
         # self.pet_labels = [["很", "不"]]
         self.pet_labels = [["故事", "文化","娱乐","体育","财经","房产","汽车","教育","科技","军事","旅游","国际","股票","农业","电竞"]]
-        self.pet_patterns = [["[SENTENCE]","？这是一个关于{}的应用[SEP]".format(self.tokenizer.mask_token), ""],
-                             ["这是一个{}的应用？","[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""],
-                             ["下面这个是{}应用：", "[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""]]
+        self.pet_patterns = [["[SENTENCE]","？这是一个关于{}的新闻[SEP]".format(self.tokenizer.mask_token), ""],
+                             ["这是一个{}的新闻？","[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""],
+                             ["下面这个是{}新闻：", "[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""]]
         #返回两个集合a,b中元素的笛卡尔乘积
         self.pet_pvps = list(itertools.product(self.pet_patterns, self.pet_labels))
         self._num_pets = len(self.pet_pvps)
