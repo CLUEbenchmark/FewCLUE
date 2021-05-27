@@ -15,6 +15,8 @@ from src.data.cluewscReader import cluewscReader
 from src.data.ocnliReader import ocnliReader
 from src.data.cslReader import cslReader
 from src.data.chidReader import chidReader
+from src.data.tnewsReader import tnewsReader
+from src.data.iflytekReader import iflytekReader
 
 class DatasetReader(object):
     '''
@@ -57,6 +59,10 @@ class DatasetReader(object):
             self.dataset_reader = cslReader(self.config, tokenizer, dataset_num)
         elif self.dataset == "chid":
             self.dataset_reader = chidReader(self.config, tokenizer, dataset_num)
+        elif self.dataset == "tnews":
+            self.dataset_reader = tnewsReader(self.config, tokenizer, dataset_num)
+        elif self.dataset == "iflytek":
+            self.dataset_reader = iflytekReader(self.config, tokenizer, dataset_num)
         else:
             raise ValueError("Invalid Dataset name")
 

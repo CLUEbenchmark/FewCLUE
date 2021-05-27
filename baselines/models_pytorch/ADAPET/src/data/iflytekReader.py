@@ -9,36 +9,44 @@ from collections import defaultdict
 from src.data.tokenize import tokenize_pet_txt, tokenize_pet_mlm_txt
 from src.utils.util import device
 
-class tnewsReader(object):
+class iflytekReader(object):
     '''
-    TnewsReader reads tnews dataset
+    iflytekReader reads iflytek dataset
     '''
-
 
     def __init__(self, config, tokenizer,dataset_num=None):
         self.config = config
         self.tokenizer = tokenizer
         self.dataset_num = dataset_num
-        self.num_lbl = 15 # number of labels，即有多少个标签
+        self.num_lbl = 119 # number of labels，即有多少个标签
 
         # modify
         # self.pet_labels = [["很", "不"]]
-        self.pet_labels = [["故事", "文化","娱乐","体育","财经","房产","汽车","教育","科技","军事","旅游","国际","股票","农业","电竞"]]
-        self.pet_patterns = [["[SENTENCE]","？这是一个关于{}的应用[SEP]".format(self.tokenizer.mask_token), ""],
-                             ["这是一个{}的应用？","[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""],
-                             ["下面这个是{}应用：", "[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""]]
+        self.pet_labels = [[{'两性','买房','买车','二手','交通','亲子','仙侠','休闲','体育','保险','借贷','免费','公务','其他','养生','养车','兼职','减肥','出国','办公','动作','医疗',
+        '博客','卡牌','同城','唱歌','团购','在线','地图','外卖','女性','婚庆','婚恋','家政','射击','小学','小说','工作','工具','彩票','影像','影视', '快递','情侣','成人','打车','技术',
+        '挂号','搞笑','摄影','支付','收款','政务','教育','教辅','新闻','旅游','日程','杂志','棋牌','母婴','民宿','民航','求职','汽车','漫画','理财','生活','电台','电商','电子','百科',
+        '直播','相机','社交','社区','票务','租房','租车','竞技','笔记','策略','约会','经营','绘画','美妆','美颜','职考','股票','艺术','英语','菜谱','行程','行车','装修','视频','记账',
+        '论坛','语言','购物','资讯','赚钱','超市','运动','违章','通讯','酒店','铁路','银行','问答','音乐','预定','飞行','餐饮','驾校','魔幻'}]]
+        self.pet_patterns = [["[SENTENCE]","？这是一个{}新闻[SEP]".format(self.tokenizer.mask_token), ""],
+                             ["这是一个{}新闻？","[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""],
+                             ["下面播报一则{}新闻：", "[SENTENCE][SEP]".format(self.tokenizer.mask_token), ""]]
         #返回两个集合a,b中元素的笛卡尔乘积
         self.pet_pvps = list(itertools.product(self.pet_patterns, self.pet_labels))
         self._num_pets = len(self.pet_pvps)
         self._pet_names = ["PET{}".format(i+1) for i in range(self._num_pets)]
 
         self.list_true_lbl = []
-        # line = {"label": 104, "label_desc": "news_finance", "sentence": "怎么问别人借钱？", "keywords": "", "id": 27956}
+        # {"label": 92, "label_des": "支付", "sentence": "为中小商铺打造的手机支付缴费助手。", "id": 7311}
 
-        # self.dict_lbl_2_idx = {'Positive': 0, 'Negative': 1}
-        self.dict_lbl_2_idx= {"100": 0, "101":1, "102": 2, "103": 3, "104": 4, "106": 5,"107":6,
-                              "108": 7,"109":8, "110": 9, "112": 10, "113": 11, "114": 12,"115":13, "116": 14}
-
+        # self.dict_lbl_2_idx= {"100": 0, "101":1, "102": 2, "103": 3, "104": 4, "106": 5,"107":6,
+        #                      "108": 7,"109":8, "110": 9, "112": 10, "113": 11, "114": 12,"115":13, "116": 14}
+        self.dict_lbl_2_idx={0: 0,100: 1,101: 2,102: 3,103: 4,104: 5,105: 6,106: 7,107: 8,108: 9,109: 10,10: 11,110: 12,
+                   111: 13,112: 14,113: 15,114: 16,115: 17,116: 18,117: 19,118: 20,11: 21,12: 22,13: 23,14: 24,15: 25, 16: 26,17: 27,18: 28,
+                  19: 29,1: 30,20: 31,21: 32,22: 33,23: 34,24: 35,25: 36,26: 37,27: 38,28: 39,29: 40, 2: 41, 30: 42, 31: 43, 32: 44, 33: 45, 34: 46,
+                 35: 47,36: 48,37: 49,38: 50,39: 51,3: 52,40: 53,41: 54,42: 55,43: 56,44: 57,45: 58,46: 59,47: 60,48: 61,49: 62,4: 63,50: 64,51: 65,
+                52: 66,53: 67,54: 68,55: 69,56: 70, 57: 71,58: 72,59: 73,5: 74,60: 75,61: 76,62: 77,63: 78,64: 79,65: 80,66: 81,67: 82,68: 83,69: 84,
+               6: 85,70: 86,71: 87,72: 88,73: 89,74: 90,75: 91,76: 92,77: 93,78: 94,79: 95,7: 96,80: 97,81: 98,82: 99,83: 100,84: 101,85: 102,86: 103,
+               87: 104,88: 105,89: 106,8: 107,90: 108,91: 109,92: 110,93: 111,94: 112,95: 113,96: 114,97: 115,98: 116, 99: 117,9: 118}
         print("self.dict_lbl_2_idx:",self.dict_lbl_2_idx)
 
     def _get_file(self, split):
@@ -50,11 +58,11 @@ class tnewsReader(object):
         '''
         file=''
         if split.lower() == "train":
-            file = os.path.join("../../../datasets", "tnews", "train_{}.json".format(self.dataset_num))
+            file = os.path.join("../../../datasets", "iflytek", "train_{}.json".format(self.dataset_num))
         elif split.lower() == "dev":
-            file = os.path.join("../../../datasets", "tnews", "dev_{}.json".format(self.dataset_num))
+            file = os.path.join("../../../datasets", "iflytek", "dev_{}.json".format(self.dataset_num))
         elif split.lower() == "test":
-            file = os.path.join("../../../datasets", "tnews", "test_public.json")
+            file = os.path.join("../../../datasets", "iflytek", "test_public.json")
         return file
 
     def get_num_lbl_tok(self): #
@@ -78,8 +86,8 @@ class tnewsReader(object):
 
         with open(file, 'r') as f_in:
             for i, line in enumerate(f_in.readlines()):
-                print('1:',i,line)
-                # line = {"label": 104, "label_desc": "news_finance", "sentence": "怎么问别人借钱？", "keywords": "", "id": 27956}
+                # print('1:',i,line)
+                # {"label": 92, "label_des": "支付", "sentence": "为中小商铺打造的手机支付缴费助手。", "id": 7311}
                 json_string = json.loads(line)
 
                 dict_input = {}
@@ -87,9 +95,11 @@ class tnewsReader(object):
                 dict_input["id"] = json_string["id"]
 
                 dict_output = {}
+                print("sentence1:",json_string["sentence"])
+                if len(json_string["sentence"])<3: continue
                 if "label" in json_string:
                     # print('json_string["label"]:',json_string["label"])
-                    dict_output["lbl"] = self.dict_lbl_2_idx[str(json_string["label"])]
+                    dict_output["lbl"] = self.dict_lbl_2_idx[json_string["label"]]
                     print('2:',"read_dataset.lbl:",dict_output["lbl"])
                 else:
                     1/0
