@@ -140,7 +140,7 @@ cython_debug/
 .vscode
 datasets/lm-bff
 *.py[cod]
-*output
+*output*
 *chinese_roberta_wwm_ext_L-12_H-768_A-12
 *weights
 *pretrained_models
