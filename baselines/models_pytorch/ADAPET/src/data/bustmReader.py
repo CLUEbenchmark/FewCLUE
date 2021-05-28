@@ -46,11 +46,11 @@ class bustmReader(object):
         :return:
         '''
         if split.lower() == "train":
-            file = os.path.join("data", "bustm", "train_{}.json".format(self.dataset_num))
+            file = os.path.join("../../../datasets/", "bustm", "train_{}.json".format(self.dataset_num))
         elif split.lower() == "dev":
-            file = os.path.join("data", "bustm", "dev_{}.json".format(self.dataset_num))
+            file = os.path.join("../../../datasets/", "bustm", "dev_{}.json".format(self.dataset_num))
         elif split.lower() == "test":
-            file = os.path.join("data", "bustm", "test_public.json")
+            file = os.path.join("../../../datasets/", "bustm", "test_public.json")
         return file
 
     def read_dataset(self, split=None, is_eval=False):

@@ -53,7 +53,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
 | <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     |53.4 | 85.6N |  67.6N | 67.5N | 46.7N | 53.5N  |   54.2N  | 44.0N | 61.6N |  28.2N |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |        | 53.9N |  | 52.1N |  |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |    54.8    | 53.9N |  | 52.1N |22.2  |
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
 
     Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 

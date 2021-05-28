@@ -42,6 +42,7 @@ class adapet(torch.nn.Module):
         self.lbl_idx_lkup = nn.Embedding.from_pretrained(torch.eye(self.num_lbl)) # [num_lbl, num_lbl]
 
         self.loss = nn.BCELoss(reduction="none")
+        # self.loss =nn.BCEWithLogitsLoss(reduction="none")
 
         # Setup patterns depending on if random or not
         self.pattern_list = self.dataset_reader.dataset_reader.pets
@@ -63,11 +64,15 @@ class adapet(torch.nn.Module):
         bs = pet_mask_ids.shape[0]
         # print('pet_mask_ids ',pet_mask_ids,pet_mask_ids.size())
         # print('mask_idx ',mask_idx,mask_idx.size())
-        # print('list_lbl ',list_lbl)
+        # print('list_lbl ',list_lbl) # list_lbl = ['故事', '文化', '娱乐', '体育', '财经', '房产', '汽车', '教育', '科技', '军事', '旅游', '国际', '股票', '农业', '电竞']
         # Get ids for lbls
         lbl_ids = np.ones((self.num_lbl, self.config.max_num_lbl_tok)) * self.tokenizer.pad_token_id
+
+        # print("list_lbl:",list_lbl) # lbl_ids = [[0. 0.] [0. 0.]]
+
         for i, lbl in enumerate(list_lbl):
             i_lbl_ids = self.tokenizer(lbl, add_special_tokens=False)["input_ids"]
+            # print("i_lbl_ids:",i_lbl_ids) # i_lbl_ids: [3125, 752] = ['故','事']
             lbl_ids[i, :len(i_lbl_ids)] = i_lbl_ids
         lbl_ids = torch.tensor(lbl_ids).to(device).long()  # [num_lbl, max_num_lbl_tok]
 
@@ -141,6 +146,8 @@ class adapet(torch.nn.Module):
         '''
 
         pet_mask_ids, mask_idx, list_lbl = self.dataset_reader.prepare_batch(batch, self.get_pattern())
+        # print('batch["output"]["lbl"]:', batch["output"]["lbl"])  # batch["output"]["lbl"]: tensor([0])
+        # batch_labels=[torch.tensor(x) for x in batch["output"]["lbl"]]
         lbl = batch["output"]["lbl"].to(device)
         # Datasets where the label has more than 1 token
         if isinstance(list_lbl[0], list):
