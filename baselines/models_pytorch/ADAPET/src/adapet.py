@@ -41,8 +41,8 @@ class adapet(torch.nn.Module):
 
         self.lbl_idx_lkup = nn.Embedding.from_pretrained(torch.eye(self.num_lbl)) # [num_lbl, num_lbl]
 
-        # self.loss = nn.BCELoss(reduction="none")
-        self.loss =nn.BCEWithLogitsLoss(reduction="none")
+        self.loss = nn.BCELoss(reduction="none")
+        # self.loss =nn.BCEWithLogitsLoss(reduction="none")
 
         # Setup patterns depending on if random or not
         self.pattern_list = self.dataset_reader.dataset_reader.pets

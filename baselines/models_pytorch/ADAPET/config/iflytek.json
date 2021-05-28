@@ -2,7 +2,7 @@
     "pretrained_weight":  "voidful/albert_chinese_xxlarge",
     "dataset": "iflytek",
     "max_text_length": 128,
-    "batch_size": 16,
+    "batch_size": 8,
     "eval_batch_size": 1,
     "num_batches": 600,
     "max_num_lbl_tok": 2,

@@ -127,7 +127,7 @@ label_des2tag={ # 将中文标签，对应到两个汉字，方便固定字符�
 '社区服务':'社区',
 '电商':'电商',
 '支付':'支付',
-'经营养成':'经营',
+'经营养成':'养成',
 '卡牌':'卡牌',
 '借贷':'借贷',
 '驾校':'驾校',
@@ -145,7 +145,7 @@ label_des2tag={ # 将中文标签，对应到两个汉字，方便固定字符�
 '小说':'小说',
 '运动健身':'运动',
 '相机':'相机',
-'辅助工具':'工具',
+'辅助工具':'辅助',
 '快递物流':'快递',
 '高等教育':'教育',
 '股票':'股票',
@@ -166,7 +166,7 @@ label_des2tag={ # 将中文标签，对应到两个汉字，方便固定字符�
 '约会社交':'约会',
 '经营':'经营',
 '兼职':'兼职',
-'短视频':'视频',
+'短视频':'短视',
 '音乐':'音乐',
 '英语':'英语',
 '棋牌中心':'棋牌',
@@ -246,12 +246,17 @@ label_des2tag={ # 将中文标签，对应到两个汉字，方便固定字符�
 # label_des2tag={'银行':'银行','社区服务':'社区','电商':'电商'}
 # iflytek_labels={"打车":0,"美颜":100,"影像剪辑":101,"摄影修图":102}
 
-print("2.length of label_des2tag:",len(label_des2tag))
 
-# Below code is for iflytekReader.py of ADAPET
-# label_twoword_list=[v for k,v in label_des2tag.items()] # O.K.
-# print("label_twoword_list:\n",label_twoword_list)
-# label_rightIndex2Index_list={vv:label_twoword_list.index(label_des2tag[kk]) for kk,vv in iflytek_labels.items()}
-# print("label_rightIndex2Index_list:\n",label_rightIndex2Index_list)
+label_des2tag_reverse={v:k for k,v in label_des2tag.items()}
+print("length of :",len(label_des2tag),";length of label_des2tag_reverse:",len(label_des2tag_reverse))
 
+#print("2.length of label_des2tag:",len(label_des2tag))
+
+# 得到两个字的标签的列表
+label_twoword_list=[v for k,v in label_des2tag.items()] # O.K.
+print("label_twoword_list:\n",label_twoword_list)
+
+# 得到两个字的标签的列表对应的常规标签和对应的序列信息
+label2seqId_dict={label_des2tag_reverse[element]:seq_id for seq_id,element in enumerate(label_twoword_list)}
+print("label2seqId_dict:\n",label2seqId_dict)
 
