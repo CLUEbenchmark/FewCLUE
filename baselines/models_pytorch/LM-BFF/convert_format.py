@@ -6,11 +6,12 @@ import os
 from typing import Dict
 import json
 from collections import defaultdict
+from tqdm import tqdm
 
 
 def load_data(filename):
     samples = defaultdict(list)
-    f = open(filename, encoding='utf-8')
+    f = open(filename, "r", encoding="utf-8")
     for line in f:
         s = json.loads(line.strip())
         for k, v in s.items():
@@ -26,27 +27,51 @@ def load_datasets(data_dir, tasks) -> Dict:
         datasets[task] = {}
         files_dir = data_dir / task
         for fname in files_dir.iterdir():
-            if fname.is_file() and fname.suffix == ".json":
+            if (
+                fname.is_file()
+                and fname.suffix == ".json"
+                and fname.stem.split("_")[0] in ["train", "dev", "test"]
+            ):
                 samples = load_data(fname)
                 datasets[task][fname.stem] = samples
     return datasets
 
 
 def convert_datasets(datasets: Dict, output_dir):
-    for task in datasets.keys():
+    for task in tqdm(datasets.keys(), desc="Converting datasets"):
         task_output_dir = output_dir / task
         task_output_dir.mkdir(parents=True, exist_ok=True)
         for fname in datasets[task].keys():
-            datasets[task][fname].to_csv(output_dir / task / (fname + ".csv"), header=False, index=False)
+            datasets[task][fname].to_csv(
+                output_dir / task / (fname + ".csv"), header=False, index=False
+            )
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tasks", type=str, nargs="+", 
-        default=["iflytek", "eprstmt", "tnews", "ocnli", "bustm"], help="Task names")
+    parser.add_argument(
+        "--tasks",
+        type=str,
+        nargs="+",
+        default=[
+            "iflytek",
+            "eprstmt",
+            "tnews",
+            "ocnli",
+            "bustm",
+            "csldcp",
+            "cluewsc",
+            "csl"
+        ],
+        help="Task names",
+    )
 
-    parser.add_argument("--data_dir", type=str, default="datasets", help="Path to original data")
-    parser.add_argument("--output_dir", type=str, default="datasets/lm-bff", help="Output path")
+    parser.add_argument(
+        "--data_dir", type=str, default="datasets", help="Path to original data"
+    )
+    parser.add_argument(
+        "--output_dir", type=str, default="datasets/lm-bff", help="Output path"
+    )
 
     args = parser.parse_args()
 
@@ -61,5 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
