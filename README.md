@@ -55,7 +55,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     |53.4 | 85.6N |  67.6N | 67.5N | 46.7N | 53.5N  |   54.2N  | 44.0N | 61.6N |  28.2N |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |    54.8    | 53.9N |  | 52.1N |22.2  |
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
-| <a href="https://github.com/princeton-nlp/LM-BFF">LM-BFF |  | 84.59 | 54.06 | 43.10 |  53.64 |  56.27 | 51.84 | 46.14 | 51.16 | |
+| <a href="https://github.com/princeton-nlp/LM-BFF">LM-BFF | 55.79 | 84.59 | 54.06 | 43.10 |  53.64 |  56.27 | 51.84 | 46.14 | 51.16 | 61.3 |
 
 
     Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 
