@@ -7,19 +7,19 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 ## 内容导引
 | 章节 | 描述 |
 |-|-|
-| [简介](#简介 Intorudction) | 介绍小样本学习背景 |
-| [任务描述和统计](#任务描述和统计 Task Descriptions and Statistics) | 对子任务的统计信息 |
-| [实验结果](#实验结果 Experiments) | 针对各种不同方法，在FewCLUE上的实验对比 |
-| [实验分析](#实验分析 Human Performance & Benchmark Results) | 对人类表现、模型能力和任务进行分析 |
-| [FewCLUE有什么特点?](#FewCLUE有什么特点) | 特定介绍 |
-| [基线模型及运行](#基线模型及运行 Baselines and How to run) | 支持多种基线模型 |
+| [简介](#简介) | 介绍小样本学习背景 |
+| [任务描述和统计](#任务描述和统计) | 对子任务的统计信息 |
+| [实验结果](#实验结果) | 针对各种不同方法，在FewCLUE上的实验对比 |
+| [实验分析](#实验分析) | 对人类表现、模型能力和任务进行分析 |
+| [FewCLUE有什么特点](#FewCLUE有什么特点) | 特定介绍 |
+| [基线模型及运行](#基线模型及运行) | 支持多种基线模型 |
 | [FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
-| [数据集介绍](#数据集介绍 Introduction of datasets) | 介绍各数据集及示例 |
-| [模型简介](#模型简介（附图）) | 基线模型介绍（附图）  |
-| [贡献与参与](#贡献与参与 Contribution & Participation) | 如何参与项目或反馈问题|
+| [数据集介绍](#数据集介绍) | 介绍各数据集及示例 |
+| [模型简介](#模型简介) | 基线模型介绍（附图）  |
+| [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
 
 
-## 简介 Intorudction 
+## 简介
  预训练语言模型，包括用于语言理解(BERT类)或文本生成模型（GPT类），通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
 
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
@@ -36,7 +36,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
   ******* 2021-06-07: 添加支持FewCLUE的LM-bff的baseline
 
 
-## 任务描述和统计 Task Descriptions and Statistics
+## 任务描述和统计
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
@@ -57,7 +57,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     EPRSTMT,CSLDCP,BUSTM 为新任务；其他任务（TNEWS,CHID,IFLYTEK,OCNLI,CSL,CLUEWSC）来自于CLUE benchmark，部分数据集做了新的标注。
 
 
-## 实验结果 Experiments
+## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
 
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
@@ -83,7 +83,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
-## 实验分析 Human Performance & Benchmark Results
+## 实验分析
 
 ### 1.人类水平  Human Performance
 
@@ -127,7 +127,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
 
 
-## 基线模型及运行 Baselines and How to run
+## 基线模型及运行
     目前支持4类代码：直接fine-tuning、PET、Ptuning、GPT
     
     直接fine-tuning: 
@@ -241,7 +241,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
-## 数据集介绍 Introduction of datasets
+## 数据集介绍
 
 ####   分类任务 Single Sentence Tasks
 ##### 1. EPRSTMT（EPR-sentiment）  电商产品评论情感分析数据集  E-commerce Product Review Dataset for Sentiment Analysis
@@ -394,7 +394,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         unlabeled.json: 无标签的大量样本
 
-## 模型简介（附图）
+## 模型简介
 ####   1.BERT.Fine-tuning
     模型简介：
     BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；
@@ -551,7 +551,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     1. 问：测试系统，什么时候开发？
        答：测评系统在5月1节后才会开放。
 
-## 贡献与参与 Contribution & Participation
+## 贡献与参与
     1.问：我有符合代码规范的模型代码，并经过测试，可以贡献到这个项目吗？
      答：可以的。你可以提交一个pull request，并写上说明。
     
