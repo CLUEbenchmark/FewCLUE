@@ -4,6 +4,21 @@
 
 FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
+## 内容导引
+| 章节 | 描述 |
+|-|-|
+| [简介](#简介) | 介绍小样本学习背景 |
+| [任务描述和统计](#任务描述和统计) | 对子任务的统计信息 |
+| [实验结果](#实验结果) | 针对各种不同方法，在FewCLUE上的实验对比 |
+| [实验分析](#实验分析) | 对人类表现、模型能力和任务进行分析 |
+| [FewCLUE有什么特点？](#FewCLUE有什么特点？) | 特定介绍 |
+| [基线模型及运行](#基线模型及运行) | 支持多种基线模型 |
+| [FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
+| [数据集介绍](#数据集介绍 ) | 介绍各数据集及示例 |
+| [模型简介](#模型简介) | 基线模型介绍（附图）  |
+| [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
+
+
 ## 简介 Intorudction 
  预训练语言模型，包括用于语言理解(BERT类)或文本生成模型（GPT类），通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
 
@@ -16,7 +31,9 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 
   ******* 2021-05-24: 更新了iflytek的测试集(test.json)，请重新拉取一下，并在这个测试集上做预测。
   
-  ******* 2021-05-22: 添加了ADAPET和EFL的baseline
+  ******* 2021-05-22: 添加支持FewCLUE的ADAPET和EFL的baseline
+
+  ******* 2021-06-07: 添加支持FewCLUE的LM-bff的baseline
 
 
 ## 任务描述和统计 Task Descriptions and Statistics
@@ -66,7 +83,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
-## 实验结果 vs 人类水平   Human Performance & Benchmark Results
+## 实验分析   Human Performance & Benchmark Results
 
 ### 1.人类水平  Human Performance
 
@@ -96,7 +113,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     而有些任务对于人类比较困难，但对于模型却不一定那么难。如csldcp有67个类别，人类只取得了及格的水平，但我们的基线模型PET在初步的实验中
     就取得了56.9的成绩。我们可以预见，模型还有不少进步能力。
 
-## FewCLUE 有什么特点？
+## FewCLUE有什么特点？
 1、任务类型多样、具有广泛代表性。包含多个不同类型的任务，包括情感分析任务、自然语言推理、多种文本分类、文本匹配任务和成语阅读理解等。
 
 2、研究性与应用性结合。在任务构建、数据采样阶段，即考虑到了学术研究的需要，也兼顾到实际业务场景对小样本学习的迫切需求。
@@ -523,9 +540,6 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
-#### 7.EFL:Entailment as Few-Shot Learner
-    模型和示例
-    EFL
 
 
 ## 教程 Tutorial
