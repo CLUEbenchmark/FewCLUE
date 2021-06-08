@@ -7,16 +7,16 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 ## 内容导引
 | 章节 | 描述 |
 |-|-|
-| [简介](#简介) | 介绍小样本学习背景 |
-| [任务描述和统计](#任务描述和统计) | 对子任务的统计信息 |
-| [实验结果](#实验结果) | 针对各种不同方法，在FewCLUE上的实验对比 |
-| [实验分析](#实验分析) | 对人类表现、模型能力和任务进行分析 |
-| [FewCLUE有什么特点？](#FewCLUE有什么特点？) | 特定介绍 |
-| [基线模型及运行](#基线模型及运行) | 支持多种基线模型 |
+| [简介](#简介 Intorudction) | 介绍小样本学习背景 |
+| [任务描述和统计](#任务描述和统计 Task Descriptions and Statistics) | 对子任务的统计信息 |
+| [实验结果](#实验结果 Experiments) | 针对各种不同方法，在FewCLUE上的实验对比 |
+| [实验分析](#实验分析 Human Performance & Benchmark Results) | 对人类表现、模型能力和任务进行分析 |
+| [FewCLUE有什么特点?](#FewCLUE有什么特点) | 特定介绍 |
+| [基线模型及运行](#基线模型及运行 Baselines and How to run) | 支持多种基线模型 |
 | [FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
-| [数据集介绍](#数据集介绍 ) | 介绍各数据集及示例 |
-| [模型简介](#模型简介) | 基线模型介绍（附图）  |
-| [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
+| [数据集介绍](#数据集介绍 Introduction of datasets) | 介绍各数据集及示例 |
+| [模型简介](#模型简介（附图）) | 基线模型介绍（附图）  |
+| [贡献与参与](#贡献与参与 Contribution & Participation) | 如何参与项目或反馈问题|
 
 
 ## 简介 Intorudction 
@@ -83,7 +83,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
-## 实验分析   Human Performance & Benchmark Results
+## 实验分析 Human Performance & Benchmark Results
 
 ### 1.人类水平  Human Performance
 
@@ -113,7 +113,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     而有些任务对于人类比较困难，但对于模型却不一定那么难。如csldcp有67个类别，人类只取得了及格的水平，但我们的基线模型PET在初步的实验中
     就取得了56.9的成绩。我们可以预见，模型还有不少进步能力。
 
-## FewCLUE有什么特点？
+## FewCLUE有什么特点
 1、任务类型多样、具有广泛代表性。包含多个不同类型的任务，包括情感分析任务、自然语言推理、多种文本分类、文本匹配任务和成语阅读理解等。
 
 2、研究性与应用性结合。在任务构建、数据采样阶段，即考虑到了学术研究的需要，也兼顾到实际业务场景对小样本学习的迫切需求。
