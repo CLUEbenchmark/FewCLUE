@@ -13,7 +13,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | [实验分析](#实验分析) | 对人类表现、模型能力和任务进行分析 |
 | [FewCLUE有什么特点](#FewCLUE有什么特点) | 特定介绍 |
 | [基线模型及运行](#基线模型及运行) | 支持多种基线模型 |
-| [FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
+| [NLPCC201-FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
 | [数据集介绍](#数据集介绍) | 介绍各数据集及示例 |
 | [模型简介](#模型简介) | 基线模型介绍（附图）  |
 | [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
@@ -219,7 +219,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         压缩命名如：zip fewclue_submit_examples.zip *.json
     
     第一阶段前15名，有资格进入到第二阶段：   
-    第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
+    第二阶段（6月8日-6月22日晚上10点）：需针对每一个任务的多份数据集分别做训练和预测，即
         eprstmt_predict_x.json
         csldcp_predict_x.json
         tnews_predict_x.json
@@ -233,12 +233,14 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
     
+    6月23日--6月24日，技术方案（PPT）和代码评审
+
     最终成绩： 线上得分* 0.65 + 线上方案评审 * 0.35
     
-    前10名有资格进入线上答辩环节：
+    6月26日(周六）：前10名有资格进入线上答辩环节：
     线上方案评审：方案评审通过考察参赛队伍提交方案的新颖性、实用性和解释、答辩表现力来打分，由5位评审老师打分；每只队伍有10分钟的时间讲解方案，5分钟来回答问题。
     
-    6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
+    6月27日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
 ## 数据集介绍
