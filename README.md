@@ -196,7 +196,9 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
 
 <a href='https://www.cluebenchmarks.com/submit.html'><img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" /></a>  
 
-<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_examples'>提交样例-单份(提交zip压缩包，提交到FewCLUE榜)</a>
+
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_m_submit_examples'>提交样例-多份(提交zip压缩包，提交到FewCLUE.多)</a>
 
 ### <a href='https://docs.qq.com/doc/DR2pyTGltUURmb0hk'>测评方案</a>
 

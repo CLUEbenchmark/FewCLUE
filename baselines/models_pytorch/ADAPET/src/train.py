@@ -3,7 +3,7 @@ import os
 import numpy as np
 import argparse
 import logging
-from transformers import *
+from transformers import * # 引入transformers库
 
 from src.eval.eval_model import dev_eval,new_test_eval
 from src.adapet import adapet
@@ -56,7 +56,7 @@ def train(config,dataset_num):
     '''
 
     # tokenizer = AutoTokenizer.from_pretrained(config.pretrained_weight)
-    tokenizer = BertTokenizer.from_pretrained(config.pretrained_weight)
+    tokenizer = BertTokenizer.from_pretrained(config.pretrained_weight) # Instantiate a one of the tokenizer classes of the library from a pre-trained model vocabulary.
     batcher = Batcher(config, tokenizer, config.dataset,dataset_num)
     dataset_reader = batcher.get_dataset_reader()
     model = adapet(config, tokenizer, dataset_reader).to(device)
@@ -96,7 +96,7 @@ def train(config,dataset_num):
         print('step:{}\tbatch:{}\tloss:{}'.format(i,batch_idx,loss.item()))
 
         if (i+1) % config.grad_accumulation_factor == 0:
-            torch.nn.utils.clip_grad_norm_(model.parameters(), config.grad_clip_norm)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), config.grad_clip_norm) # Clips gradient norm of an iterable of parameter
             optimizer.step()
             optimizer.zero_grad()
             scheduler.step()
