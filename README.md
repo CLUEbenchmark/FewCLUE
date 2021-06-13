@@ -245,6 +245,9 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     6月27日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
 
+ 榜单一直生效，不受时间限制：小样本学习榜（单份提交）、小样本学习.多榜（多份提交），一直开放可提交，不受[NLPCC2021-任务2]测评时间限制。
+ 
+ 
 ## 数据集介绍
 
 ####   分类任务 Single Sentence Tasks
