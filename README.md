@@ -264,6 +264,9 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     （请选手在6月26日或之前，就可以开始准备论文了。进入二阶段的选手都可以提交论文）
     
 
+ 榜单一直生效，不受时间限制：小样本学习榜（单份提交）、小样本学习.多榜（多份提交），一直开放可提交，不受[NLPCC2021-任务2]测评时间限制。
+ 
+ 
 ## 数据集介绍
 
 ####   分类任务 Single Sentence Tasks
