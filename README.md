@@ -180,9 +180,11 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     python run_gpt.py -t chid -z # 运行chid任务，并使用零样本学习的方式
     ```
 ## FewCLUE小样本测评
+    6月8日之后的用户：小样本学习榜，分为单份提交、多分提交两个榜。榜单一直开放可以提交，不受NLPCC2021-任务2测评时间限制。
+    后来的用户只是不参与奖励。
+
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
 
-    6月8日之后的用户：小样本学习榜，分为单份提交、多分提交两个榜。榜单一直开放可以提交，不受NLPCC2021-任务2测评时间限制。后来的用户只是不参与奖励。
 
 <a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名;</a>  <a href='http://tcci.ccf.org.cn/conference/2021/cfpt.php'> NLPCC2021官方链接</a>
 
