@@ -624,3 +624,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
       year={2021},
       howpublished={\url{https://github.com/CLUEbenchmark/FewCLUE}},
     }
+
+    or 
+
+    @article{CLUEbenchmark,
+      title={CLUE: A Chinese Language Understanding Evaluation Benchmark},
+      author={Liang Xu, Hai Hu, Xuanwei Zhang, Lu Li, Chenjie Cao, Yudong Li, Yechen Xu, Kai Sun, Dian Yu,Cong Yu,et al.},
+      journal={In Proceedings of the 28th International Conference on Computational Linguistics, pages 4762–4772.},
+      year={2020}
+     }
