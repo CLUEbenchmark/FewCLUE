@@ -582,13 +582,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
    <a href='https://meeting.tencent.com/user-center/shared-record-info?id=899d9236-9630-47c8-8b15-2caad162ecb9&is-single=true'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
    访问密码：8BK0wLZ8
 
-   FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践:
-     <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1396073604659040256&id=11129074844230672382&from=0'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
+   <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1396073604659040256&id=11129074844230672382&from=0'>FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践</a>
    访问密码：sJVuH39l
     
    
-   <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1411576207295664128&id=6039055127084472304&from=0'>决赛答辩会视频</a>
-                 访问密码：D6amd6h1
+   <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1411576207295664128&id=6039055127084472304&from=0'>FewCLUE: 决赛答辩会视频</a>
+   访问密码：D6amd6h1
 
 
 
