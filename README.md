@@ -582,12 +582,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
    <a href='https://meeting.tencent.com/user-center/shared-record-info?id=899d9236-9630-47c8-8b15-2caad162ecb9&is-single=true'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
    访问密码：8BK0wLZ8
 
-   <a href='https://meeting.tencent.com/v2/cloud-record/share?id=3d6cc436-a02e-40ad-a12b-3621320743c9&tk=01382oELyzaBt0R4b7Vkn7SeVIDPWLppCl3Ua2BLf7uDRjeR6WzldU5Iz8p5ZJvjzNmSwSQ5%2B3lWvy39BxwWNkSQ%3D%3D&no-auth=1'>FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践</a>
-    
+   FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践:
+     <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1396073604659040256&id=11129074844230672382&from=0'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
    访问密码：sJVuH39l
     
    
-   <a href='https://meeting.tencent.com/v2/cloud-record/share?id=fe4e3707-bbac-4054-9e57-b96fb6b9736e&tk=01382oELyzaBt0R4b7Vkn7SeDr9Io83XrhAPO8qP31Je7LrR7TyxbLoPfJck4rt0NiyNUD9%2BOnTzIOL%2FgaeI4wFA%3D%3D&no-auth=1'>决赛答辩会视频</a>
+   <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1411576207295664128&id=6039055127084472304&from=0'>决赛答辩会视频</a>
                  访问密码：D6amd6h1
 
 
