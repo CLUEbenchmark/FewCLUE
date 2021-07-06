@@ -577,7 +577,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
    
    2.复赛选手-技术方案，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt/FewCLUE%E5%A4%8D%E8%B5%9B%E9%80%89%E6%89%8B%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88'>PPT</a>
 
-   3、分享视频及答辩视频
+   3、分享视频及答辩视频(使用腾讯会议录制)
    
    <a href='https://meeting.tencent.com/user-center/shared-record-info?id=899d9236-9630-47c8-8b15-2caad162ecb9&is-single=true'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
    访问密码：8BK0wLZ8
