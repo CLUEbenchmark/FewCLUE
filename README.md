@@ -16,6 +16,8 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | [NLPCC201-FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
 | [数据集介绍](#数据集介绍) | 介绍各数据集及示例 |
 | [模型简介](#模型简介) | 基线模型介绍（附图）  |
+| [学习资料(视频及PPT)](#学习资料) | 基线模型介绍（附图）  |
+
 | [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
 
 
@@ -570,10 +572,23 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
 
 
 
-## 教程 Tutorial
+## 学习资料 
    1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
+   
+   2.复赛选手-技术方案，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
 
-   2.教程（Jupyter Notebook/Google Colab），添加中。。。
+   3、分享视频及答辩视频
+   
+   <a href='https://meeting.tencent.com/user-center/shared-record-info?id=899d9236-9630-47c8-8b15-2caad162ecb9&is-single=true'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
+   访问密码：8BK0wLZ8
+
+   <a href='https://meeting.tencent.com/v2/cloud-record/share?id=3d6cc436-a02e-40ad-a12b-3621320743c9&tk=01382oELyzaBt0R4b7Vkn7SeVIDPWLppCl3Ua2BLf7uDR5w1iTltX9kCwO3S8NfMkWooThGlT44wISyBInV%2BkuyQ%3D%3D&no-auth=1'>FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践</a>
+    访问密码：sJVuH39l
+    
+   <a href='https://meeting.tencent.com/v2/cloud-record/share?id=fe4e3707-bbac-4054-9e57-b96fb6b9736e&tk=01382oELyzaBt0R4b7Vkn7SeDr9Io83XrhAPO8qP31Je7LrR7TyxbLoPfJck4rt0NiyNUD9%2BOnTzIOL%2FgaeI4wFA%3D%3D&no-auth=1'>决赛答辩会视频</a>
+                 访问密码：D6amd6h1
+
+访问密码：D6amd6h1
 
 ## 问题 Question
     1. 问：测试系统，什么时候开发？
