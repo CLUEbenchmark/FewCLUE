@@ -575,7 +575,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
 ## 学习资料 
    1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
    
-   2.复赛选手-技术方案，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
+   2.复赛选手-技术方案，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt/FewCLUE%E5%A4%8D%E8%B5%9B%E9%80%89%E6%89%8B%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88'>PPT</a>
 
    3、分享视频及答辩视频
    
@@ -587,8 +587,6 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     
    <a href='https://meeting.tencent.com/v2/cloud-record/share?id=fe4e3707-bbac-4054-9e57-b96fb6b9736e&tk=01382oELyzaBt0R4b7Vkn7SeDr9Io83XrhAPO8qP31Je7LrR7TyxbLoPfJck4rt0NiyNUD9%2BOnTzIOL%2FgaeI4wFA%3D%3D&no-auth=1'>决赛答辩会视频</a>
                  访问密码：D6amd6h1
-
-访问密码：D6amd6h1
 
 ## 问题 Question
     1. 问：测试系统，什么时候开发？
