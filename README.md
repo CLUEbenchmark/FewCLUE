@@ -27,15 +27,18 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
 
 
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/FewCLUE.final.jpeg"  width="45%" height="45%" />   
 
 
 ### UPDATE:
-
+  
   ******* 2021-05-24: 更新了iflytek的测试集(test.json)，请重新拉取一下，并在这个测试集上做预测。
   
   ******* 2021-05-22: 添加支持FewCLUE的ADAPET和EFL的baseline
 
   ******* 2021-06-07: 添加支持FewCLUE的LM-bff的baseline
+
+  ******* 2021-07-07: NLPCC任务2.FewCLUE测评决赛成绩公布（榜单可继续提交）
 
 
 ## 任务描述和统计
