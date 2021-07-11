@@ -2,7 +2,7 @@
 
 中文小样本学习测评基准
 
-FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
+FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 
 ## 内容导引
 | 章节 | 描述 |
