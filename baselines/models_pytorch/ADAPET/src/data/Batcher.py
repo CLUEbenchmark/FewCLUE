@@ -100,6 +100,7 @@ class Batcher(object):
 
         while True:
             for x in self.train_loader:
+                print("train_batch.x:",x)
                 yield x
 
     def get_eval_train_batch(self):
@@ -111,6 +112,7 @@ class Batcher(object):
         if self.eval_train_loader is None:
             self._init_train()
         for x in self.eval_train_loader:
+            print("eval_batch.x:", x)
             yield x
 
     def get_dev_batch(self):
@@ -123,6 +125,7 @@ class Batcher(object):
             self._init_dev()
 
         for x in self.dev_loader:
+            print("dev_batch.x:", x)
             yield x
 
 
@@ -136,4 +139,5 @@ class Batcher(object):
             self._init_test()
 
         for x in self.test_loader:
+            print("test_batch.x:", x)
             yield x

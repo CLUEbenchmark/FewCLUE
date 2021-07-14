@@ -2,24 +2,46 @@
 
 中文小样本学习测评基准
 
-FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
+FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 
-## 简介 Intorudction 
+## 内容导引
+| 章节 | 描述 |
+|-|-|
+| [简介](#简介) | 介绍小样本学习背景 |
+| [任务描述和统计](#任务描述和统计) | 对子任务的统计信息 |
+| [实验结果](#实验结果) | 针对各种不同方法，在FewCLUE上的实验对比 |
+| [实验分析](#实验分析) | 对人类表现、模型能力和任务进行分析 |
+| [FewCLUE有什么特点](#FewCLUE有什么特点) | 特定介绍 |
+| [基线模型及运行](#基线模型及运行) | 支持多种基线模型 |
+| [NLPCC201-FewCLUE小样本测评](#FewCLUE小样本测评) | 小样本测评及榜单 |
+| [数据集介绍](#数据集介绍) | 介绍各数据集及示例 |
+| [模型简介](#模型简介) | 基线模型介绍（附图）  |
+| [学习资料(视频及PPT)](#学习资料) | 分享视频、PPT及选手方案 |
+
+| [贡献与参与](#贡献与参与) | 如何参与项目或反馈问题|
+
+
+## 简介
  预训练语言模型，包括用于语言理解(BERT类)或文本生成模型（GPT类），通过海量文本语料上做语言模型的预训练的方式，极大提升了NLP领域上多种任务上的表现并扩展了NLP的应用。使用预训练语言模型结合成数千或上万的标注样本，在下游任务上做微调，通常可以取得在特定任务上较好的效果；但相对于机器需要的大量样本，人类可以通过极少数量的样本上的学习来学会特定的物体的识别或概念理解。
 
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
 
 
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/FewCLUE.final2.jpeg"  width="100%" height="100%" />   
 
 
 ### UPDATE:
-
+  
   ******* 2021-05-24: 更新了iflytek的测试集(test.json)，请重新拉取一下，并在这个测试集上做预测。
   
-  ******* 2021-05-22: 添加了ADAPET和EFL的baseline
+  ******* 2021-05-22: 添加支持FewCLUE的ADAPET和EFL的baseline
+
+  ******* 2021-06-07: 添加支持FewCLUE的LM-bff的baseline
+
+  ******* 2021-07-07: NLPCC任务2.FewCLUE测评决赛成绩公布（榜单可继续提交）
 
 
-## 任务描述和统计 Task Descriptions and Statistics
+## 任务描述和统计
 | Corpus   | Train     | Dev  |Test Public| Test Private | Num Labels| Unlabeled| Task | Metric | Source |
 | :----:| :----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |:----:  |
 |   | Single |Sentence | Tasks  |
@@ -40,7 +62,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     EPRSTMT,CSLDCP,BUSTM 为新任务；其他任务（TNEWS,CHID,IFLYTEK,OCNLI,CSL,CLUEWSC）来自于CLUE benchmark，部分数据集做了新的标注。
 
 
-## 实验结果 Experiments
+## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
 
 | 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
@@ -53,8 +75,10 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
 | <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     |53.4 | 85.6N |  67.6N | 67.5N | 46.7N | 53.5N  |   54.2N  | 44.0N | 61.6N |  28.2N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/LM-BFF">LM-BFF | 55.79 | 84.59 | 54.06 | 43.10 |  53.64 |  56.27 | 51.84 | 46.14 | 51.16 | 61.3 |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |    54.8    | 53.9N |  | 52.1N |22.2  |
-| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
+| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | 15.7N |
+
 
     Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 
     Ptuning: 自动构建模板; Zero-shot: 零样本学习；EFL:自然语言推理形式; ADAPET:PET改进版，带正确标签条件优化
@@ -64,7 +88,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
    <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
-## 实验结果 vs 人类水平   Human Performance & Benchmark Results
+## 实验分析
 
 ### 1.人类水平  Human Performance
 
@@ -94,7 +118,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
     而有些任务对于人类比较困难，但对于模型却不一定那么难。如csldcp有67个类别，人类只取得了及格的水平，但我们的基线模型PET在初步的实验中
     就取得了56.9的成绩。我们可以预见，模型还有不少进步能力。
 
-## FewCLUE 有什么特点？
+## FewCLUE有什么特点
 1、任务类型多样、具有广泛代表性。包含多个不同类型的任务，包括情感分析任务、自然语言推理、多种文本分类、文本匹配任务和成语阅读理解等。
 
 2、研究性与应用性结合。在任务构建、数据采样阶段，即考虑到了学术研究的需要，也兼顾到实际业务场景对小样本学习的迫切需求。
@@ -108,7 +132,7 @@ FewCLUE: Few-shot learning for Chinese Language Understanding Evaluation
 从任务设定，广泛的数据集，多个有代表性的基线模型及效果对比，一键运行脚本，小样本学习教程，到测评系统、学术论文等完整的基础设施。
 
 
-## 基线模型及运行 Baselines and How to run
+## 基线模型及运行
     目前支持4类代码：直接fine-tuning、PET、Ptuning、GPT
     
     直接fine-tuning: 
@@ -161,7 +185,11 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
     python run_gpt.py -t chid -z # 运行chid任务，并使用零样本学习的方式
     ```
 ## FewCLUE小样本测评
+    6月8日之后的用户：小样本学习榜，分为单份提交、多分提交两个榜。榜单一直开放可以提交，不受NLPCC2021-任务2测评时间限制。
+    后来的用户只是不参与奖励。
+
 ##### NLPCC 2021 测评任务二： 报名注册、奖励、提交样例、排行榜、赛程与测评方案
+
 
 <a href='https://www.cluebenchmarks.com/NLPCC.html'>测评报名;</a>  <a href='http://tcci.ccf.org.cn/conference/2021/cfpt.php'> NLPCC2021官方链接</a>
 
@@ -177,17 +205,31 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
 
 <a href='https://www.cluebenchmarks.com/submit.html'><img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_sc.png"  width="90%" height="90%" /></a>  
 
-<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_example'>提交样例(提交zip压缩包)</a>
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_submit_examples'>提交样例-单份(提交zip压缩包，提交到FewCLUE榜)</a>
+
+<a href='https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/fewclue_m_submit_examples'>提交样例-多份(提交zip压缩包，提交到FewCLUE.多)</a>
 
 ### <a href='https://docs.qq.com/doc/DR2pyTGltUURmb0hk'>测评方案</a>
 
-    比赛规则
-    ● 本次测评只能使用本测评提供的数据；
-    ● 禁止任何形式人工标注；
-    ● 禁止仅使用开源的模型和代码，没有算法贡献的情况出现；
-    ● 本次比赛只能使用单模型（单模型的定义：一个任务只能有一个预测函数，所有任务只能使用同一个预训练模型，在计算图中只能有一个预训练模型）完成任务，不能集成多个模型进行预测；
-    ● 模型调优阶段( finetune)只能使用比赛提供的数据；预训练阶段可使用外部数据（方案评审环节，说明来源）
-    ● 禁止为了做本次测评找大量相似文本，去做任何形式的训练。
+    比赛规则：
+    1.1 测评数据：本次测评只能使用本测评提供的数据；
+    1.2 人工标注：禁止任何形式人工标注；
+    1.3 禁止只跑开源代码：禁止仅使用开源的模型和代码，没有算法贡献的情况出现；
+    1.4 单模型:本次比赛只能使用单模型（单模型的定义：一个任务只能有一个预测函数，所有任务只能使用同一个预训练模型，在计算图中只能有一个预训练模型）完成任务，不能集成多个模型进行预测；
+    1.5 外部数据: 模型调优阶段( finetune)只能使用比赛提供的数据；预训练阶段可使用外部数据（方案评审环节，说明来源）
+    1.6 数据作弊：禁止为了做本次测评找大量相似文本，去做任何形式的训练。
+    1.7 禁止任何形式人工标注；
+    
+    2.1 训练验证与预测：在train数据集上做训练，dev数据集上选择最佳模型，以test.json数据集作为评价标准。
+        Fewclue将以此标准动作作为复现标准，形成排名。test_public仅作学术研究使用，不作为比赛评价标准。
+        Finetune阶段不允许使用外部数据
+        预训练及finetune皆可使用fewclue提供无标签数据 
+    2.2 双通道：榜单最后成绩按照模型参数有限制（Bert-Large参数量）、无限制两个通道，分别有第一。
+        有限制通道，第一、二、三名分别奖励1万、5千、两千五（实在智能提供）；
+        无限制通道，只有第一名有奖励。
+    2.4 复现要求：比赛选手的比赛结果会由fewclue团队进行复现并内部（fewclue测评团队及参赛选手）公示复现结果及排名，以及各选手所用模型及代码（公示以后的模型及代码不允许再做更改）；
+        选手对结果及排名有疑问有权在公示内提出，最终由fewclue团队及相关选手共同解决疑问达成一致；不能达成一致的以fewclue团队为准。
+    2.5 一个组织，复赛时使用一个账号提交。
     
     违反以上规则，一经发现，将取消测评资格。
 
@@ -200,7 +242,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         压缩命名如：zip fewclue_submit_examples.zip *.json
     
     第一阶段前15名，有资格进入到第二阶段：   
-    第二阶段（6月5日-6月18日）：需针对每一个任务的多份数据集分别做训练和预测，即
+    第二阶段（6月8日-6月29日晚上10点）：需针对每一个任务的多份数据集分别做训练和预测，即
         eprstmt_predict_x.json
         csldcp_predict_x.json
         tnews_predict_x.json
@@ -213,16 +255,26 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         x包括{0,1,2,3,4,all}，即每个数据集需要在test.json上预测6次。
         
         最后将这些文件压缩，命名为 fewclue_submit_examples.zip 压缩格式文件
-    
+
     最终成绩： 线上得分* 0.65 + 线上方案评审 * 0.35
-    
-    前10名有资格进入线上答辩环节：
     线上方案评审：方案评审通过考察参赛队伍提交方案的新颖性、实用性和解释、答辩表现力来打分，由5位评审老师打分；每只队伍有10分钟的时间讲解方案，5分钟来回答问题。
     
-    6月25日发布测评结果---->7月15日优胜队伍测评论文(task report)提交截止
 
+    测评二阶段时间线：
+    
+    6月8日-6月29日晚10点：NLPCC2021-任务2的第二阶段；
+    6月30日10点前截止提交：技术方案（PPT）和代码评审；
+    7月1日-7月2日：复现；7月2日下午8点公示。
+    7月3日：公示（一整天）；
+    7月4日(周日，下午2点)：前10名线上答辩环节
+    7月15日：队伍测评论文(task report)提交截止
+    （请选手在6月26日或之前，就可以开始准备论文了。进入二阶段的选手都可以提交论文）
+    
 
-## 数据集介绍 Introduction of datasets
+ 榜单一直生效，不受时间限制：小样本学习榜（单份提交）、小样本学习.多榜（多份提交），一直开放可提交，不受[NLPCC2021-任务2]测评时间限制。
+ 
+ 
+## 数据集介绍
 
 ####   分类任务 Single Sentence Tasks
 ##### 1. EPRSTMT（EPR-sentiment）  电商产品评论情感分析数据集  E-commerce Product Review Dataset for Sentiment Analysis
@@ -375,7 +427,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
         
         unlabeled.json: 无标签的大量样本
 
-## 模型简介（附图）
+## 模型简介
 ####   1.BERT.Fine-tuning
     模型简介：
     BERT模型开创了语言模型预训练-下游任务微调的范式。结合海量数据上预训练，使得模型具有强大的泛化能力；
@@ -521,21 +573,30 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
    标签描述的影响：
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/efl2.jpeg"  width="85%" height="85%" />   
 
-#### 7.EFL:Entailment as Few-Shot Learner
-    模型和示例
-    EFL
 
 
-## 教程 Tutorial
+## 学习资料 
    1.系列PPT分享资料，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt'>PPT</a>
+   
+   2.复赛选手-技术方案，详见: <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/resources/ppt/FewCLUE%E5%A4%8D%E8%B5%9B%E9%80%89%E6%89%8B%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88'>PPT</a>
 
-   2.教程（Jupyter Notebook/Google Colab），添加中。。。
+   3、分享视频及答辩视频(使用腾讯会议录制)
+   
+   1) <a href='https://meeting.tencent.com/user-center/shared-record-info?id=899d9236-9630-47c8-8b15-2caad162ecb9&is-single=true'>FewCLUE: 小样本学习最新进展(EFL)及中文领域上的实践</a>
+   访问密码：8BK0wLZ8
+
+   2) <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1396073604659040256&id=11129074844230672382&from=0'>FewCLUE: 小样本学习最新进展(ADAPET)及中文领域上的实践</a>
+   访问密码：sJVuH39l
+    
+   3) <a href='https://meeting.tencent.com/user-center/meeting-record/info?meeting_id=1411576207295664128&id=6039055127084472304&from=0'>FewCLUE: 决赛答辩会视频</a>
+   访问密码：D6amd6h1
+
 
 ## 问题 Question
     1. 问：测试系统，什么时候开发？
        答：测评系统在5月1节后才会开放。
 
-## 贡献与参与 Contribution & Participation
+## 贡献与参与
     1.问：我有符合代码规范的模型代码，并经过测试，可以贡献到这个项目吗？
      答：可以的。你可以提交一个pull request，并写上说明。
     
@@ -580,3 +641,12 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
       year={2021},
       howpublished={\url{https://github.com/CLUEbenchmark/FewCLUE}},
     }
+
+    or 
+
+    @article{CLUEbenchmark,
+      title={CLUE: A Chinese Language Understanding Evaluation Benchmark},
+      author={Liang Xu, Hai Hu, Xuanwei Zhang, Lu Li, Chenjie Cao, Yudong Li, Yechen Xu, Kai Sun, Dian Yu,Cong Yu,et al.},
+      journal={In Proceedings of the 28th International Conference on Computational Linguistics, pages 4762–4772.},
+      year={2020}
+     }
