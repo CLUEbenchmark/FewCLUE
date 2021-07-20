@@ -83,6 +83,9 @@ class DataProcessor(object):
         """Gets the list of labels for this data set."""
         raise NotImplementedError()
 
+    def set_ratio(self,ratio):
+        self.ratio=ratio
+
     @classmethod
     def _read_tsv(cls, input_file, quotechar=None):
         """Reads a tab separated value file."""

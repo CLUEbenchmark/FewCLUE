@@ -122,7 +122,7 @@ def clue_convert_examples_to_features(examples, tokenizer,
         else:
             raise KeyError(output_mode)
 
-        if ex_index < 20:
+        if ex_index < 2:
             logger.info("*** Example ***")
             logger.info(tokenizer.decode(input_ids))
             logger.info("guid: %s" % (example.guid))
@@ -143,20 +143,20 @@ def clue_convert_examples_to_features(examples, tokenizer,
 
 class CsldcpProcessor(DataProcessor):
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir, train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -176,7 +176,7 @@ class CsldcpProcessor(DataProcessor):
 
         index=0
         examples = []
-        ratio=8
+        # ratio=8
         K=min([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
 
@@ -201,7 +201,7 @@ class CsldcpProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,ratio*K)
+                negative_sentences=sample(not_this_label_sentences,self.ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -213,20 +213,20 @@ class CsldcpProcessor(DataProcessor):
 
 class EprstmtProcessor(DataProcessor):
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir, train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -249,7 +249,7 @@ class EprstmtProcessor(DataProcessor):
         K=min([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
         # 负例不够8倍
-        ratio=1
+        # ratio=1
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
@@ -272,7 +272,7 @@ class EprstmtProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,ratio*K)
+                negative_sentences=sample(not_this_label_sentences,self.ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -285,20 +285,20 @@ class EprstmtProcessor(DataProcessor):
 
 class BustmProcessor(DataProcessor):
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir, train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -311,7 +311,7 @@ class BustmProcessor(DataProcessor):
         test_sentences_labels=[]
         examples = []
         index=0
-        ratio=4
+        # ratio=4
         for line in lines:
             text_a = line['sentence1']
             text_b = line["sentence2"]
@@ -323,8 +323,8 @@ class BustmProcessor(DataProcessor):
                 examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="entail"))
             else:
                 examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label="not_entail"))
-            if ratio>1 and set_type!="test":
-                negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
+            if self.ratio>1 and set_type!="test":
+                negative_sentences=[line['sentence1'] for line in sample(lines,self.ratio-1)]
                 for negative_sentence in negative_sentences:
                     if negative_sentence==text_a:
                         continue
@@ -340,20 +340,20 @@ class BustmProcessor(DataProcessor):
 class ChidProcessor(DataProcessor):
     """Processor for the TNEWS data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -386,20 +386,20 @@ class ChidProcessor(DataProcessor):
 class TnewsProcessor(DataProcessor):
     """Processor for the TNEWS data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -418,7 +418,7 @@ class TnewsProcessor(DataProcessor):
             label_sentences_dict[label].append(text_a)
 
         index=0
-        ratio=8
+        # ratio=8
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
@@ -444,7 +444,7 @@ class TnewsProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,ratio*K)
+                negative_sentences=sample(not_this_label_sentences,self.ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -458,20 +458,20 @@ class TnewsProcessor(DataProcessor):
 class IflytekProcessor(DataProcessor):
     """Processor for the IFLYTEK data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -493,7 +493,7 @@ class IflytekProcessor(DataProcessor):
         examples = []
         K=max([len(value) for key,value in label_sentences_dict.items()])
         test_sentences_labels=[]
-        ratio=8
+        # ratio=8
 
         for key,value in label_sentences_dict.items():
             if set_type=="test":
@@ -516,7 +516,7 @@ class IflytekProcessor(DataProcessor):
                 for _key,_value in label_sentences_dict.items():
                     if _key!=key:
                         not_this_label_sentences.extend(_value)
-                negative_sentences=sample(not_this_label_sentences,ratio*K)
+                negative_sentences=sample(not_this_label_sentences,self.ratio*K)
                 for sentence in negative_sentences:
                     text_a=sentence
                     text_b=task_label_description[key]
@@ -530,20 +530,20 @@ class IflytekProcessor(DataProcessor):
 class OcnliProcessor(DataProcessor):
     """Processor for the CMNLI data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -555,7 +555,7 @@ class OcnliProcessor(DataProcessor):
         test_sentences_labels=[]
         examples = []
         index=0
-        ratio=4
+        # ratio=4
         for line in lines:
             text_a = line['sentence1']
             text_b = line["sentence2"]
@@ -564,8 +564,8 @@ class OcnliProcessor(DataProcessor):
             if label.strip()=='-':
                 continue
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-            if ratio>1 and set_type!="test":
-                negative_sentences=[line['sentence1'] for line in sample(lines,ratio-1)]
+            if self.ratio>1 and set_type!="test":
+                negative_sentences=[line['sentence1'] for line in sample(lines,self.ratio-1)]
                 for negative_sentence in negative_sentences:
                     if negative_sentence==text_a:
                         continue
@@ -581,20 +581,20 @@ class OcnliProcessor(DataProcessor):
 class WscProcessor(DataProcessor):
     """Processor for the CSL data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -605,7 +605,7 @@ class WscProcessor(DataProcessor):
         """Creates examples for the training and dev sets."""
         examples = []
         test_sentences_labels=[]
-        ratio=1
+        # ratio=1
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
             text_a = line['text']
@@ -642,20 +642,20 @@ class WscProcessor(DataProcessor):
 class CslProcessor(DataProcessor):
     """Processor for the CSL data set (CLUE version)."""
 
-    def get_train_examples(self, data_dir,task_label_description):
+    def get_train_examples(self, data_dir,task_label_description,train_file_name="train_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "train_0.json")), "train",task_label_description)
+            self._read_json(os.path.join(data_dir,train_file_name)), "train",task_label_description)
 
-    def get_dev_examples(self, data_dir,task_label_description):
+    def get_dev_examples(self, data_dir,task_label_description,dev_file_name="dev_0.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "dev_0.json")), "dev",task_label_description)
+            self._read_json(os.path.join(data_dir,dev_file_name)), "dev",task_label_description)
 
-    def get_test_examples(self, data_dir,task_label_description):
+    def get_test_examples(self, data_dir,task_label_description,test_file_name='test.json'):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, "test.json")), "test",task_label_description)
+            self._read_json(os.path.join(data_dir,test_file_name)), "test",task_label_description)
 
     def get_labels(self):
         """See base class."""
@@ -668,7 +668,7 @@ class CslProcessor(DataProcessor):
         test_sentences_labels=[]
         examples = []
         index=0
-        ratio=8
+        # ratio=8
         for line in lines:
             text_a = line['abst']
             keywords = line["keyword"]
@@ -679,8 +679,8 @@ class CslProcessor(DataProcessor):
                 examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="entail"))
             else:
                 examples.append(InputExample(guid=guid, text_a=text_a, text_b=keywords_desc, label="not_entail"))
-            if ratio>1 and set_type!="test":
-                negative_sentences=[line['abst'] for line in sample(lines,ratio-1)]
+            if self.ratio>1 and set_type!="test":
+                negative_sentences=[line['abst'] for line in sample(lines,self.ratio-1)]
                 for negative_sentence in negative_sentences:
                     index+=1
                     guid = "%s-%s" % (set_type, index)

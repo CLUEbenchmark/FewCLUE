@@ -240,7 +240,6 @@ def evaluate(args, model, tokenizer, prefix=""):
             logger.info(" dev: %s = %s", key, str(result[key]))
     return results
 
-
 def predict(args, model, tokenizer, label_list, prefix=""):
     task_label_description=TASK_LABELS_DESC[args.task_name]
 
@@ -335,6 +334,7 @@ def load_and_cache_examples(args, task, tokenizer, data_type='train'):
 
     logger.info("Creating features from dataset file at %s", args.data_dir)
     label_list = processor.get_labels()
+    processor.set_ratio(args.ratio)
     if task in ['mnli', 'mnli-mm'] and 'roberta' in args.model_type:
         # HACK(label indices are swapped in RoBERTa pretrained model)
         label_list[1], label_list[2] = label_list[2], label_list[1]
@@ -342,11 +342,11 @@ def load_and_cache_examples(args, task, tokenizer, data_type='train'):
     task_label_description=TASK_LABELS_DESC[args.task_name]
 
     if data_type == 'train':
-        examples,test_sentences_labels = processor.get_train_examples(args.data_dir,task_label_description)
+        examples,test_sentences_labels = processor.get_train_examples(args.data_dir,task_label_description,args.train_file_name)
     elif data_type == 'dev':
-        examples,test_sentences_labels = processor.get_dev_examples(args.data_dir,task_label_description)
+        examples,test_sentences_labels = processor.get_dev_examples(args.data_dir,task_label_description,args.dev_file_name)
     else:
-        examples,test_sentences_labels = processor.get_test_examples(args.data_dir,task_label_description)
+        examples,test_sentences_labels = processor.get_test_examples(args.data_dir,task_label_description,args.test_file_name)
 
     features = convert_examples_to_features(examples,
                                             tokenizer,
@@ -380,6 +380,12 @@ def main():
     ## Required parameters
     parser.add_argument("--data_dir", default=None, type=str, required=True,
                         help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
+    parser.add_argument("--train_file_name", default=None, type=str, required=True,
+                        help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
+    parser.add_argument("--dev_file_name", default=None, type=str, required=True,
+                        help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
+    parser.add_argument("--test_file_name", default=None, type=str, required=True,
+                        help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
     parser.add_argument("--model_type", default=None, type=str, required=True,
                         help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()))
     parser.add_argument("--model_name_or_path", default=None, type=str, required=True,
@@ -408,7 +414,8 @@ def main():
                         help="Whether to run the model in inference mode on the test set.")
     parser.add_argument("--do_lower_case", action='store_true',
                         help="Set this flag if you are using an uncased model.")
-
+    parser.add_argument("--ratio", default=1, type=int,
+                        help="sample ratio, if ratio=8,then positive sample nums: negetive sample nums = 1:8")
     parser.add_argument("--per_gpu_train_batch_size", default=8, type=int,
                         help="Batch size per GPU/CPU for training.")
     parser.add_argument("--per_gpu_eval_batch_size", default=8, type=int,
