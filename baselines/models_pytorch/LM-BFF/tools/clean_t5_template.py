@@ -17,7 +17,7 @@ def main():
             for split in args.splits:
                 fpath = Path(f"{args.template_dir}/{split}/{task_name}/{args.k}-{seed}.txt")
                 if not fpath.exists():
-                    contine
+                    continue
                 tmps = []
                 with open(fpath, 'r') as f:
                     for line in f:

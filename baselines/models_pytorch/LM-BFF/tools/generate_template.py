@@ -146,7 +146,7 @@ def generate(dataset, template, model, tokenizer, target_number, mapping, beam, 
             decoder_input_ids = item['decoder_input_ids']
 
             # Forward
-            batch_size = 1
+            batch_size = 64
             turn = input_ids.size(0) // batch_size
             if input_ids.size(0) % batch_size != 0:
                 turn += 1
