@@ -184,6 +184,7 @@ def evaluate(args, model, tokenizer, prefix=""):
     eval_task_names = (args.task_name,)
     eval_outputs_dirs = (args.output_dir,)
     results = {}
+    assert args.dev_file_name is not None
     for eval_task, eval_output_dir in zip(eval_task_names, eval_outputs_dirs):
         eval_dataset,_ = load_and_cache_examples(args, eval_task, tokenizer, data_type='dev')
         if not os.path.exists(eval_output_dir) and args.local_rank in [-1, 0]:
@@ -241,6 +242,7 @@ def evaluate(args, model, tokenizer, prefix=""):
     return results
 
 def predict(args, model, tokenizer, label_list, prefix=""):
+    assert args.test_file_name is not None
     task_label_description=TASK_LABELS_DESC[args.task_name]
 
     pred_task_names = (args.task_name,)
@@ -322,7 +324,7 @@ def predict(args, model, tokenizer, label_list, prefix=""):
         with open(output_labels_file,'w') as writer:
             writer.writelines("%s\n" % sentence_label for sentence_label in sentence_labels)
 
-        print("acc is "+str(np.sum(np.array(test_sentences_labels)==np.array(sentence_labels))/len(test_sentences_labels)))
+        print("\nacc is "+str(np.sum(np.array(test_sentences_labels)==np.array(sentence_labels))/len(test_sentences_labels)))
 
 
 def load_and_cache_examples(args, task, tokenizer, data_type='train'):
@@ -382,9 +384,9 @@ def main():
                         help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
     parser.add_argument("--train_file_name", default=None, type=str, required=True,
                         help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
-    parser.add_argument("--dev_file_name", default=None, type=str, required=True,
+    parser.add_argument("--dev_file_name", default=None, type=str, required=False,
                         help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
-    parser.add_argument("--test_file_name", default=None, type=str, required=True,
+    parser.add_argument("--test_file_name", default=None, type=str, required=False,
                         help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
     parser.add_argument("--model_type", default=None, type=str, required=True,
                         help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()))
@@ -543,6 +545,7 @@ def main():
     logger.info("Training/evaluation parameters %s", args)
     # Training
     if args.do_train:
+        assert args.train_file_name is not None
         train_dataset,_ = load_and_cache_examples(args, args.task_name, tokenizer, data_type='train')
         global_step, tr_loss = train(args, train_dataset, model, tokenizer)
         logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)

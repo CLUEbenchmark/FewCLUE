@@ -27,3 +27,8 @@
 #### 备注
 1. 目前都是在train_0 dev_0 和test_public上做的训练和测试
 2. 模版对效果影响挺大
+
+## 多次实验具体结果
+| 模型        | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc   | iflytek | csl   | chid  |
+| :----:      | :----:    | :----:   |:----:  |:----:   |:----:    |:----: |:----: |:----:   |:----: |:----: |
+| EFL wo PT(1)|   |

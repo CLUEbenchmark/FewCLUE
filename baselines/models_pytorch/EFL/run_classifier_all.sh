@@ -5,7 +5,7 @@ for task_name in ${task_name_list[@]};do
     for index in 0 1 2 3 4 few_all;do
         train_file_name=train_$index.json
         dev_file_name=dev_$index.json
-        for test_file_name in test.json test_public.json;do
+        for test_file_name in test_public.json test.json;do
             bash -x $shell_file_name $train_file_name $dev_file_name $test_file_name
             bash -x $shell_file_name $train_file_name $dev_file_name $test_file_name predict
         done
