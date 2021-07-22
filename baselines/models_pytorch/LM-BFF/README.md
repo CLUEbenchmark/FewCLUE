@@ -71,7 +71,7 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
    ```
 
 4. 模板评估  
-   在 `generate_template.sh` 设置以下变量和参数，
+   在 `run_template_experiment.sh` 设置以下变量和参数，
 
    ```
    # 要实验的任务
