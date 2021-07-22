@@ -22,6 +22,15 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
 | :----: | :-------: | :----: | :----: | :----: | :----: | :----: |
 | ifytek |  |         |         |         |         |        
 
+- [] eprstmt
+- [X] bustm
+- [] ocnli
+- [] csldcp
+- [X] tnews
+- [] cluewsc
+- [X] ifytek
+- [] csl
+
 注：
 
 - 模板生成模型 `uer/t5-base-chinese-cluecorpussmall`, 分类模型 `hfl/chinese-roberta-wwm-ext`。

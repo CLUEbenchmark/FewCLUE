@@ -31,7 +31,7 @@ def main():
                             tmp_str = tmp_str[:end + len('*sep+*')]
 
                             # n 个 token 的 label word 需要 n 个 *mask*
-                            if task_name in ["iflytek", 'csldcp']:
+                            if task_name in ["iflytek", 'csldcp', "tnews"]:
                                 mask_start = tmp_str.find("*mask*")
                                 tmp_str = tmp_str[: mask_start] + "*mask" + tmp_str[mask_start:]
                             
