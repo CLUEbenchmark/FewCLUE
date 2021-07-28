@@ -38,6 +38,9 @@ assert train_set_index in {"0", "1", "2", "3", "4", "few_all"}, 'train_set_index
 label_en2zh ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'汽车','news_travel':'旅游','news_finance':'财经',
               'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
               'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
+
+label_map_file = "datasets/tnews/label_index2en2zh.json"
+zhlabel2id = {json.loads(l)["label_zh"]: json.loads(l)["label"] for l in open(label_map_file, "r", encoding="utf-8")}
 labels=[label_zh for label_en,label_zh in label_en2zh.items()]
 labels_en=[label_en for label_en,label_zh in label_en2zh.items()]
 num_classes = len(labels)

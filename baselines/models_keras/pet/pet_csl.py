@@ -19,10 +19,23 @@ import argparse
 parser = argparse.ArgumentParser(description="training set index")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=32)
+parser.add_argument("--num_epochs", "-epochs", help="num_epochs", type=int, default=20)
 
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
+num_epochs = args.num_epochs
+config_path = os.path.join(model_path, 'bert_config.json')
+checkpoint_path = os.path.join(model_path, 'bert_model.ckpt')
+dict_path = os.path.join(model_path, 'vocab.txt')
 
 # 模板
 # input_str_format = "{}，黴鹹{}几点内容" # 黴鹹：生僻字组合会被替换为 强调 or 提到，方便寻找mask index [7957, 7919]
@@ -32,13 +45,8 @@ label2words = {"0": "不能", "1":"可以"}
 
 num_classes = 2
 maxlen = 256
-batch_size = 16
-num_per_val_file = 45
 acc_list = []
 
-config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
 # 建立分词器
 tokenizer = Tokenizer(dict_path, do_lower_case=True)
 def load_data(filename): # 加载数据
@@ -60,16 +68,19 @@ def load_data(filename): # 加载数据
             
             mask_idxs = [idx for idx, c in enumerate(content_ids) if c ==  7957 and content_ids[idx+1] == 7919]
             mask_idxs.append(mask_idxs[0]+1)
-            label = l["label"]
+            if "label" in l:
+                label = l["label"]
+            else:
+                label = "0"
             D.append(((content, content_ids, segment_ids), label2words[label], mask_idxs))
     return D
 
 # 加载数据集，只截取一部分，模拟小数据集
-train_data = load_data('ready_data/csl/train_{}.json'.format(train_set_index))
+train_data = load_data('datasets/csl/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
-    valid_data += load_data('ready_data/csl/dev_{}.json'.format(i))
-test_data = load_data('ready_data/csl/test_public.json')
+    valid_data += load_data('datasets/csl/dev_{}.json'.format(i))
+test_data = load_data('datasets/csl/test.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
@@ -237,8 +248,29 @@ def draw_acc(acc_list):
     for idx, y in enumerate(acc_arr):
         ax.plot(x, y, label=label_list[idx])
     ax.legend()
-    plt.savefig("./baseline/tnews/pet_csl.svg") # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
+    plt.savefig(".pet_csl.svg") # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
 
+
+def test(data, filename):
+    label_ids = np.array([tokenizer.encode(l)[0][1:-1] for l in labels]) # 获得两个字的标签对应的词汇表的id列表，如: label_id=[1093, 689]。label_ids=[[1093, 689],[],[],..[]]tokenizer.encode('农业') = ([101, 1093, 689, 102], [0, 0, 0, 0])
+    pred_result_list = []
+    for x_true, _ in data:
+        x_true, y_true = x_true[:2], x_true[2] # x_true = [batch_token_ids, batch_segment_ids]; y_true: batch_output_ids
+        mask_idxs = np.where(x_true[0] == tokenizer._token_mask_id)[1].reshape(y_true.shape[0], 2)
+
+        y_pred = model.predict(x_true)
+        y_pred = np.array([y_pred[i][mask_idx] for i, mask_idx in enumerate(mask_idxs)]) # 取出每个样本特定位置上的索引下的预测值。y_pred=[batch_size, 2, vocab_size]。mask_idxs = [7, 8]
+        
+        y_true = np.array([y_true[i][mask_idx] for i, mask_idx in enumerate(mask_idxs)])
+        # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # (32, 2, 21128)
+        # print("label_ids",label_ids) # [[4906 2825],[2031  727],[3749 6756],[3180 3952],[6568 5307],[3136 5509],[1744 7354],[2791  772],[4510 4993],[1092  752],[3125  752],[3152 1265],[ 860 5509],[1093  689]]
+        y_pred = y_pred[:, 0, label_ids[:, 0]] * y_pred[:, 1, label_ids[:, 1]] # y_pred=[batch_size,1,label_size]=[32,1,14]。联合概率分布。 y_pred[:, 0, label_ids[:, 0]]的维度为：[32,1,21128]
+        y_pred = y_pred.argmax(axis=1) # 找到概率最大的那个label(词)。如“财经”
+        pred_result_list += y_pred.tolist()
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_result_list):
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
+    return 0
 
 if __name__ == '__main__':
 
@@ -251,6 +283,8 @@ if __name__ == '__main__':
             epochs=20,
             callbacks=[evaluator]
         )
+        testresult_file_path = "csl_predict_"+train_set_index+".json"
+        test(test_generator, testresult_file_path)
     elif training_type == "zero-shot":
         pred_result = evaluate(test_generator)
         pred_result = np.array(pred_result, dtype="int32")

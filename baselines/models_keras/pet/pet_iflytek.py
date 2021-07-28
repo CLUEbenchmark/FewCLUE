@@ -168,7 +168,9 @@ def load_data(filename, set_type="train"): # 加载数据
                 D.append((l['sentence'], label_tag))
                 # desc_set.add(label_des)
             else:
-                label_zh = "银行"
+                label_des="银行"
+                label_tag=label_des2tag[label_des]
+                D.append((l['sentence'], label_tag))
     return D
 
 # 加载数据集，只截取一部分，模拟小数据集
@@ -341,10 +343,10 @@ def test(data, filename):
         y_pred = y_pred.argmax(axis=1) # 找到概率最大的那个label(词)。如“财经”
         # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # O.K. y_pred: (16,) ;y_pred: [4 0 4 1 1 4 5 3 9 1 0 9]
         # print("y_true.shape:",y_true.shape,";y_true:",y_true) # y_true: (16, 128) zhlabel2id
-        pred_labels += [labels[l] for l in y_pred.tolist()]
+        pred_labels += [l for l in y_pred.tolist()]
     with open(filename, "w", encoding="utf-8") as f:
         for idx, l in enumerate(pred_labels):
-            f.write(json.dumps({"id": str(idx), "label": zhlabel2id[l]})+"\n")
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
     return 0
 
 def draw_acc(acc_list):

@@ -146,3 +146,6 @@ datasets/lm-bff
 *chinese_roberta_wwm_ext_L-12_H-768_A-12
 *weights
 *pretrained_models
+*.json
+baselines/*.svg
+*.svg

@@ -16,22 +16,28 @@ import re
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import argparse
-parser = argparse.ArgumentParser(description="training set index")
+parser = argparse.ArgumentParser(description="training parameters")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=32)
+parser.add_argument("--num_epochs", "-epochs", help="num_epochs", type=int, default=20)
 
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
-
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
+num_epochs = args.num_epochs
 # num_classes = 2
-maxlen = 256
-batch_size = 8
 
-base_model_path='/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/'
-config_path = base_model_path+'bert_config.json'
-checkpoint_path =  base_model_path+'bert_model.ckpt'
-dict_path = base_model_path+'vocab.txt'
+config_path = os.path.join(model_path, 'bert_config.json')
+checkpoint_path = os.path.join(model_path, 'bert_model.ckpt')
+dict_path = os.path.join(model_path, 'vocab.txt')
 # 建立分词器
 tokenizer = Tokenizer(dict_path, do_lower_case=True)
 def load_data(filename):
@@ -43,7 +49,10 @@ def load_data(filename):
             # print("json_string:",json_string)
             sentence1=json_string['sentence1']
             sentence2=json_string['sentence2']
-            label=json_string['label']
+            if "label" in json_string:
+                label=json_string['label']
+            else:
+                label = "0"
             text=sentence1+"和"+sentence2+"意思锟同"
             _mask = get_mask_idx(text, "锟")
             #text, label = l.strip().split('\t')
@@ -72,7 +81,7 @@ def get_mask_idx(text, mask_words):
     return [m-offset for m in _mask]
 
 # 加载数据集
-train_data = load_data('datasets/bustm/train_0.json')
+train_data = load_data('datasets/bustm/train_{}.json'.format(train_set_index))
 valid_data = load_data('datasets/bustm/dev_few_all.json')
 test_data = load_data('datasets/bustm/test_public.json')
 
@@ -234,7 +243,19 @@ def evaluate(data):
         right += np.where(np.array(y_pred)==np.array(y_true))[0].shape[0]  # (y_true == y_pred).sum()
     return right / total
 
-
+def test(data, filename):
+    pred_labels = []
+    for x_true, _ in data:
+        x_true, y_true = x_true[:2], x_true[2]
+        y_pred = model.predict(x_true)
+        mask_idx = np.where(x_true[0]==tokenizer._token_mask_id)[1].reshape(x_true[0].shape[0],1)
+        y_pred = [pred[mask, label_tokenid_list] for pred, mask in zip(y_pred, mask_idx)]
+        y_pred = [(pred[:,0]*1).argmax() for pred in y_pred]
+        pred_labels += [l for l in y_pred]
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_labels):
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
+    return 0
 if __name__ == '__main__':
 
     if training_type == "few-shot":
@@ -243,9 +264,11 @@ if __name__ == '__main__':
         train_model.fit_generator(
             train_generator.forfit(),
             steps_per_epoch=len(train_generator),
-            epochs=20,
+            epochs=num_epochs,
             callbacks=[evaluator]
         )
+        testresult_file_path = "bustm_predict_"+train_set_index+".json"
+        test(test_generator, testresult_file_path)
     elif training_type == "zero-shot":
         test_acc = evaluate(test_generator)
         print("zero-shot结果: {}".format(test_acc))
