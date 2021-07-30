@@ -17,21 +17,26 @@ import random
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 import argparse
-parser = argparse.ArgumentParser(description="training set index")
+parser = argparse.ArgumentParser(description="training parameters")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=32)
+parser.add_argument("--num_epochs", "-epochs", help="num_epochs", type=int, default=20)
+
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
-assert train_set_index in {"0", "1", "2", "3", "4", "all"}, 'train_set_index must in {"0", "1", "2", "3", "4", "all"}'
-
-
-maxlen = 128
-batch_size = 32
-num_per_val_file = 32
-config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
+num_epochs = args.num_epochs
+config_path = os.path.join(model_path, 'bert_config.json')
+checkpoint_path = os.path.join(model_path, 'bert_model.ckpt')
+dict_path = os.path.join(model_path, 'vocab.txt')
 acc_list = []
 labels = ["不", "很"]
 def load_data(filename): # 加载数据
@@ -39,15 +44,19 @@ def load_data(filename): # 加载数据
     with open(filename, encoding='utf-8') as f:
         for i, l in enumerate(f):
             l = json.loads(l)
-            D.append((l['sentence'], int(l["label"] == "Positive")))
+            if 'label' in l:
+                D.append((l['sentence'], int(l["label"] == "Positive")))
+            else:
+                D.append((l['sentence'], 0))
+
     return D
 
 # 加载数据集，只截取一部分，模拟小数据集
-train_data = load_data('datasets/cecmmnt/train_{}.json'.format(train_set_index))
+train_data = load_data('datasets/eprstmt/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
-    valid_data += load_data('datasets/cecmmnt/dev_{}.json'.format(i))
-test_data = load_data('datasets/cecmmnt/test_public.json')
+    valid_data += load_data('datasets/eprstmt/dev_{}.json'.format(i))
+test_data = load_data('datasets/eprstmt/test.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
@@ -224,6 +233,20 @@ def draw_acc(acc_list):
     ax.legend()
     plt.savefig("./pet_tnews_trainset_{}_100.svg".format(train_set_index)) # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
 
+def test(data, filename):
+    label_ids = np.array([tokenizer.encode(l)[0][1:-1] for l in labels]) # 获得两个字的标签对应的词汇表的id列表，如: label_id=[1093, 689]。label_ids=[[1093, 689],[],[],..[]]tokenizer.encode('农业') = ([101, 1093, 689, 102], [0, 0, 0, 0])
+    pred_result_list = []
+    for x_true, _ in data:
+        x_true, y_true = x_true[:2], x_true[2] # x_true = [batch_token_ids, batch_segment_ids]; y_true: batch_output_ids
+        y_pred = model.predict(x_true)[:, mask_idxs] # 取出特定位置上的索引下的预测值。y_pred=[batch_size, 2, vocab_size]。mask_idxs = [7, 8]
+        y_pred = y_pred[:, 0, label_ids[:, 0]] # y_pred=[batch_size,1,label_size]=[32,1,14]。联合概率分布。 y_pred[:, 0, label_ids[:, 0]]的维度为：[32,1,21128]
+        y_pred = y_pred.argmax(axis=1) # 找到概率最大的那个label(词)。如“财经”
+        pred_result_list += y_pred.tolist()
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_result_list):
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
+    return 0
+
 if __name__ == '__main__':
     if training_type == "few-shot":
         evaluator = Evaluator()
@@ -234,6 +257,8 @@ if __name__ == '__main__':
             epochs=20,
             callbacks=[evaluator]
         )
+        testresult_file_path = "eprstmt_predict_"+train_set_index+".json"
+        test(test_generator, testresult_file_path)
     elif training_type == "zero-shot":
         pred_result = evaluate(test_generator)
         pred_result = np.array(pred_result, dtype="int32")

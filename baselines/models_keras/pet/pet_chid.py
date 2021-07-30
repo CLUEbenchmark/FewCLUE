@@ -14,24 +14,29 @@ from keras.layers import Lambda, Dense
 import re
 from tqdm import tqdm
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 import argparse
 parser = argparse.ArgumentParser(description="training set index")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=42)
+parser.add_argument("--num_epochs", "-epochs", help="num_epochs", type=int, default=20)
 
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
+num_epochs = args.num_epochs
+config_path = os.path.join(model_path, 'bert_config.json')
+checkpoint_path = os.path.join(model_path, 'bert_model.ckpt')
+dict_path = os.path.join(model_path, 'vocab.txt')
 
-maxlen = 128
-batch_size = 16
-num_per_val_file = 42
-acc_list = []
-
-config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
 # 建立分词器
 tokenizer = Tokenizer(dict_path, do_lower_case=True)
 
@@ -40,7 +45,10 @@ def load_data(filename):
     with open(filename, encoding='utf-8') as f:
         for idx,l in enumerate(f):
             sample=json.loads(l.strip().replace(" ", "").replace("\t", ""))
-            answer = int(sample["answer"])
+            if "answer" in sample:
+                answer = int(sample["answer"])
+            else:
+                answer = 0
             sentence1 = sample["content"].replace("#idiom#", "锟斤烤烫") # 替换为生僻词确保输入中没有答案
             _mask = get_mask_idx(sentence1, "锟斤烤烫")
             D.append((sentence1, sample["candidates"][answer], _mask,  sample["candidates"]))
@@ -66,11 +74,11 @@ def get_mask_idx(text, mask_words):
 
 
 # 加载数据集
-train_data = load_data('ready_data/chid/train_{}.json'.format(train_set_index))
+train_data = load_data('datasets/chid/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
-    valid_data += load_data('ready_data/chid/dev_{}.json'.format(i))
-test_data = load_data('ready_data/chid/test_public.json')
+    valid_data += load_data('datasets/chid/dev_{}.json'.format(i))
+test_data = load_data('datasets/chid/test.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
@@ -186,6 +194,7 @@ class Evaluator(keras.callbacks.Callback):
         self.best_val_acc = 0.
 
     def on_epoch_end(self, epoch, logs=None):
+        acc_list = []
         model.save_weights('pet_tnews_model.weights')
         val_pred_result = evaluate(valid_generator, val_type="val")
         val_pred_result = np.array(val_pred_result, dtype="int32")
@@ -254,6 +263,25 @@ def draw_acc(acc_list):
     ax.legend()
     plt.savefig("pet_chid.svg") # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
 
+def test(data, filename):
+    pred_result_list = []
+    for idx, X in tqdm(enumerate(data), desc="{}数据集验证中".format(val_type)):
+        label_ids = np.array([[np.array([l for l in label])] for label in labels_list[batch_size*idx: batch_size*(idx+1)]])
+        tmp_size = label_ids.shape[0]
+        label_ids = label_ids.reshape(tmp_size, 7, 4)
+        x_true = X[0]
+        x_true, y_true = x_true[:2], x_true[2]
+        y_pred = model.predict(x_true)
+        y_pred = np.array([y[mask_idxs[idx*batch_size+i]].tolist() for i, y in enumerate(y_pred)])
+        # 计算候选集中各成语的概率：p(idiom) = p(idiom_1)*p(idiom_2)*p(idiom_3)*p(idiom_4)
+        y_pred = [y_pred[i, 0, label_ids[i, :, 0]] * y_pred[i, 1, label_ids[i, :, 1]]* y_pred[i, 2, label_ids[i, :, 2]]* y_pred[i, 3, label_ids[i, :, 3]] for i in range(tmp_size)]
+        y_pred = np.array(y_pred)
+        y_pred = y_pred.argmax(axis=1)
+        pred_result_list += y_pred.tolist()
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_result_list):
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
+    return 0
 
 if __name__ == '__main__':
 
@@ -263,7 +291,7 @@ if __name__ == '__main__':
         train_model.fit_generator(
             train_generator.forfit(),
             steps_per_epoch=len(train_generator),
-            epochs=20,
+            epochs=num_epochs,
             callbacks=[evaluator]
         )
     elif training_type == "zero-shot":

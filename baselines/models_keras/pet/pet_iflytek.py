@@ -18,11 +18,18 @@ import argparse
 parser = argparse.ArgumentParser(description="training set index")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=690)
 
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
-
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
 
 label_des2tag ={'银行': '银行',
  '社区服务': '社区',
@@ -139,14 +146,11 @@ label_des2tag ={'银行': '银行',
 labels=[label_tag for label_des,label_tag in label_des2tag.items()]
 desc=[label_des for label_des,label_tag in label_des2tag.items()]
 num_classes = len(labels)
-maxlen = 128
-batch_size = 16
-num_per_val_file = 740
 acc_list = []
 
-config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
+config_path = os.path.join(model_path, 'bert_config.json')
+checkpoint_path = os.path.join(model_path, 'bert_model.ckpt')
+dict_path = os.path.join(model_path, 'vocab.txt')
 
 def load_data(filename, set_type="train"): # 加载数据
     D = []
@@ -154,14 +158,19 @@ def load_data(filename, set_type="train"): # 加载数据
     with open(filename, encoding='utf-8') as f:
         for i, l in enumerate(f):
             l = json.loads(l)
-            label_des=l['label_des']
-            # 如果想尝试每个类别只用一个样本
-            # if label_des in desc_set:
-            #     pass
-            # else:
-            label_tag=label_des2tag[label_des]
-            D.append((l['sentence'], label_tag))
-            # desc_set.add(label_des)
+            if 'label_des' in l:
+                label_des=l['label_des']
+                # 如果想尝试每个类别只用一个样本
+                # if label_des in desc_set:
+                #     pass
+                # else:
+                label_tag=label_des2tag[label_des]
+                D.append((l['sentence'], label_tag))
+                # desc_set.add(label_des)
+            else:
+                label_des="银行"
+                label_tag=label_des2tag[label_des]
+                D.append((l['sentence'], label_tag))
     return D
 
 # 加载数据集，只截取一部分，模拟小数据集
@@ -169,7 +178,7 @@ train_data = load_data('datasets/iflytek/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
     valid_data += load_data('datasets/iflytek/dev_{}.json'.format(i))
-test_data = load_data('datasets/iflytek/test_public.json')
+test_data = load_data('datasets/iflytek/test.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
@@ -288,8 +297,8 @@ class Evaluator(keras.callbacks.Callback):
         if total_acc > self.best_val_acc:
             self.best_val_acc = total_acc
             model.save_weights('pet_tnews_best_model.weights')
-        test_pred_result = np.array(evaluate(test_generator))
-        test_acc = test_pred_result.sum()/test_pred_result.shape[0]
+        # test_pred_result = np.array(evaluate(test_generator))
+        test_acc = 0
         acc_tuple = tuple(val_pred_result.tolist()+[total_acc, self.best_val_acc, test_acc])
         acc_list.append(list(acc_tuple))
         draw_acc(acc_list) # 如果需要对照每个验证集准确率
@@ -322,6 +331,24 @@ def evaluate(data):
         pred_result_list += (y_true == y_pred).tolist()
     return pred_result_list
 
+def test(data, filename):
+    pred_labels = []
+    label_ids = np.array([tokenizer.encode(l)[0][1:-1] for l in labels]) # 获得两个字的标签对应的词汇表的id列表，如: label_id=[1093, 689]。label_ids=[[1093, 689],[],[],..[]]tokenizer.encode('农业') = ([101, 1093, 689, 102], [0, 0, 0, 0])
+    for x_true, _ in data:
+        x_true, y_true = x_true[:2], x_true[2] # x_true = [batch_token_ids, batch_segment_ids]; y_true: batch_output_ids
+        y_pred = model.predict(x_true)[:, mask_idxs] # 取出特定位置上的索引下的预测值。y_pred=[batch_size, 2, vocab_size]。mask_idxs = [7, 8]
+        # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # (32, 2, 21128)
+        # print("label_ids",label_ids) # [[4906 2825],[2031  727],[3749 6756],[3180 3952],[6568 5307],[3136 5509],[1744 7354],[2791  772],[4510 4993],[1092  752],[3125  752],[3152 1265],[ 860 5509],[1093  689]]
+        y_pred = y_pred[:, 0, label_ids[:, 0]] * y_pred[:, 1, label_ids[:, 1]] # y_pred=[batch_size,1,label_size]=[32,1,14]。联合概率分布。 y_pred[:, 0, label_ids[:, 0]]的维度为：[32,1,21128]
+        y_pred = y_pred.argmax(axis=1) # 找到概率最大的那个label(词)。如“财经”
+        # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # O.K. y_pred: (16,) ;y_pred: [4 0 4 1 1 4 5 3 9 1 0 9]
+        # print("y_true.shape:",y_true.shape,";y_true:",y_true) # y_true: (16, 128) zhlabel2id
+        pred_labels += [l for l in y_pred.tolist()]
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_labels):
+            f.write(json.dumps({"id": str(idx), "label": str(l)})+"\n")
+    return 0
+
 def draw_acc(acc_list):
     import matplotlib.pyplot as plt
     epoch = len(acc_list)
@@ -334,7 +361,7 @@ def draw_acc(acc_list):
     for idx, y in enumerate(acc_arr):
         ax.plot(x, y, label=label_list[idx])
     ax.legend()
-    plt.savefig("./baseline/tnews/pet_iflytek.svg") # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
+    plt.savefig("pet_iflytek.svg") # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
 
 
 if __name__ == '__main__':
@@ -345,9 +372,11 @@ if __name__ == '__main__':
         train_model.fit_generator(
             train_generator.forfit(),
             steps_per_epoch=len(train_generator),
-            epochs=20,
+            epochs=6,
             callbacks=[evaluator]
         )
+        testresult_file_path = "iflytekf_predict_"+train_set_index+".json"
+        test(test_generator, testresult_file_path)
     elif training_type == "zero-shot":
         pred_result = evaluate(test_generator)
         pred_result = np.array(pred_result, dtype="int32")

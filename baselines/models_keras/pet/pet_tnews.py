@@ -20,34 +20,48 @@ import argparse
 parser = argparse.ArgumentParser(description="training set index")
 parser.add_argument("--train_set_index", "-ti", help="training set index", type=str, default="0")
 parser.add_argument("--training_type", "-tt", help="few-shot or zero-shot", type=str, default="few-shot")
+parser.add_argument("--model_path", "-m", help="reoberta file path", type=str, default="/home/stark/workdir/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12")
+parser.add_argument("--maxlen", "-ml", help="max sequence length", type=int, default=128)
+parser.add_argument("--batch_size", "-bs", help="traning batch size", type=int, default=16)
+parser.add_argument("--num_per_val_file", "-npv", help="numbers of sample per file", type=int, default=240)
+
 args = parser.parse_args()
 train_set_index = args.train_set_index
 training_type = args.training_type
-assert train_set_index in {"0", "1", "2", "3", "4", "all"}, 'train_set_index must in {"0", "1", "2", "3", "4", "all"}'
+model_path = args.model_path
+maxlen = args.maxlen
+batch_size = args.batch_size
+num_per_val_file = args.num_per_val_file
+
+assert train_set_index in {"0", "1", "2", "3", "4", "few_all"}, 'train_set_index must in {"0", "1", "2", "3", "4", "few_all"}'
 
 label_en2zh ={'news_tech':'科技','news_entertainment':'娱乐','news_car':'汽车','news_travel':'旅游','news_finance':'财经',
               'news_edu':'教育','news_world':'国际','news_house':'房产','news_game':'电竞','news_military':'军事',
               'news_story':'故事','news_culture':'文化','news_sports':'体育','news_agriculture':'农业', 'news_stock':'股票'}
+
+label_map_file = "datasets/tnews/label_index2en2zh.json"
+zhlabel2id = {json.loads(l)["label_zh"]: json.loads(l)["label"] for l in open(label_map_file, "r", encoding="utf-8")}
 labels=[label_zh for label_en,label_zh in label_en2zh.items()]
 labels_en=[label_en for label_en,label_zh in label_en2zh.items()]
 num_classes = len(labels)
-maxlen = 128
-batch_size = 16
-num_per_val_file = 330
-config_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = '/path/language_model/chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt'
+config_path = os.path.join(model_path, "bert_config.json")
+checkpoint_path = os.path.join(model_path, "bert_model.ckpt")
+dict_path = os.path.join(model_path, "vocab.txt")
 acc_list = []
 def load_data(filename): # 加载数据
     D = []
     with open(filename, encoding='utf-8') as f:
         for i, l in enumerate(f):
             l = json.loads(l)
-            label_en=l['label_desc']
-            if label_en not in labels_en:
-                print(label_en)
-                continue
-            label_zh=label_en2zh[label_en]
+            if 'label_desc' in l:
+                label_en=l['label_desc']
+                if label_en not in labels_en:
+                    print(label_en)
+                    continue
+                label_zh=label_en2zh[label_en]
+            else:
+                label_zh = "科技"
+            
             D.append((l['sentence'], label_zh))
     return D
 
@@ -56,7 +70,7 @@ train_data = load_data('datasets/tnews/train_{}.json'.format(train_set_index))
 valid_data = []
 for i in range(5):
     valid_data += load_data('datasets/tnews/dev_{}.json'.format(i))
-test_data = load_data('datasets/tnews/test_public.json')
+test_data = load_data('datasets/tnews/test.json')
 
 # 模拟标注和非标注数据
 train_frac = 1 # 标注数据的比例
@@ -181,6 +195,7 @@ class Evaluator(keras.callbacks.Callback):
         test_acc = test_pred_result.sum()/test_pred_result.shape[0]
         acc_tuple = tuple(val_pred_result.tolist()+[total_acc, self.best_val_acc, test_acc])
         acc_list.append(list(acc_tuple))
+        print(acc_tuple)
         draw_acc(acc_list) # 如果需要对照每个验证集准确率
         print(
             u'val_acc_0: %.5f, val_acc_1: %.5f, val_acc_2: %.5f, val_acc_3: %.5f, val_acc_4: %.5f, val_acc_total: %.5f, best_val_acc: %.5f, test_acc: %.5f\n' %
@@ -213,6 +228,24 @@ def evaluate(data):
     # return right / total
     return pred_result_list
 
+def test(data, filename):
+    pred_labels = []
+    label_ids = np.array([tokenizer.encode(l)[0][1:-1] for l in labels]) # 获得两个字的标签对应的词汇表的id列表，如: label_id=[1093, 689]。label_ids=[[1093, 689],[],[],..[]]tokenizer.encode('农业') = ([101, 1093, 689, 102], [0, 0, 0, 0])
+    for x_true, _ in data:
+        x_true, y_true = x_true[:2], x_true[2] # x_true = [batch_token_ids, batch_segment_ids]; y_true: batch_output_ids
+        y_pred = model.predict(x_true)[:, mask_idxs] # 取出特定位置上的索引下的预测值。y_pred=[batch_size, 2, vocab_size]。mask_idxs = [7, 8]
+        # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # (32, 2, 21128)
+        # print("label_ids",label_ids) # [[4906 2825],[2031  727],[3749 6756],[3180 3952],[6568 5307],[3136 5509],[1744 7354],[2791  772],[4510 4993],[1092  752],[3125  752],[3152 1265],[ 860 5509],[1093  689]]
+        y_pred = y_pred[:, 0, label_ids[:, 0]] * y_pred[:, 1, label_ids[:, 1]] # y_pred=[batch_size,1,label_size]=[32,1,14]。联合概率分布。 y_pred[:, 0, label_ids[:, 0]]的维度为：[32,1,21128]
+        y_pred = y_pred.argmax(axis=1) # 找到概率最大的那个label(词)。如“财经”
+        # print("y_pred:",y_pred.shape,";y_pred:",y_pred) # O.K. y_pred: (16,) ;y_pred: [4 0 4 1 1 4 5 3 9 1 0 9]
+        # print("y_true.shape:",y_true.shape,";y_true:",y_true) # y_true: (16, 128) zhlabel2id
+        pred_labels += [labels[l] for l in y_pred.tolist()]
+    with open(filename, "w", encoding="utf-8") as f:
+        for idx, l in enumerate(pred_labels):
+            f.write(json.dumps({"id": str(idx), "label": zhlabel2id[l]})+"\n")
+    return 0
+
 def draw_acc(acc_list):
     import matplotlib.pyplot as plt
     epoch = len(acc_list)
@@ -231,7 +264,7 @@ def draw_acc(acc_list):
         else:
             line = ax.plot(x, y, label=label_list[idx], linewidth=2, linestyle='dashed')
     ax.legend()
-    plt.savefig("./baseline/tnews/pet_tnews_trainset_{}_100.svg".format(train_set_index)) # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
+    plt.savefig("/home/stark/workdir/FewCLUE/baselines/pet_tnews_trainset_{}_100.svg".format(train_set_index)) # 保存为svg格式图片，如果预览不了svg图片可以把文件后缀修改为'.png'
 
 if __name__ == '__main__':
     if training_type == "few-shot":
@@ -240,9 +273,11 @@ if __name__ == '__main__':
         train_model.fit_generator(
             train_generator.forfit(),
             steps_per_epoch=len(train_generator),
-            epochs=20,
+            epochs=5,
             callbacks=[evaluator]
         )
+        testresult_file_path = "tnewsf_pred_"+train_set_index+".json"
+        test(test_generator, testresult_file_path)
     elif training_type == "zero-shot":
         pred_result = evaluate(test_generator)
         pred_result = np.array(pred_result, dtype="int32")
