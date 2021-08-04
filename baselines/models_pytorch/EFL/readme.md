@@ -28,13 +28,6 @@
    eprstmt/wsc/chid 负样本数量较少，没有进行1:8的构建
 3. 采用已有的中文文本蕴含任务如cmnli或者ocnli对模型进行预先训练，再拿这个预先训练的模型作为预训练模型
 
-#### 备注
-1. 模版对效果影响挺大
-2. cmnli和ocnli的预先训练模型为分别使用 
-    https://github.com/CLUEbenchmark/CLUE/blob/master/baselines/models_pytorch/classifier_pytorch/run_classifier_cmnli.sh
-    https://github.com/CLUEbenchmark/CLUE/blob/master/baselines/models_pytorch/classifier_pytorch/run_classifier_ocnli.sh
-   进行训练的模型
-
 ## 多次实验具体结果
 | 模型        | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc   | iflytek | csl   | chid  |
 | :----:      | :----:    | :----:   |:----:  |:----:   |:----:    |:----: |:----: |:----:   |:----: |:----: |
@@ -70,3 +63,14 @@
 |             | train all |0.838     |0.736   |0.669    |0.452     |0.544  |0.636  |0.529    |0.666  |0.398  |
 |             | train avg |0.849     |0.718   |0.662    |0.450     |0.521  |0.530  |0.427    |0.566  |0.309  |
 |             | train std |0.004     |0.008   |0.014    |0.023     |0.008  |0.031  |0.011    |0.018  |0.019  |
+
+#### 备注
+1. 模版对效果影响挺大
+2. cmnli和ocnli的预先训练模型为分别使用 
+    https://github.com/CLUEbenchmark/CLUE/blob/master/baselines/models_pytorch/classifier_pytorch/run_classifier_cmnli.sh
+    https://github.com/CLUEbenchmark/CLUE/blob/master/baselines/models_pytorch/classifier_pytorch/run_classifier_ocnli.sh
+    进行训练的模型
+3. train all :train_few_all.json测试结果
+    train avg : train_0-4 的平均值
+    train std : train_0-4 的标准差
+4. 所有测试结果都为test_public.json上效果
