@@ -1,6 +1,6 @@
 # EFL相关代码
 
-## 环境要求：
+## 环境要求
 1. python3
 2. pytorch (1.7.0)
 3. 预训练模型为chinese_roberta_wwm_ext_L-12_H-768_A-12
@@ -64,7 +64,7 @@
 |             | train avg |0.849     |0.718   |0.662    |0.450     |0.521  |0.530  |0.427    |0.566  |0.309  |
 |             | train std |0.004     |0.008   |0.014    |0.023     |0.008  |0.031  |0.011    |0.018  |0.019  |
 
-#### 备注
+### 备注
 1. 模版对效果影响挺大
 2. cmnli和ocnli的预先训练模型为分别使用 
     https://github.com/CLUEbenchmark/CLUE/blob/master/baselines/models_pytorch/classifier_pytorch/run_classifier_cmnli.sh
