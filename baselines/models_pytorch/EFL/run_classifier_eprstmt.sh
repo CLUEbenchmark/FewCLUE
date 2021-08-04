@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 TASK_NAME="eprstmt"
-MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
-#MODEL_NAME="./cmnli_output/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
+MODEL_NAME="/media2/xiaoling/local_models/chinese_roberta_wwm_ext_pytorch/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 export CUDA_VISIBLE_DEVICES="0"
 

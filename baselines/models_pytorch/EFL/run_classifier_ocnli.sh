@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 TASK_NAME="ocnli"
-MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
-#MODEL_NAME="./cmnli_output/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
+MODEL_NAME="/media2/xiaoling/local_models/cmnli_output/bert"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 export CUDA_VISIBLE_DEVICES="0"
 
@@ -25,6 +25,7 @@ if [ ! -d $output_dir ];then
     mkdir -p $output_dir
 fi
 
+      #--ratio=4 \
 # run task
 cd $CURRENT_DIR
 echo "Start running..."
@@ -40,7 +41,7 @@ if [ $# == 3 ]; then
       --train_file_name=$train_file_name \
       --dev_file_name=$dev_file_name \
       --test_file_name=$test_file_name \
-      --ratio=1 \
+      --ratio=4 \
       --max_seq_length=128 \
       --per_gpu_train_batch_size=4 \
       --per_gpu_eval_batch_size=4 \

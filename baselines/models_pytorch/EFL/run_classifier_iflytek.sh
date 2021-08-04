@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 TASK_NAME="iflytek"
-MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
-#MODEL_NAME="./ocnli_output_pretrain/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
+MODEL_NAME="/media2/xiaoling/local_models/chinese_roberta_wwm_ext_pytorch/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-export CUDA_VISIBLE_DEVICES="1"
+export CUDA_VISIBLE_DEVICES="0"
 
 export FewCLUE_DATA_DIR=../../../datasets/
 
@@ -25,6 +25,7 @@ if [ ! -d $output_dir ];then
     mkdir -p $output_dir
 fi
 
+      #--ratio=8 \
 # run task
 cd $CURRENT_DIR
 echo "Start running..."
