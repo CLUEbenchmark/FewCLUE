@@ -1,5 +1,5 @@
 {
-    "pretrained_weight":  "voidful/albert_chinese_xxlarge",
+    "pretrained_weight":  "hfl/chinese-roberta-wwm-ext",
     "dataset": "iflytek",
     "max_text_length": 128,
     "batch_size": 1,

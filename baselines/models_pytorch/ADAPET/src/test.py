@@ -24,18 +24,20 @@ if __name__ == "__main__":
     dataset_reader = batcher.get_dataset_reader()
 
     model = adapet(config, tokenizer, dataset_reader).to(device)
-    model.load_state_dict(torch.load(os.path.join(args.exp_dir, "best_model.pt")))
-    acc,logits = new_test_eval(config, model, batcher)
-    print('best_model_test_acc:{}'.format(acc))
-    with open(os.path.join(args.exp_dir, "result.txt"), 'a') as f:
-        f.write('best_model_test_acc={}\n'.format(acc))
+    if os.path.exists(os.path.join(args.exp_dir, "best_model.pt")):
+        model.load_state_dict(torch.load(os.path.join(args.exp_dir, "best_model.pt")))
+        acc,logits = new_test_eval(config, model, batcher)
+        print('best_model_test_acc:{}'.format(acc))
+        with open(os.path.join(args.exp_dir, "result.txt"), 'a') as f:
+            f.write('best_model_test_acc={}\n'.format(acc))
 
     model = adapet(config, tokenizer, dataset_reader).to(device)
-    model.load_state_dict(torch.load(os.path.join(args.exp_dir, "final_model.pt")))
-    acc,logits = new_test_eval(config, model, batcher)
-    print('final_test_acc:{}'.format(acc))
-    with open(os.path.join(args.exp_dir, "result.txt"), 'a') as f:
-        f.write('final_model_test_acc={}\n'.format(acc))
+    if os.path.exists(os.path.join(args.exp_dir, "final_model.pt")):
+        model.load_state_dict(torch.load(os.path.join(args.exp_dir, "final_model.pt")))
+        acc,logits = new_test_eval(config, model, batcher)
+        print('final_test_acc:{}'.format(acc))
+        with open(os.path.join(args.exp_dir, "result.txt"), 'a') as f:
+            f.write('final_model_test_acc={}\n'.format(acc))
     # os.remove(os.path.join(args.exp_dir, "final_model.pt"))
     # os.remove(os.path.join(args.exp_dir, "best_model.pt"))
 

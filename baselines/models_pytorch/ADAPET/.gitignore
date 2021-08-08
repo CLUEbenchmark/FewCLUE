@@ -1,4 +1,5 @@
 exp_out
+bin/fewclue_parallel.sh
 exp_out/
 cur_exp_dir
 env/

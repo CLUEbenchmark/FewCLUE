@@ -26,7 +26,7 @@ class adapet(torch.nn.Module):
         if not os.path.exists(pretrained_file):
             pretrained_file = self.config.pretrained_weight
 
-        if "albert" in pretrained_file:
+        if "roberta" in pretrained_file:
             albert_config = AlbertConfig.from_pretrained(pretrained_file)
             self.model = AlbertForMaskedLM.from_pretrained(pretrained_file, config=albert_config)
         else:

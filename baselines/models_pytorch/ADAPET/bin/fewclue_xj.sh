@@ -3,7 +3,7 @@ export PET_ELECTRA_ROOT=`pwd`
 export PYTHONPATH=$PET_ELECTRA_ROOT:$PYTHONPATH
 export PYTHON_EXEC=python3
 set -exu
-export CUDA_VISIBLE_DEVICES="1"
+export CUDA_VISIBLE_DEVICES="0"
 process() {
     TASKNAME=$1
     config_file="config/$TASKNAME.json"
@@ -19,7 +19,8 @@ process() {
 }
 
 
-task_list=(EPRSTMT bustm ocnli csldcp tnews cluewsc ifytek csl chid)
+#task_list=(EPRSTMT bustm ocnli csldcp tnews cluewsc ifytek csl chid)
+task_list=(chid csl ifytek cluewsc tnews)
 for task in ${task_list[@]}
 do
   echo "task"$task

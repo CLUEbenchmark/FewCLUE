@@ -1,10 +1,10 @@
 {
-    "pretrained_weight":  "voidful/albert_chinese_xxlarge",
+    "pretrained_weight":  "hfl/chinese-roberta-wwm-ext",
     "dataset": "ocnli",
     "max_text_length": 256,
     "batch_size": 1,
     "eval_batch_size": 32,
-    "num_batches": 1000,
+    "num_batches": 500,
     "max_num_lbl_tok": 1,
     "eval_every": 8,
     "warmup_ratio": 0.06,

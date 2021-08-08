@@ -1,5 +1,5 @@
 {
-    "pretrained_weight": "albert-xxlarge-v2",
+    "pretrained_weight":  "hfl/chinese-roberta-wwm-ext",
     "dataset": "fewglue/WSC",
     "max_text_length": 256,
     "batch_size": 1,
