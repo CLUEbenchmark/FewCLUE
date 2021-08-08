@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 TASK_NAME="chid"
-MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
-#MODEL_NAME="./cmnli_output/bert/"
+#MODEL_NAME="./chinese_roberta_wwm_ext_pytorch"
+MODEL_NAME="/media2/xiaoling/local_models/chinese_roberta_wwm_ext_pytorch/"
 CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-export CUDA_VISIBLE_DEVICES="1"
+export CUDA_VISIBLE_DEVICES="0"
 
 export FewCLUE_DATA_DIR=../../../datasets/
 

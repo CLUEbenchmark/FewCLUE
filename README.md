@@ -71,6 +71,7 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/pet">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning_origin">ori-PtuningB</a>      | 57.77| 86.88(0.011, 89.34)	| 60.92(0.029,65.01)	| 35.81(0.018,44.44)	| 56.02(0.011,63.50)	| 54.23(0.010,55.91)	| 57.52(0.024,67.52)	| 57.63(0.009,62.26)	| 50.87(0.013,51.86)	| 60.04(0.012,60.14)	| 
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
