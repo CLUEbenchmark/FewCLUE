@@ -18,18 +18,39 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
 |     <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N  | 50.6N | 40.3N  | 12.6N  | 25.3N  | 50.0N  | 27.7N  | 52.2N  | 57.6N  |
 |      <a href="https://arxiv.org/pdf/2012.15723.pdf">LM-BFF</a>      | 55.79  |  84.59  | 54.06 | 43.10  | 53.64  | 56.27  | 51.84  | 46.14  | 51.16  |  61.3  |
 
-|  任务  |  split_0  | split_1 | split_2 | split_3 | split_4 | split_5 |
+|  任务  |  split_0  | split_1 | split_2 | split_3 | split_4 | All |
 | :----: | :-------: | :----: | :----: | :----: | :----: | :----: |
-| ifytek |  |         |         |         |         |        
+| eprstmt |  |    0.8442622950     |    0.85737704918     |  0.855737704       |    0.86229508     |       
+| bustm |  |   0.582392776      |    0.5976297968     |    0.5632054176     |    0.544018058     |        
+| ocnli |  |  0.424603174       |   0.41269841      |    0.380158730     |    0.36666666666     |        
+| csldcp |  |   0.539798206      |   0.51905829      |   0.514573991      |    0.550448430     |        
+| tnews |  |  0.5323383084       |   0.5303482587      |  0.5119402985       |    0.50298507462     |        
+| cluewsc |  |   0.570696721      |  0.4948770491       |  0.5194672131       |   0.50614754098      |        
+| ifytek |  |   0.4665523156      |   0.450543167524      |   0.4659805603      |   0.460263007      |        
+| csl |  |     0.503523608    |    0.5084566596     |    0.5035236081747     |    0.508456659619     |        
 
-- [] eprstmt
+
+Template Experiment
+
+- [X] eprstmt
 - [X] bustm
-- [] ocnli
-- [] csldcp
+- [X] ocnli
+- [X] csldcp
 - [X] tnews
-- [] cluewsc
+- [X] cluewsc
 - [X] ifytek
-- [] csl
+- [X] csl
+
+Final Experiment
+
+- [X] eprstmt
+- [X] bustm
+- [X] ocnli
+- [X] csldcp
+- [X] tnews
+- [X] cluewsc
+- [X] ifytek
+- [X] csl
 
 注：
 

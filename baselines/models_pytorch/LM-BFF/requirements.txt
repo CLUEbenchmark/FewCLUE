@@ -29,7 +29,7 @@ sentencepiece==0.1.94
 six==1.15.0
 threadpoolctl==2.1.0
 tokenizers==0.9.2
-torch==1.6.0
+# torch==1.6.0
 tqdm==4.48.2
 transformers==3.4.0
 typing-extensions==3.7.4.3
