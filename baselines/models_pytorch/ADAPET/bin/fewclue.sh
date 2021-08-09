@@ -19,7 +19,7 @@ process() {
 }
 
 
-task_list=(EPRSTMT bustm ocnli csldcp tnews cluewsc ifytek csl chid)
+task_list=(EPRSTMT bustm ocnli csldcp tnews cluewsc iflytek csl chid)
 for task in ${task_list[@]}
 do
   echo "task"$task
