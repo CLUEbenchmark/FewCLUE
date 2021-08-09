@@ -69,7 +69,7 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 | :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
 | <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
 | <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/pet">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/pet">PET</a>      | 57.36 | 86.66(1.02, 88.2) | 56.04(4.98, 62.19)  | 44.02(0.42, 49.25) | 51.69(1.04, 58.80) |54.47(1.21, 55.12)  | 57.52(2.70, 64.65)| 46.01(1.07, 51.34) | 59.35(1.27, 66.28) | 61.21(1.10, 62.39) |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning_origin">ori-PtuningB</a>      | 57.77| 86.88(0.011, 89.34)	| 60.92(0.029,65.01)	| 35.81(0.018,44.44)	| 56.02(0.011,63.50)	| 54.23(0.010,55.91)	| 57.52(0.024,67.52)	| 57.63(0.009,62.26)	| 50.87(0.013,51.86)	| 60.04(0.012,60.14)	| 
 | <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
