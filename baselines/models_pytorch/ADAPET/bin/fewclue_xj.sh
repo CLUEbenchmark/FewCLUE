@@ -4,6 +4,7 @@ export PYTHONPATH=$PET_ELECTRA_ROOT:$PYTHONPATH
 export PYTHON_EXEC=python3
 set -exu
 export CUDA_VISIBLE_DEVICES="0"
+cp -r ../../../datasets ./data
 process() {
     TASKNAME=$1
     config_file="config/$TASKNAME.json"
