@@ -5,10 +5,10 @@ from pathlib import Path
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, nargs='+', default=[13], help="Data split seeds")
-    parser.add_argument('--task_name', type=str, nargs='+', default=['csldcp'], help="Task names")
+    parser.add_argument('--task_name', type=str, nargs='+', default=['eprstmt', 'bustm', 'ocnli', 'csldcp', 'tnews', 'cluewsc', 'iflytek', 'csl'], help="Task names")
     parser.add_argument('--template_dir', type=str, default="my_auto_template", help='Template directory')
     parser.add_argument('--k', type=int, default=16, help="Number of training instances per label")
-    parser.add_argument('--splits', type=int, default=[0, 1, 2, 3, 4], nargs="+", help='Dataset splits to be copied to LM-BFF folder.')
+    parser.add_argument('--splits', default=[0, 1, 2, 3, 4, "few_all"], nargs="+", help='Dataset splits to be copied to LM-BFF folder.')
 
     args = parser.parse_args()
 

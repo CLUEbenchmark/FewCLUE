@@ -1,7 +1,7 @@
 # Run training & evaluation on training & dev set for each generated template
 for seed in 13
 do
-    for split in 1 2 3 4
+    for split in 1 2 3 4 "few_all"
     do
         # To save time, we fix these hyper-parameters
 
@@ -37,6 +37,7 @@ do
         # TASK=ocnli
         # TASK=bustm
         # TASK=cluewsc
+        # TASK=eprstmt
         TYPE=prompt
         TAG=exp-template
 

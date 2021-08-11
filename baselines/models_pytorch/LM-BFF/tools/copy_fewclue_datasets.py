@@ -25,7 +25,7 @@ def main(splits):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--splits', type=int, default=[0, 1, 2, 3, 4], nargs="+", help='Dataset splits to be copied to LM-BFF folder.')
+    parser.add_argument('--splits', default=[0, 1, 2, 3, 4, "few_all"], nargs="+", help='Dataset splits to be copied to LM-BFF folder.')
 
     args = parser.parse_args()
 
