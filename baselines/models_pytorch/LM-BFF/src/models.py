@@ -60,8 +60,9 @@ class BertForPromptFinetuning(BertPreTrainedModel):
     ):
         batch_size = input_ids.size(0)
 
-        if mask_pos is not None:
-            mask_pos = mask_pos.squeeze()
+        # NOTE: 把这注释掉，因为不影响程序运行，但是当 batch_size == 1 时会把 batch 维度给去掉然后报错
+        # if mask_pos is not None:
+            # mask_pos = mask_pos.squeeze()
 
         # Encode everything
         outputs = self.bert(
