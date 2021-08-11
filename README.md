@@ -76,7 +76,7 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
 | <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
 | <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     |  | 84.9(0.4,83.8) |  71.8(0.8,73.6) | 66.2(1.4,66.9) | 45.0(2.3,45.2) | 52.1(0.8,54.4)  |   53.0(3.1,63.6)  | 42.7(1.1,52.9) | 56.6(1.8,66.6) |  30.9(1.9,39.8) |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/LM-BFF">LM-BFF | 55.79 | 84.59 | 54.06 | 43.10 |  53.64 |  56.27 | 51.84 | 46.14 | 51.16 | 61.3 |
+| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/LM-BFF">LM-BFF | 56.32 | 85.55 (0.009, 86.72)| 57.62 (0.034, 62.92)|41.58 (0.040, 47.98)|54.36 (0.031, 60.15)|53.04 (0.021, 0.54.23)|54.73 (0.067, 67.42)|47.13 (0.026, 52.32)|51.67 (0.024, 56.45) | 61.21 (1.10, 62.39)
 | <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |    54.8    | 53.9N |  | 52.1N |22.2  |
 | <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | 15.7N |
 
