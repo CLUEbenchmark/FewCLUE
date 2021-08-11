@@ -27,7 +27,7 @@ class adapet(torch.nn.Module):
             pretrained_file = self.config.pretrained_weight
 
         if "roberta" in pretrained_file:
-            albert_config = AlbertConfig.from_pretrained(pretrained_file)
+            albert_config = BertConfig.from_pretrained(pretrained_file)
             self.model = BertForMaskedLM.from_pretrained(pretrained_file, config=albert_config)
         else:
             raise ValueError("Invalid model")
@@ -41,8 +41,8 @@ class adapet(torch.nn.Module):
 
         self.lbl_idx_lkup = nn.Embedding.from_pretrained(torch.eye(self.num_lbl)) # [num_lbl, num_lbl]
 
-        self.loss = nn.BCELoss(reduction="none")
-        # self.loss =nn.BCEWithLogitsLoss(reduction="none")
+        #self.loss = nn.BCELoss(reduction="none")
+        self.loss =nn.BCEWithLogitsLoss(reduction="none")
 
         # Setup patterns depending on if random or not
         self.pattern_list = self.dataset_reader.dataset_reader.pets

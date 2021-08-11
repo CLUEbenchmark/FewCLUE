@@ -6,17 +6,20 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
 
 ## 实验结果 :bar_chart:
 
-| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
-| :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
-| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | |
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PET</a>      | 57.36 | 87.2N | 64.0  | 43.9N | 56.9N |53.7N  | 59.2N| 35.1N | 55.0N | 61.3N |
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-G</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
-| <a href="https://arxiv.org/abs/2005.14165">Zero-shot-R</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-| <a href="https://arxiv.org/pdf/2012.15723.pdf">LM-BFF</a> | 55.79 | 84.59 | 54.06 | 43.10 |  53.64 |  56.27 | 51.84 | 46.14 | 51.16 | 61.3 |
+|                           模型                            | score | eprstmt | bustm | ocnli | csldcp | tnews |  wsc  | ifytek |  csl  | chid  |
+| :-------------------------------------------------------: | :---: | :-----: | :---: | :---: | :----: | :---: | :---: | :----: | :---: | :---: |
+| <a href="https://arxiv.org/pdf/2012.15723.pdf">LM-BFF</a> | 55.79 |  84.59  | 54.06 | 43.10 | 53.64  | 56.27 | 51.84 | 46.14  | 51.16 |   -   |
+
+|   任务      |    split_0  |      split_1     |       split_2      |        split_3      |       split_4      |         few_all      |     mean |        std |      max |
+|:------------|------------:|-----------------:|-------------------:|--------------------:|-------------------:|---------------------:|---------:|-----------:|---------:|
+| eprstmt     |      0.8459 |         0.844262 |           0.857377 |            0.855738 |           0.862295 |             0.867213 | 0.855464 | 0.00821978 | 0.867213 |
+| bustm       |      0.5406 |         0.582393 |           0.59763  |            0.563205 |           0.544018 |             0.629233 | 0.57618  | 0.0310428  | 0.629233 |
+| ocnli       |      0.431  |         0.424603 |           0.412698 |            0.380159 |           0.366667 |             0.479762 | 0.415815 | 0.036728   | 0.479762 |
+| csldcp      |      0.5364 |         0.539798 |           0.519058 |            0.514574 |           0.550448 |             0.601457 | 0.543623 | 0.0285933  | 0.601457 |
+| tnews       |      0.5627 |         0.532338 |           0.530348 |            0.51194  |           0.502985 |             0.542289 | 0.530433 | 0.0194967  | 0.5627   |
+| cluewsc     |      0.5184 |         0.570697 |           0.494877 |            0.519467 |           0.506148 |             0.67418  | 0.547295 | 0.0615055  | 0.67418  |
+| ifytek      |      0.4614 |         0.466552 |           0.450543 |            0.465981 |           0.460263 |             0.523156 | 0.471316 | 0.0237717  | 0.523156 |
+| csl         |      0.5116 |         0.503524 |           0.508457 |            0.503524 |           0.508457 |             0.564482 | 0.516674 | 0.0215726  | 0.564482 |
 
 注：
 
@@ -31,13 +34,15 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
 1. 安装实验环境  
    运行本代码需要两个虚拟环境 `lm-bff` 以及 `lm-bff-gen`。若使用 `conda`，可按照以下命令安装环境，
 
-   ```
-   conda create -n lm-bff python=3.7
-   pip install -r ./requirements.txt
+    ```
+    conda create -n lm-bff python=3.7 \
+    pip install -r ./requirements.txt
+    ```
 
-   conda create -n lm-bff-gen --clone lm-bff
-   pip install -U transformers
-   ```
+    ```
+    conda create -n lm-bff-gen --clone lm-bff \
+    pip install -U transformers
+    ```
 
 2. 准备数据
    
@@ -65,7 +70,7 @@ This repository implements [FewCLUE](https://github.com/CLUEbenchmark/FewCLUE) t
    ```
 
 4. 模板评估  
-   在 `generate_template.sh` 设置以下变量和参数，
+   在 `run_template_experiment.sh` 设置以下变量和参数，
 
    ```
    # 要实验的任务

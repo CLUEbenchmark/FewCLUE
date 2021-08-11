@@ -2,6 +2,7 @@
 export PET_ELECTRA_ROOT=`pwd`
 export PYTHONPATH=$PET_ELECTRA_ROOT:$PYTHONPATH
 export PYTHON_EXEC=python3
+export CUDA_LAUNCH_BLOCKING=1
 set -exu
 export CUDA_VISIBLE_DEVICES="1"
 process() {
@@ -20,7 +21,8 @@ process() {
 
 
 task_list=(EPRSTMT bustm ocnli csldcp tnews cluewsc iflytek csl chid)
-task_list=(csldcp tnews ifytek)
+task_list=(csldcp ifytek chid)
+#task_list=(tnews)
 for task in ${task_list[@]}
 do
   echo "task"$task
