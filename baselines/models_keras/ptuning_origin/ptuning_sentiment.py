@@ -2,27 +2,19 @@
 # 情感分析例子，利用MLM+P-tuning
 import json
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 
 import numpy as np
 from bert4keras.backend import keras, K
-from bert4keras.layers import Loss, Embedding
 from bert4keras.tokenizers import Tokenizer
-from bert4keras.models import build_transformer_model, BERT
-from bert4keras.optimizers import Adam
 from bert4keras.snippets import sequence_padding, DataGenerator
 from bert4keras.snippets import open
-from keras.layers import Lambda, Dense
 import sys
+from modeling import tokenizer
 
 maxlen = 128
 batch_size = 32
 
-# 加载预训练模型
-base_model_path='../../../pretrained_models/chinese_roberta_wwm_ext_L-12_H-768_A-12/'
-config_path = base_model_path+'bert_config.json'
-checkpoint_path =  base_model_path+'bert_model.ckpt'
-dict_path = base_model_path+'vocab.txt'
 
 
 # 加载数据的方法
@@ -66,14 +58,14 @@ print("1.num_labeled data used:",num_labeled," ;train_data:",len(train_data)) # 
 
 # train_data = train_data + unlabeled_data
 
-# 建立分词器
-tokenizer = Tokenizer(dict_path, do_lower_case=True)
 
 # 对应的任务描述
 mask_idx = 1 #5
 unused_length=9 # 9
 desc = ['[unused%s]' % i for i in range(1, unused_length)] # desc: ['[unused1]', '[unused2]', '[unused3]', '[unused4]', '[unused5]', '[unused6]', '[unused7]', '[unused8]', '[unused9]', '[unused10]']
 desc.insert(mask_idx - 1, '[MASK]')            # desc: ['[MASK]', '[unused1]', '[unused2]', '[unused3]', '[unused4]', '[unused5]', '[unused6]', '[unused7]', '[unused8]', '[unused9]', '[unused10]
+desc.insert(mask_idx, '满')            # desc: ['[MASK]', '[unused1]', '[unused2]', '[unused3]', '[unused4]', '[unused5]', '[unused6]', '[unused7]', '[unused8]', '[unused9]', '[unused10]
+desc.insert(mask_idx + 1, '意')            # desc: ['[MASK]', '[unused1]', '[unused2]', '[unused3]', '[unused4]', '[unused5]', '[unused6]', '[unused7]', '[unused8]', '[unused9]', '[unused10]
 desc_ids = [tokenizer.token_to_id(t) for t in desc] # 将token转化为id
 
 pos_id = tokenizer.token_to_id(u'很') # e.g. '[unused9]'. 将正向的token转化为id. 默认值：u'很'
@@ -140,7 +132,7 @@ class data_generator(DataGenerator):
 
 
 from modeling import get_model
-model, train_model = get_model(pattern_len=unused_length)
+model, train_model = get_model(pattern_len=unused_length, trainable=True, lr=3e-5)
 
 
 # 转换数据集
@@ -190,8 +182,8 @@ if __name__ == '__main__':
 
     train_model.fit_generator(
         train_generator.forfit(),
-        steps_per_epoch=len(train_generator) * 50,
-        epochs=20,
+        steps_per_epoch=len(train_generator) * 5,
+        epochs=5 if data_num != "few_all" else 1,
         callbacks=[evaluator]
     )
 

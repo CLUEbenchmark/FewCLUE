@@ -116,6 +116,7 @@ class data_generator(DataGenerator):
                         target_ids[ind] = label_ids[i]
                     else:
                         source_ids[ind] = i - 3
+                        target_ids[ind] = i - 3
                 # for i, label_id_ in zip(mask_idxs, label_ids):
                 #     source_ids[i] = tokenizer._token_mask_id # i: 7(mask1的index) ;j: 1093(农); i:8 (mask2的index) ;j: 689(业)
                 #     target_ids[i] = label_id_
