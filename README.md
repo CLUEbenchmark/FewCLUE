@@ -1,8 +1,10 @@
 # FewCLUE
 
-中文小样本学习测评基准
+小样本学习测评基准-中文版
 
-FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
+
+<a href='https://arxiv.org/abs/2107.07498'>FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark</a>
+
 
 ## 内容导引
 | 章节 | 描述 |
@@ -26,6 +28,9 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 
  小样本学习（Few-shot Learning）正是解决这类在极少数据情况下的机器学习问题。结合预训练语言模型通用和强大的泛化能力基础上，探索小样本学习最佳模型和中文上的实践，是本课题的目标。FewCLUE：中文小样本学习测评基准，基于CLUE的积累和经验，并结合少样本学习的特点和近期的发展趋势，精心设计了该测评，希望可以促进中文领域上少样本学习领域更多的研究、应用和发展。
 
+
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_paper.jpeg"  width="100%" height="100%" />   
+  
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/FewCLUE.final2.jpeg"  width="100%" height="100%" />   
 
@@ -65,21 +70,7 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
 ## 实验结果
 实验设置：训练集和验证集使用32个样本，或采样16个，测试集正常规模。基础模型使用RoBERT12层chinese_roberta_wwm_ext（GPT系列除外）。
 
-| 模型   | score     | eprstmt  | bustm  | ocnli   | csldcp   | tnews | wsc | ifytek| csl | chid  |
-| :----:| :----:  | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-| <a href="https://arxiv.org/abs/2004.05986">Human</a>        | 82.49 |90.0N  | 88.0N    |  90.3N  | 68.0N |71.0N | 98.0N | 66.0N |  84.0N|  87.1N|
-| <a href="https://github.com/ymcui/Chinese-BERT-wwm">FineTuningB</a>        | 39.35 |61.9N   | 54.1N   | 33.6N  | 25.6N |40.5N | 50.3N |22.6N | 50.5N| 15.0N|
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/pet">PET</a>      | 57.44 | 86.66(1.02, 88.2) | 56.04(4.98, 62.19)  | 44.02(0.42, 49.25) | 51.69(1.04, 58.80) |54.47(1.21, 55.12)  | 57.52(2.70, 64.65)| 46.01(1.07, 51.34) | 59.35(1.27, 66.28) | 61.21(1.10, 62.39) |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning">PtuningB</a>      | 51.81| 88.5N | 65.4  | 35.0N | 44.4N |  48.2N  | 51.0N | 32.0N| 50.0N | 57.6N |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/ptuning_origin">ori-PtuningB</a>      | 59.91| 88.26(0.7, 89.83)	| 60.92(2.9,65.01)	| 41.90(1.9,49.60)	| 56.02(1.1,63.50)	| 54.23(1.0,55.91)	| 58.11(2.2,67.52)	| 57.63(0.9,62.26)	| 62.91(2.3,70.82)	| 59.27(1.4,61.19)	| 
-| <a href="https://arxiv.org/pdf/2009.07118.pdf">PtuningGPT</a>      | 46.44| 75.65N  | 54.9N   | 35.75N  | 33.69N  |  45.3N   | 49.0N | 24.0N | 53.5N  | 13.7N  |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_keras/gpt">Zero-shotG</a>      | 43.36N |  57.54N |  50N  | 34.4N  |  26.23N |  36.96N | 50.31N | 19.04N | 50.14N  | 65.63N  |
-| <a href="https://arxiv.org/abs/2005.14165">Zero-shotR</a>      | 44.61N |  85.2N |   50.6N | 40.3N | 12.6N  |   25.3N  | 50.0N | 27.7N |  52.2N |  57.6N |
-| <a href='https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/EFL'>EFL</a>     | 55.91  | 84.9(0.4,83.8) |  71.8(0.8,73.6) | 66.2(1.4,69.6) | 45.0(2.3,45.2) | 52.1(0.8,54.4)  |   53.0(3.1,63.6)  | 42.7(1.1,52.9) | 56.6(1.8,66.6) |  30.9(1.9,39.8) |
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/LM-BFF">LM-BFF | 56.32 | 85.55 (0.9, 86.72)| 57.62 (3.4, 62.92)|41.58 (4.0, 47.98)|54.36 (3.1, 60.15)|53.04 (2.1, 54.23)|54.73 (6.7, 67.42)|47.13 (2.6, 52.32)|51.67 (2.4, 56.45) | 61.21 (1.10, 62.39)
-| <a href="https://github.com/CLUEbenchmark/FewCLUE/tree/main/baselines/models_pytorch/ADAPET">ADAPET</a> |  | 89.0N | 69.7N | 37.0N |  |    54.8    | 53.9N |  | 52.1N |22.2  |
-| <a href="https://github.com/google-research/bert">FineTuningR</a>        | | 63.2N |55.5N   | 33.5N    | 35.7N  | 49.3N |49.6N | 32.8N |50.0N | 15.7N |
-
+   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/fewclue_eresult.jpeg"  width="100%" height="100%" />   
 
     Human: 人类测评成绩；FineTuning: 直接下游任务微调；PET:Pattern Exploiting Training(完形填空形式); 
     Ptuning: 自动构建模板; Zero-shot: 零样本学习；EFL:自然语言推理形式; ADAPET:PET改进版，带正确标签条件优化
@@ -87,7 +78,6 @@ FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark
     Zero-shot-R，采用chinese_roberta_wwm_ext为基础模型的零样本学习；Zero-shot-G，GPT系列的零样本学习；N”，代表已更新；
     报告的数字是每一个任务的公开测试集(test_public.json)上的实验效果；CLUE榜单已经可以提交；
     由于CHID还在继续实验中，暂时未将CHID的分数纳入到最终的分数(Score）中。
-   <a href='https://github.com/huawei-noah/Pretrained-Language-Model/tree/master/NEZHA-Gen-TensorFlow'>使用的GPT模型: NEZHA-Gen</a>
 
 ## 实验分析
 
@@ -634,20 +624,10 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
 ## License
 
     正在添加中
-
 ## 引用
-    @misc{FewCLUE,
-      title={FewCLUE:Few-shot learning for Chinese Language Understanding Evaluation},
-      author={CLUE benchmark},
+    {FewCLUE,
+      title={FewCLUE: A Chinese Few-shot Learning Evaluation Benchmark},
+      author={Liang Xu, Xiaojing Lu, Chenyang Yuan, Xuanwei Zhang, Huilin Xu, Hu Yuan, Guoao Wei, Xiang Pan, Xin Tian, Libo Qin, Hu Hai},
       year={2021},
-      howpublished={\url{https://github.com/CLUEbenchmark/FewCLUE}},
+      howpublished={\url{https://arxiv.org/abs/2107.07498}},
     }
-
-    or 
-
-    @article{CLUEbenchmark,
-      title={CLUE: A Chinese Language Understanding Evaluation Benchmark},
-      author={Liang Xu, Hai Hu, Xuanwei Zhang, Lu Li, Chenjie Cao, Yudong Li, Yechen Xu, Kai Sun, Dian Yu,Cong Yu,et al.},
-      journal={In Proceedings of the 28th International Conference on Computational Linguistics, pages 4762–4772.},
-      year={2020}
-     }
