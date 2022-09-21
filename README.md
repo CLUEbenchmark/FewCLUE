@@ -596,7 +596,7 @@ bash ./baselines/models_keras/zero_shot/roberta_zeroshot.sh [iflytek\tnews\eprst
       答：发送邮件到 CLUEbenchmark@163.com，标题为：参与FewCLUE课题，并介绍一下你的研究。
 
    添加微信入FewCLUE群:
-   <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />   
+   <!--<img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/ljy.jpeg"  width="45%" height="45%" />-->  
 
    <img src="https://github.com/CLUEbenchmark/FewCLUE/blob/main/resources/img/bq_01.jpeg"  width="45%" height="45%" />   
 
